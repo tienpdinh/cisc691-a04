@@ -47,6 +47,6 @@ class LLMClient:
             else:
                 return "No response from LLM"
                 
-        except requests.exceptions.RequestException as e:
+        except (requests.exceptions.RequestException, json.JSONDecodeError) as e:
             self.logger.error(f"Error querying LLM: {e}")
             return f"Error: Could not connect to the LLM. Make sure Ollama is running."

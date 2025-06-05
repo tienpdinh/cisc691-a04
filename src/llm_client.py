@@ -63,6 +63,7 @@ class LLMClient:
             return "Error: Vertex AI libraries not installed"
 
         try:
+            import vertexai
             from vertexai.generative_models import GenerativeModel
             
             model = GenerativeModel(self.llm_model_name)

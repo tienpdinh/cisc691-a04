@@ -1,5 +1,9 @@
 # RAG Pipeline
 
+[![CI](https://github.com/USERNAME/REPO-NAME/workflows/CI/badge.svg)](https://github.com/USERNAME/REPO-NAME/actions)
+[![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+
 A simple Retrieval-Augmented Generation pipeline that processes documents and answers questions using local LLMs.
 
 ## Quick Setup
@@ -56,6 +60,26 @@ python main.py step05_generate_response --query_args "What is AI?" --use_rag
 Edit `config.json` to change models:
 - For RTX 4090: `"llm_model_name": "llama3.1:70b-instruct-q4_0"`
 - For other GPUs: `"llm_model_name": "llama3.1:8b"`
+
+## Testing & Coverage
+
+### Run Tests
+```bash
+pytest
+```
+
+### Run Tests with Coverage
+```bash
+pytest --cov=classes --cov=. --cov-report=html --cov-report=term-missing
+```
+
+### View Coverage Report
+```bash
+# Open htmlcov/index.html in your browser
+open htmlcov/index.html  # macOS
+xdg-open htmlcov/index.html  # Linux
+start htmlcov/index.html  # Windows
+```
 
 ## Troubleshooting
 

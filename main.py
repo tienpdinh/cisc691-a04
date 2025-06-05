@@ -129,7 +129,10 @@ def step05_generate_response(args):
     logging.info("[Step 05] Response generation started.")
 
     llm_client = LLMClient(llm_api_url=config.get("llm_api_url"),
-                           llm_model_name=config.get("llm_model_name"))
+                           llm_model_name=config.get("llm_model_name"),
+                           llm_provider=config.get("llm_provider", "ollama"),
+                           project_id=config.get("project_id"),
+                           location=config.get("location"))
 
     retriever = ChromaDBRetriever(vectordb_dir=config.get("vectordb_directory"),
                              embedding_model_name=config.get("embedding_model_name"),

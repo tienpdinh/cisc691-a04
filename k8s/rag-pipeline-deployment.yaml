@@ -15,6 +15,7 @@ spec:
       labels:
         app: rag-pipeline
     spec:
+      serviceAccountName: rag-pipeline-sa
       containers:
       - name: rag-pipeline
         image: gcr.io/cisc691-a04/rag-pipeline:latest
@@ -25,6 +26,10 @@ spec:
           value: "/app"
         - name: PYTHONUNBUFFERED
           value: "1"
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: "/etc/gcp/key.json"
+        - name: GOOGLE_CLOUD_PROJECT
+          value: "cisc691-a04"
         resources:
           requests:
             memory: "2Gi"
@@ -40,6 +45,9 @@ spec:
           mountPath: /data
         - name: logs
           mountPath: /app/logs
+        - name: gcp-service-account
+          mountPath: /etc/gcp
+          readOnly: true
         readinessProbe:
           exec:
             command:
@@ -66,4 +74,7 @@ spec:
       - name: logs
         persistentVolumeClaim:
           claimName: rag-pipeline-logs
+      - name: gcp-service-account
+        secret:
+          secretName: gcp-service-account-key
       restartPolicy: Always

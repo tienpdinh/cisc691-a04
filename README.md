@@ -4,9 +4,21 @@
 [![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
-A simple Retrieval-Augmented Generation pipeline that processes documents and answers questions using local LLMs.
+A Retrieval-Augmented Generation pipeline that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI).
 
-## Quick Setup
+## 🚀 Deployment Options
+
+### Local Development
+- **LLM**: Ollama (privacy-focused, local processing)
+- **Setup**: Simple pip install + Ollama
+- **Use case**: Development, testing, privacy requirements
+
+### Production (GKE)
+- **LLM**: Google Vertex AI (managed, scalable)
+- **Setup**: Kubernetes deployment on Google Cloud
+- **Use case**: Production workloads, high availability
+
+## Quick Start (Local)
 
 ### 1. Install Dependencies
 ```bash
@@ -18,71 +30,100 @@ pip install -r requirements.txt
 ### 2. Install Ollama
 - Download from [ollama.ai](https://ollama.ai)
 - Run: `ollama serve`
-- Install model: `ollama pull llama2`
+- Install model: `ollama pull llama3.1:8b`
 
-### 3. Add Documents
+### 3. Configure for Local Use
+```bash
+cp config.local.json config.json
+```
+
+### 4. Add Documents
 ```bash
 # Put your PDF or TXT files here
 cp your-document.pdf data/raw_input/
 ```
 
-## Usage
-
-### Process Documents
+### 5. Run Pipeline
 ```bash
-# Replace "your-file.txt" with your actual filename
+# Process documents
 python main.py step01_ingest --input_filename your-file.txt
 python main.py step02_generate_embeddings --input_filename your-file_cleaned.txt
 python main.py step03_store_vectors --input_filename your-file_cleaned.txt
-```
 
-### Ask Questions
-```bash
+# Ask questions
 python main.py step05_generate_response --query_args "Your question here" --use_rag
 ```
 
-## Quick Test
+## Production Deployment (GKE)
+
+### Prerequisites
+- Google Cloud Project with billing enabled
+- GKE cluster
+- kubectl configured
+
+### Deploy
 ```bash
-# Create test document
-echo "AI is artificial intelligence." > data/raw_input/test.txt
+# Build and push Docker image
+docker build -t gcr.io/cisc691-a04/rag-pipeline:latest .
+docker push gcr.io/cisc691-a04/rag-pipeline:latest
 
-# Run pipeline
-python main.py step01_ingest --input_filename test.txt
-python main.py step02_generate_embeddings --input_filename test_cleaned.txt
-python main.py step03_store_vectors --input_filename test_cleaned.txt
-
-# Ask question
-python main.py step05_generate_response --query_args "What is AI?" --use_rag
+# Set up GCP authentication (see k8s/setup-gcp.md)
+# Then deploy
+kubectl apply -f k8s/
 ```
+
+For detailed deployment instructions, see [`k8s/README.md`](k8s/README.md).
 
 ## Configuration
 
-Edit `config.json` to change models:
-- For RTX 4090: `"llm_model_name": "llama3.1:70b-instruct-q4_0"`
-- For other GPUs: `"llm_model_name": "llama3.1:8b"`
+### Local Configuration (`config.local.json`)
+- **LLM**: Ollama with `llama3.1:8b`
+- **Storage**: Local directories
+- **Privacy**: Complete data privacy
 
-## Testing & Coverage
+### GKE Configuration (`config.gke.json`)
+- **LLM**: Vertex AI with `gemini-1.5-flash`
+- **Storage**: Persistent volumes
+- **Scalability**: Kubernetes auto-scaling
+
+## Testing & Development
 
 ### Run Tests
 ```bash
-pytest
-```
-
-### Run Tests with Coverage
-```bash
-pytest --cov=classes --cov=. --cov-report=html --cov-report=term-missing
+pytest --cov=src --cov=. --cov-report=html --cov-report=term-missing
 ```
 
 ### View Coverage Report
 ```bash
-# Open htmlcov/index.html in your browser
-open htmlcov/index.html  # macOS
-xdg-open htmlcov/index.html  # Linux
-start htmlcov/index.html  # Windows
+open htmlcov/index.html  # View detailed coverage report
+```
+
+## Project Structure
+
+```
+├── src/                 # Source code
+├── tests/              # Unit tests
+├── k8s/                # Kubernetes manifests
+├── data/               # Data directories
+├── config.local.json   # Local development config
+├── config.gke.json     # GKE production config
+└── Dockerfile          # Container image
 ```
 
 ## Troubleshooting
 
+### Local Issues
 - **Ollama errors**: Make sure `ollama serve` is running
 - **File not found**: Check files exist in `data/raw_input/`
 - **CUDA errors**: Install CUDA drivers for GPU support
+
+### GKE Issues
+- **Authentication**: Verify service account setup
+- **Pod failures**: Check `kubectl logs` and resource limits
+- **Vertex AI errors**: Ensure APIs are enabled and billing is active
+
+## Contributing
+
+1. Run tests: `pytest`
+2. Check coverage: Coverage reports available in CI
+3. Follow code style: Automated linting in CI

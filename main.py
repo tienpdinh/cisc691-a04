@@ -2,14 +2,14 @@ import os
 import logging
 import argparse
 from pathlib import Path
-from classes.config_manager import ConfigManager
-from classes.document_ingestor import DocumentIngestor
-from classes.embedding_preparer import EmbeddingPreparer
-from classes.embedding_loader import EmbeddingLoader
-from classes.llm_client import LLMClient
-from classes.chromadb_retriever import ChromaDBRetriever
-from classes.rag_query_processor import RAGQueryProcessor
-from classes.utilities import delete_directory
+from src.config_manager import ConfigManager
+from src.document_ingestor import DocumentIngestor
+from src.embedding_preparer import EmbeddingPreparer
+from src.embedding_loader import EmbeddingLoader
+from src.llm_client import LLMClient
+from src.chromadb_retriever import ChromaDBRetriever
+from src.rag_query_processor import RAGQueryProcessor
+from src.utilities import delete_directory
 
 from datetime import datetime
 

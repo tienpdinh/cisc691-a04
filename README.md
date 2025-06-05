@@ -1,6 +1,6 @@
 # RAG Pipeline
 
-[![CI](https://github.com/USERNAME/REPO-NAME/workflows/CI/badge.svg)](https://github.com/USERNAME/REPO-NAME/actions)
+[![CI](https://github.com/tienpdinh/cisc691-a04/workflows/CI/badge.svg)](https://github.com/tienpdinh/cisc691-a04/actions)
 [![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 

@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rag-pipeline
+  namespace: rag-pipeline
+  labels:
+    app: rag-pipeline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rag-pipeline
+  template:
+    metadata:
+      labels:
+        app: rag-pipeline
+    spec:
+      containers:
+      - name: rag-pipeline
+        image: gcr.io/cisc691-a04/rag-pipeline:latest
+        imagePullPolicy: Always
+        command: ["sleep", "infinity"]  # Keep container running for kubectl exec
+        env:
+        - name: PYTHONPATH
+          value: "/app"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.json
+          subPath: config.json
+        - name: data
+          mountPath: /data
+        - name: logs
+          mountPath: /app/logs
+        readinessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          exec:
+            command:
+            - python
+            - -c
+            - "import sys; sys.exit(0)"
+          initialDelaySeconds: 30
+          periodSeconds: 30
+      volumes:
+      - name: config
+        configMap:
+          name: rag-pipeline-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: rag-pipeline-data
+      - name: logs
+        persistentVolumeClaim:
+          claimName: rag-pipeline-logs
+      restartPolicy: Always

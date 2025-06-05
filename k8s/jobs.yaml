@@ -1,0 +1,163 @@
+# Job for document ingestion
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rag-ingest-job
+  namespace: rag-pipeline
+  labels:
+    app: rag-pipeline
+    job-type: ingest
+spec:
+  template:
+    metadata:
+      labels:
+        app: rag-pipeline
+        job-type: ingest
+    spec:
+      containers:
+      - name: rag-pipeline
+        image: gcr.io/cisc691-a04/rag-pipeline:latest
+        command: ["python", "main.py", "step01_ingest", "--input_filename", "all"]
+        env:
+        - name: PYTHONPATH
+          value: "/app"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.json
+          subPath: config.json
+        - name: data
+          mountPath: /data
+        - name: logs
+          mountPath: /app/logs
+      volumes:
+      - name: config
+        configMap:
+          name: rag-pipeline-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: rag-pipeline-data
+      - name: logs
+        persistentVolumeClaim:
+          claimName: rag-pipeline-logs
+      restartPolicy: Never
+  backoffLimit: 3
+---
+# Job for embedding generation
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rag-embeddings-job
+  namespace: rag-pipeline
+  labels:
+    app: rag-pipeline
+    job-type: embeddings
+spec:
+  template:
+    metadata:
+      labels:
+        app: rag-pipeline
+        job-type: embeddings
+    spec:
+      containers:
+      - name: rag-pipeline
+        image: gcr.io/cisc691-a04/rag-pipeline:latest
+        command: ["python", "main.py", "step02_generate_embeddings", "--input_filename", "all"]
+        env:
+        - name: PYTHONPATH
+          value: "/app"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "1000m"
+          limits:
+            memory: "4Gi"
+            cpu: "2000m"
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.json
+          subPath: config.json
+        - name: data
+          mountPath: /data
+        - name: logs
+          mountPath: /app/logs
+      volumes:
+      - name: config
+        configMap:
+          name: rag-pipeline-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: rag-pipeline-data
+      - name: logs
+        persistentVolumeClaim:
+          claimName: rag-pipeline-logs
+      restartPolicy: Never
+  backoffLimit: 3
+---
+# Job for vector storage
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rag-vectors-job
+  namespace: rag-pipeline
+  labels:
+    app: rag-pipeline
+    job-type: vectors
+spec:
+  template:
+    metadata:
+      labels:
+        app: rag-pipeline
+        job-type: vectors
+    spec:
+      containers:
+      - name: rag-pipeline
+        image: gcr.io/cisc691-a04/rag-pipeline:latest
+        command: ["python", "main.py", "step03_store_vectors", "--input_filename", "all"]
+        env:
+        - name: PYTHONPATH
+          value: "/app"
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        volumeMounts:
+        - name: config
+          mountPath: /app/config.json
+          subPath: config.json
+        - name: data
+          mountPath: /data
+        - name: vectordb
+          mountPath: /data/vectordb
+        - name: logs
+          mountPath: /app/logs
+      volumes:
+      - name: config
+        configMap:
+          name: rag-pipeline-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: rag-pipeline-data
+      - name: vectordb
+        persistentVolumeClaim:
+          claimName: rag-pipeline-vectordb
+      - name: logs
+        persistentVolumeClaim:
+          claimName: rag-pipeline-logs
+      restartPolicy: Never
+  backoffLimit: 3

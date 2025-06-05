@@ -2,7 +2,7 @@ import pytest
 import json
 from unittest.mock import Mock, patch
 import requests
-from classes.llm_client import LLMClient
+from src.llm_client import LLMClient
 
 
 class TestLLMClient:
@@ -16,7 +16,7 @@ class TestLLMClient:
         assert client.llm_api_url == "http://localhost:11434/api/generate"
         assert client.llm_model_name == "llama2"
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_success(self, mock_post):
         mock_response = Mock()
         mock_response.raise_for_status.return_value = None
@@ -47,7 +47,7 @@ class TestLLMClient:
             timeout=60
         )
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_success_with_whitespace(self, mock_post):
         mock_response = Mock()
         mock_response.raise_for_status.return_value = None
@@ -63,7 +63,7 @@ class TestLLMClient:
         
         assert result == "Response with whitespace"
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_no_response_field(self, mock_post):
         mock_response = Mock()
         mock_response.raise_for_status.return_value = None
@@ -79,7 +79,7 @@ class TestLLMClient:
         
         assert result == "No response from LLM"
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_request_exception(self, mock_post):
         mock_post.side_effect = requests.exceptions.ConnectionError("Connection failed")
         
@@ -92,7 +92,7 @@ class TestLLMClient:
         
         assert result == "Error: Could not connect to the LLM. Make sure Ollama is running."
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_http_error(self, mock_post):
         mock_response = Mock()
         mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError("404 Not Found")
@@ -107,7 +107,7 @@ class TestLLMClient:
         
         assert result == "Error: Could not connect to the LLM. Make sure Ollama is running."
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_timeout(self, mock_post):
         mock_post.side_effect = requests.exceptions.Timeout("Request timed out")
         
@@ -120,7 +120,7 @@ class TestLLMClient:
         
         assert result == "Error: Could not connect to the LLM. Make sure Ollama is running."
     
-    @patch('classes.llm_client.requests.post')
+    @patch('src.llm_client.requests.post')
     def test_query_json_decode_error(self, mock_post):
         mock_response = Mock()
         mock_response.raise_for_status.return_value = None

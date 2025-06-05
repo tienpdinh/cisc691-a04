@@ -43,7 +43,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        pytest --cov=classes --cov=. --cov-report=xml --cov-report=term-missing
+        pytest --cov=src --cov=. --cov-report=xml --cov-report=term-missing
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v5
@@ -76,4 +76,4 @@ jobs:
 
     - name: Run bandit security check
       run: |
-        bandit -r classes/ -f json || true
+        bandit -r src/ -f json || true

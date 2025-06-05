@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import Mock, patch
-from classes.rag_query_processor import RAGQueryProcessor
-from classes.llm_client import LLMClient
-from classes.chromadb_retriever import ChromaDBRetriever
+from src.rag_query_processor import RAGQueryProcessor
+from src.llm_client import LLMClient
+from src.chromadb_retriever import ChromaDBRetriever
 
 
 class TestRAGQueryProcessor:

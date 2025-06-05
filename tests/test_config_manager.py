@@ -3,7 +3,7 @@ import json
 import tempfile
 from pathlib import Path
 from unittest.mock import patch, mock_open
-from classes.config_manager import ConfigManager
+from src.config_manager import ConfigManager
 
 
 class TestConfigManager:

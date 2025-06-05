@@ -2,12 +2,12 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
-from classes.document_ingestor import DocumentIngestor
+from src.document_ingestor import DocumentIngestor
 
 
 class TestDocumentIngestor:
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_init(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
@@ -29,7 +29,7 @@ class TestDocumentIngestor:
             assert output_dir.exists()
             mock_tokenizer_class.from_pretrained.assert_called_once_with("test-model")
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_extract_text_from_txt_success(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
@@ -53,7 +53,7 @@ class TestDocumentIngestor:
             result = ingestor._extract_text_from_txt(test_file)
             assert result == test_content
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_extract_text_from_txt_file_not_found(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
@@ -72,8 +72,8 @@ class TestDocumentIngestor:
             result = ingestor._extract_text_from_txt("nonexistent.txt")
             assert result is None
     
-    @patch('classes.document_ingestor.pdfplumber')
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.pdfplumber')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_extract_text_from_pdf_success(self, mock_tokenizer_class, mock_pdfplumber):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
@@ -98,7 +98,7 @@ class TestDocumentIngestor:
             result = ingestor._extract_text_from_pdf("test.pdf")
             assert result == "PDF content"
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_clean_text(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer.tokenize.return_value = ["token1", "token2"]
@@ -120,7 +120,7 @@ class TestDocumentIngestor:
             assert result == "cleaned text"
             mock_tokenizer.tokenize.assert_called_once_with("text with newlines")
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_clean_text_empty_input(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
@@ -139,7 +139,7 @@ class TestDocumentIngestor:
             assert ingestor._clean_text("") is None
             assert ingestor._clean_text(None) is None
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_process_files_txt_success(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer.tokenize.return_value = ["test", "tokens"]
@@ -167,7 +167,7 @@ class TestDocumentIngestor:
             assert output_file.exists()
             assert output_file.read_text(encoding="utf-8") == "cleaned content"
     
-    @patch('classes.document_ingestor.AutoTokenizer')
+    @patch('src.document_ingestor.AutoTokenizer')
     def test_process_files_unsupported_format(self, mock_tokenizer_class):
         mock_tokenizer = Mock()
         mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer

@@ -4,14 +4,14 @@ import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
 import torch
-from classes.embedding_preparer import EmbeddingPreparer
+from src.embedding_preparer import EmbeddingPreparer
 
 
 class TestEmbeddingPreparer:
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_init(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()
@@ -38,9 +38,9 @@ class TestEmbeddingPreparer:
             assert preparer.device == torch.device("cpu")
             assert output_dir.exists()
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_init_with_cuda(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = True
         mock_tokenizer = Mock()
@@ -62,9 +62,9 @@ class TestEmbeddingPreparer:
             
             assert preparer.device == torch.device("cuda")
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_read_file(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()
@@ -92,9 +92,9 @@ class TestEmbeddingPreparer:
             result = preparer._read_file(test_file)
             assert result == "Test content"
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_generate_embedding(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()
@@ -131,9 +131,9 @@ class TestEmbeddingPreparer:
             result = preparer._generate_embedding("test text")
             assert result == [0.1, 0.2, 0.3]
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_save_embedding(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()
@@ -165,9 +165,9 @@ class TestEmbeddingPreparer:
                 saved_embedding = json.load(f)
             assert saved_embedding == test_embedding
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_process_files_success(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()
@@ -212,9 +212,9 @@ class TestEmbeddingPreparer:
                 saved_embedding = json.load(f)
             assert saved_embedding == [0.1, 0.2, 0.3]
     
-    @patch('classes.embedding_preparer.AutoModel')
-    @patch('classes.embedding_preparer.AutoTokenizer')
-    @patch('classes.embedding_preparer.torch.cuda.is_available')
+    @patch('src.embedding_preparer.AutoModel')
+    @patch('src.embedding_preparer.AutoTokenizer')
+    @patch('src.embedding_preparer.torch.cuda.is_available')
     def test_process_files_file_not_found(self, mock_cuda_available, mock_tokenizer_class, mock_model_class):
         mock_cuda_available.return_value = False
         mock_tokenizer = Mock()

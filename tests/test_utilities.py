@@ -3,7 +3,7 @@ import tempfile
 import shutil
 from pathlib import Path
 from unittest.mock import patch, Mock
-from classes.utilities import delete_directory
+from src.utilities import delete_directory
 
 
 class TestUtilities:
@@ -39,14 +39,14 @@ class TestUtilities:
         # Should not raise an exception, just log a warning
         delete_directory(nonexistent_path)
     
-    @patch('classes.utilities.shutil.rmtree')
+    @patch('src.utilities.shutil.rmtree')
     def test_delete_directory_permission_error(self, mock_rmtree):
         mock_rmtree.side_effect = PermissionError("Permission denied")
         
         with pytest.raises(PermissionError):
             delete_directory("/some/path")
     
-    @patch('classes.utilities.shutil.rmtree')
+    @patch('src.utilities.shutil.rmtree')
     def test_delete_directory_generic_error(self, mock_rmtree):
         mock_rmtree.side_effect = OSError("Some other error")
         

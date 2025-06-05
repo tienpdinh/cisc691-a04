@@ -3,12 +3,12 @@ import json
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
-from classes.embedding_loader import EmbeddingLoader
+from src.embedding_loader import EmbeddingLoader
 
 
 class TestEmbeddingLoader:
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_init(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -39,7 +39,7 @@ class TestEmbeddingLoader:
             mock_chromadb.PersistentClient.assert_called_once_with(path=str(vectordb_dir))
             mock_client.get_or_create_collection.assert_called_once_with("test_collection")
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_load_cleaned_text_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -65,7 +65,7 @@ class TestEmbeddingLoader:
             result = loader._load_cleaned_text(test_file)
             assert result == "Test content"
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_load_cleaned_text_file_error(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -84,7 +84,7 @@ class TestEmbeddingLoader:
             result = loader._load_cleaned_text(Path("nonexistent.txt"))
             assert result == ""
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_load_embeddings_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -111,7 +111,7 @@ class TestEmbeddingLoader:
             result = loader._load_embeddings(test_file)
             assert result == test_embeddings
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_load_embeddings_invalid_format(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -139,7 +139,7 @@ class TestEmbeddingLoader:
             result = loader._load_embeddings(test_file)
             assert result == []
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_load_embeddings_file_not_found(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -158,7 +158,7 @@ class TestEmbeddingLoader:
             result = loader._load_embeddings(Path("nonexistent.json"))
             assert result == []
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_process_files_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -197,7 +197,7 @@ class TestEmbeddingLoader:
                 metadatas=[{"text": "Test content", "source": "test.txt"}]
             )
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_process_files_missing_text_file(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
@@ -223,7 +223,7 @@ class TestEmbeddingLoader:
             # Should not call add if text file is missing
             mock_collection.add.assert_not_called()
     
-    @patch('classes.embedding_loader.chromadb')
+    @patch('src.embedding_loader.chromadb')
     def test_process_files_missing_embedding_file(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()

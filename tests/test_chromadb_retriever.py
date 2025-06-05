@@ -2,13 +2,13 @@ import pytest
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch, MagicMock
-from classes.chromadb_retriever import ChromaDBRetriever
+from src.chromadb_retriever import ChromaDBRetriever
 
 
 class TestChromaDBRetriever:
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_init(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -35,8 +35,8 @@ class TestChromaDBRetriever:
             mock_client.get_or_create_collection.assert_called_once_with(name="test_collection")
             mock_sentence_transformer.assert_called_once_with("all-MiniLM-L6-v2")
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_embed_text(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -59,8 +59,8 @@ class TestChromaDBRetriever:
             assert result == [0.1, 0.2, 0.3]
             mock_embedding_model.encode.assert_called_once_with("test text", normalize_embeddings=True)
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_extract_context_found_in_paragraph(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -84,8 +84,8 @@ class TestChromaDBRetriever:
             
             assert result == "Second paragraph about artificial intelligence and machine learning."
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_extract_context_not_found_fallback(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -111,8 +111,8 @@ class TestChromaDBRetriever:
             assert len(result) == 300
             assert result == full_text[:300]
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_query_success(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -152,8 +152,8 @@ class TestChromaDBRetriever:
                 n_results=5
             )
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_query_filtered_by_score_threshold(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -185,8 +185,8 @@ class TestChromaDBRetriever:
             # Should return empty list due to poor score
             assert result == []
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_query_filtered_by_irrelevant_content(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()
@@ -218,8 +218,8 @@ class TestChromaDBRetriever:
             # Should return empty list because no query words found in text
             assert result == []
     
-    @patch('classes.chromadb_retriever.SentenceTransformer')
-    @patch('classes.chromadb_retriever.chromadb')
+    @patch('src.chromadb_retriever.SentenceTransformer')
+    @patch('src.chromadb_retriever.chromadb')
     def test_query_empty_results(self, mock_chromadb, mock_sentence_transformer):
         mock_client = Mock()
         mock_collection = Mock()

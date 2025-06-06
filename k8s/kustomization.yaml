@@ -10,6 +10,7 @@ resources:
   - persistent-volumes.yaml
   - ollama-deployment.yaml
   - rag-pipeline-deployment.yaml
+  - service-account.yaml
 
 # Common labels applied to all resources
 commonLabels:
@@ -20,9 +21,3 @@ commonLabels:
 images:
   - name: gcr.io/cisc691-a04/rag-pipeline
     newTag: latest
-
-# ConfigMap generator for environment-specific configs
-configMapGenerator:
-  - name: rag-pipeline-config
-    files:
-      - config.json

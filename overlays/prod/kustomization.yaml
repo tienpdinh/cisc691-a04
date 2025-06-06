@@ -4,16 +4,19 @@ kind: Kustomization
 namespace: rag-pipeline-prod
 
 resources:
-  - ../../
+  - ../../k8s/
 
 namePrefix: prod-
 
 images:
   - name: gcr.io/cisc691-a04/rag-pipeline
-    newTag: stable
+    newTag: latest
 
-patchesStrategicMerge:
-  - deployment-patch.yaml
+patches:
+  - path: deployment-patch.yaml
+    target:
+      kind: Deployment
+      name: rag-pipeline
 
 replicas:
   - name: rag-pipeline

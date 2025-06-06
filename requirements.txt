@@ -9,3 +9,7 @@ numpy
 pytest>=7.0.0
 coverage>=7.0.0
 pytest-cov>=4.0.0
+google-cloud-aiplatform>=1.38.0
+google-auth>=2.15.0
+vertexai>=1.38.0
+protobuf>=3.19.0,<5.0.0

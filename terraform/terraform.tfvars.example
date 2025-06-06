@@ -1,0 +1,15 @@
+# Copy this file to terraform.tfvars and customize the values
+
+project_id = "cisc691-a04"
+region     = "us-central1"
+zone       = "us-central1-a"
+
+# Machine type for GKE nodes
+# Options: e2-standard-2, e2-standard-4, e2-highmem-4, etc.
+node_machine_type = "e2-standard-4"
+
+# Use preemptible nodes to reduce costs (can be interrupted)
+use_preemptible_nodes = true
+
+# Environment
+environment = "dev"

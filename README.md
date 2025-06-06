@@ -26,12 +26,12 @@ Choose your deployment method:
 
 #### Option A: Development Environment
 ```bash
-kubectl apply -k k8s/overlays/dev/
+kubectl apply -k overlays/dev/
 ```
 
 #### Option B: Production Environment
 ```bash
-kubectl apply -k k8s/overlays/prod/
+kubectl apply -k overlays/prod/
 ```
 
 #### Option C: Direct Apply (All Environments)

@@ -39,6 +39,9 @@ resource "google_container_cluster" "rag_cluster" {
   remove_default_node_pool = true
   initial_node_count       = 1
   
+  # Allow deletion for easier cleanup
+  deletion_protection = false
+  
   # Workload Identity
   workload_identity_config {
     workload_pool = "${var.project_id}.svc.id.goog"
@@ -102,6 +105,11 @@ resource "google_service_account_iam_binding" "workload_identity" {
   
   members = [
     "serviceAccount:${var.project_id}.svc.id.goog[rag-pipeline/rag-pipeline-sa]"
+  ]
+  
+  depends_on = [
+    google_container_cluster.rag_cluster,
+    google_container_node_pool.rag_nodes
   ]
 }
 

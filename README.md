@@ -20,8 +20,6 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 
 ## Quick Start (Local)
 
-### Option 1: Docker Compose (Recommended)
-
 **Full containerized setup with Ollama, ChromaDB, and RAG API:**
 
 ```bash
@@ -42,38 +40,31 @@ docker-compose up -d
 **Benefits:**
 - No local installations required (except Docker)
 - Isolated services with persistent storage
-- Matches production architecture
+- Matches production microservices architecture
 - Easy cleanup with `docker-compose down`
 
-### Option 2: Local Python Development
+### Development Setup
 
-**Traditional development setup:**
+For code development while keeping services containerized:
 
 ```bash
-# 1. Install dependencies
+# 1. Start only ChromaDB and Ollama
+docker-compose up -d chromadb ollama
+
+# 2. Install Python dependencies locally
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 
-# 2. Install Ollama
-# Download from ollama.ai, then:
-ollama serve
-ollama pull llama3.1:8b
-
-# 3. Configure for local use
+# 3. Configure for local development
 cp config.local.json config.json
-# Edit config.json: set chromadb_host to "localhost" for local mode
+# Edit config.json: set chromadb_host to "localhost" for local development
 
-# 4. Start ChromaDB server
-docker run -p 8000:8000 chromadb/chroma:latest
-
-# 5. Start the API server
+# 4. Run API locally for development
 python main.py
 ```
 
-The API will be available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`
-
-**Note:** Option 2 requires manually running ChromaDB. Option 1 (Docker Compose) is recommended as it automatically manages all services.
+This hybrid approach allows code editing/debugging locally while using containerized services.
 
 ## Using the API
 

@@ -1,10 +1,10 @@
-# RAG Pipeline
+# RAG API
 
 [![CI](https://github.com/tienpdinh/cisc691-a04/workflows/CI/badge.svg)](https://github.com/tienpdinh/cisc691-a04/actions)
 [![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
-A Retrieval-Augmented Generation pipeline that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI).
+A modern REST API for Retrieval-Augmented Generation that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI). Built with FastAPI for high performance and easy integration.
 
 ## 🚀 Deployment Options
 
@@ -37,22 +37,53 @@ pip install -r requirements.txt
 cp config.local.json config.json
 ```
 
-### 4. Add Documents
+### 4. Start the API Server
 ```bash
-# Put your PDF or TXT files here
-cp your-document.pdf data/raw_input/
+python main.py
 ```
 
-### 5. Run Pipeline
-```bash
-# Process documents
-python main.py step01_ingest --input_filename your-file.txt
-python main.py step02_generate_embeddings --input_filename your-file_cleaned.txt
-python main.py step03_store_vectors --input_filename your-file_cleaned.txt
+The API will be available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`
 
-# Ask questions
-python main.py step05_generate_response --query_args "Your question here" --use_rag
+### 5. Use the API
+
+#### Upload and Process Documents
+```bash
+# Upload a PDF or TXT file (automatically processes through ingestion, embedding, and storage)
+curl -X POST "http://localhost:8000/upload-document" \
+  -F "file=@your-document.pdf"
 ```
+
+#### Query Documents
+```bash
+# Ask questions about your documents
+curl -X POST "http://localhost:8000/query" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What is this document about?", "use_rag": true}'
+```
+
+#### Retrieve Relevant Chunks
+```bash
+# Get relevant document chunks for a query
+curl -X POST "http://localhost:8000/retrieve" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "artificial intelligence", "top_k": 3}'
+```
+
+#### Health Check
+```bash
+# Check API status
+curl "http://localhost:8000/health"
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/upload-document` | Upload and process documents (PDF, TXT, DOCX) |
+| `POST` | `/query` | Query documents with RAG |
+| `POST` | `/retrieve` | Retrieve relevant document chunks |
+| `GET` | `/health` | API health check |
+| `GET` | `/docs` | Interactive API documentation |
 
 ## Production Deployment (GKE)
 
@@ -64,8 +95,8 @@ python main.py step05_generate_response --query_args "Your question here" --use_
 ### Deploy
 ```bash
 # Build and push Docker image
-docker build -t gcr.io/cisc691-a04/rag-pipeline:latest .
-docker push gcr.io/cisc691-a04/rag-pipeline:latest
+docker build -t gcr.io/cisc691-a04/rag-api:latest .
+docker push gcr.io/cisc691-a04/rag-api:latest
 
 # Set up GCP authentication (see k8s/setup-gcp.md)
 # Then deploy
@@ -80,11 +111,13 @@ For detailed deployment instructions, see [`k8s/README.md`](k8s/README.md).
 - **LLM**: Ollama with `llama3.1:8b`
 - **Storage**: Local directories
 - **Privacy**: Complete data privacy
+- **API**: FastAPI server on port 8000
 
 ### GKE Configuration (`config.gke.json`)
 - **LLM**: Vertex AI with `gemini-1.5-flash`
 - **Storage**: Persistent volumes
 - **Scalability**: Kubernetes auto-scaling
+- **API**: Load-balanced FastAPI service
 
 ## Testing & Development
 
@@ -102,25 +135,35 @@ open htmlcov/index.html  # View detailed coverage report
 
 ```
 ├── src/                 # Source code
+│   ├── api_app.py      # FastAPI application setup
+│   ├── api_routes.py   # API route definitions
+│   ├── api_endpoints.py # Endpoint business logic
+│   ├── api_models.py   # Pydantic request/response models
+│   └── ...             # Core RAG modules
 ├── tests/              # Unit tests
+│   ├── test_api_*.py   # API tests
+│   └── ...             # Core module tests
 ├── k8s/                # Kubernetes manifests
 ├── data/               # Data directories
 ├── config.local.json   # Local development config
 ├── config.gke.json     # GKE production config
+├── main.py             # API server entry point
 └── Dockerfile          # Container image
 ```
 
 ## Troubleshooting
 
 ### Local Issues
-- **Ollama errors**: Make sure `ollama serve` is running
-- **File not found**: Check files exist in `data/raw_input/`
+- **API won't start**: Make sure `ollama serve` is running first
+- **Upload failures**: Check file types (PDF, TXT, DOCX only)
+- **Query returns empty**: Upload documents first via `/upload-document`
 - **CUDA errors**: Install CUDA drivers for GPU support
 
 ### GKE Issues
 - **Authentication**: Verify service account setup
 - **Pod failures**: Check `kubectl logs` and resource limits
 - **Vertex AI errors**: Ensure APIs are enabled and billing is active
+- **API timeout**: Check load balancer and service configuration
 
 ## Contributing
 

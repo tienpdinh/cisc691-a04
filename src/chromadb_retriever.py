@@ -65,6 +65,7 @@ class ChromaDBRetriever:
             retrieved_docs.append({
                 "id": doc_id,
                 "score": round(distance, 4),
+                "text": text,
                 "context": extracted_context,
                 "source": metadata.get("source", "Unknown"),
             })

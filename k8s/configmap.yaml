@@ -16,6 +16,8 @@ data:
       "cleaned_text_directory": "/app/data/cleaned_text", 
       "embeddings_directory": "/app/data/embeddings",
       "vectordb_directory": "/app/data/vectordb",
+      "chromadb_host": "chromadb-service",
+      "chromadb_port": 8000,
       "collection_name": "rag_documents",
       "retriever_min_score_threshold": "0.5",
       "log_level": "INFO"

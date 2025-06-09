@@ -9,21 +9,30 @@ class EmbeddingLoader:
                  cleaned_text_file_list: List[str],
                  cleaned_text_dir: str,
                  embeddings_dir: str,
-                 vectordb_dir: str,
-                 collection_name: str,
+                 vectordb_dir: str = None,
+                 collection_name: str = None,
+                 chromadb_host: str = None,
+                 chromadb_port: int = 8000,
                  batch_size: int = 16):
 
         self.cleaned_text_file_list = cleaned_text_file_list
         self.cleaned_text_path = Path(cleaned_text_dir)
         self.embeddings_path = Path(embeddings_dir)
-        self.vectordb_path = Path(vectordb_dir)
         self.collection_name = collection_name
         self.batch_size = batch_size
 
         self.logger = logging.getLogger(__name__)
 
-        # Initialize ChromaDB
-        self.client = chromadb.PersistentClient(path=str(self.vectordb_path))
+        # Use HTTP client if host is provided, otherwise fall back to local
+        if chromadb_host:
+            self.client = chromadb.HttpClient(host=chromadb_host, port=chromadb_port)
+            self.logger.info(f"Connected to ChromaDB at {chromadb_host}:{chromadb_port}")
+        else:
+            # Fallback to local persistent client for backward compatibility
+            self.vectordb_path = Path(vectordb_dir)
+            self.client = chromadb.PersistentClient(path=str(self.vectordb_path))
+            self.logger.info(f"Using local ChromaDB at {self.vectordb_path}")
+            
         self.collection = self.client.get_or_create_collection(collection_name)
 
     def _load_cleaned_text(self, file_path: Path) -> str:

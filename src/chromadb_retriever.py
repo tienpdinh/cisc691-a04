@@ -3,22 +3,36 @@ from sentence_transformers import SentenceTransformer
 from typing import Dict, List, Any
 from pathlib import Path
 import logging
+import os
 
 class ChromaDBRetriever:
     """Retrieves relevant documents from ChromaDB based on a search phrase."""
 
     def __init__(self, embedding_model_name: str,
                  collection_name: str,
-                 vectordb_dir: str,
+                 vectordb_dir: str = None,
+                 chromadb_host: str = None,
+                 chromadb_port: int = 8000,
                  score_threshold: float = 0.5):
 
-        self.vectordb_path = Path(vectordb_dir)
-        self.client = chromadb.PersistentClient(path=str(self.vectordb_path))
-        self.collection = self.client.get_or_create_collection(name=collection_name)
         self.embedding_model = SentenceTransformer(embedding_model_name)
-        self.score_threshold = score_threshold  # Minimum similarity score for valid results
-
-        self.logger = logging.getLogger(__name__)
+        self.score_threshold = score_threshold
+        self.collection_name = collection_name
+        
+        # Use HTTP client if host is provided, otherwise fall back to local
+        if chromadb_host:
+            self.client = chromadb.HttpClient(host=chromadb_host, port=chromadb_port)
+            self.logger = logging.getLogger(__name__)
+            self.logger.info(f"Connected to ChromaDB at {chromadb_host}:{chromadb_port}")
+        else:
+            # Fallback to local persistent client for backward compatibility
+            self.vectordb_path = Path(vectordb_dir)
+            self.client = chromadb.PersistentClient(path=str(self.vectordb_path))
+            self.logger = logging.getLogger(__name__)
+            self.logger.info(f"Using local ChromaDB at {self.vectordb_path}")
+            
+        self.collection = self.client.get_or_create_collection(name=collection_name)
+        
         self.logger.info(f"Initialized ChromaDBRetriever: embedding_model_name: {embedding_model_name}, "
                         f"collection_name: {collection_name}, score_threshold: {score_threshold}")
 

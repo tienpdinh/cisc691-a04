@@ -16,6 +16,10 @@ spec:
         app: rag-api
     spec:
       serviceAccountName: rag-pipeline-sa
+      initContainers:
+      - name: wait-for-chromadb
+        image: busybox:1.35
+        command: ['sh', '-c', 'until nc -z chromadb-service 8000; do echo waiting for chromadb; sleep 2; done']
       containers:
       - name: rag-api
         image: gcr.io/cisc691-a04/rag-api:latest

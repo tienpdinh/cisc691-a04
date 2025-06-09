@@ -20,59 +20,89 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 
 ## Quick Start (Local)
 
-### 1. Install Dependencies
+### Option 1: Docker Compose (Recommended)
+
+**Full containerized setup with Ollama, ChromaDB, and RAG API:**
+
 ```bash
+# Start all services
+docker-compose up -d
+
+# Download the LLM model (first time only)
+./scripts/setup-ollama.sh
+
+# API will be available at http://localhost:8001
+```
+
+**Service endpoints:**
+- RAG API: http://localhost:8001 (with docs at http://localhost:8001/docs)
+- ChromaDB: http://localhost:8000
+- Ollama: http://localhost:11434
+
+**Benefits:**
+- No local installations required (except Docker)
+- Isolated services with persistent storage
+- Matches production architecture
+- Easy cleanup with `docker-compose down`
+
+### Option 2: Local Python Development
+
+**Traditional development setup:**
+
+```bash
+# 1. Install dependencies
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
-```
 
-### 2. Install Ollama
-- Download from [ollama.ai](https://ollama.ai)
-- Run: `ollama serve`
-- Install model: `ollama pull llama3.1:8b`
+# 2. Install Ollama
+# Download from ollama.ai, then:
+ollama serve
+ollama pull llama3.1:8b
 
-### 3. Configure for Local Use
-```bash
+# 3. Configure for local use
 cp config.local.json config.json
-```
+# Edit config.json: remove chromadb_host/port for local mode
 
-### 4. Start the API Server
-```bash
+# 4. Start the API server
 python main.py
 ```
 
 The API will be available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`
 
-### 5. Use the API
+## Using the API
 
-#### Upload and Process Documents
+### Upload and Process Documents
 ```bash
-# Upload a PDF or TXT file (automatically processes through ingestion, embedding, and storage)
+# Docker Compose (port 8001)
+curl -X POST "http://localhost:8001/upload-document" \
+  -F "file=@your-document.pdf"
+
+# Local Python (port 8000)  
 curl -X POST "http://localhost:8000/upload-document" \
   -F "file=@your-document.pdf"
 ```
 
-#### Query Documents
+### Query Documents
 ```bash
 # Ask questions about your documents
-curl -X POST "http://localhost:8000/query" \
+curl -X POST "http://localhost:8001/query" \
   -H "Content-Type: application/json" \
   -d '{"query": "What is this document about?", "use_rag": true}'
 ```
 
-#### Retrieve Relevant Chunks
+### Retrieve Relevant Chunks
 ```bash
 # Get relevant document chunks for a query
-curl -X POST "http://localhost:8000/retrieve" \
+curl -X POST "http://localhost:8001/retrieve" \
   -H "Content-Type: application/json" \
   -d '{"query": "artificial intelligence", "top_k": 3}'
 ```
 
-#### Health Check
+### Health Check
 ```bash
 # Check API status
-curl "http://localhost:8000/health"
+curl "http://localhost:8001/health"
 ```
 
 ## API Endpoints
@@ -153,7 +183,13 @@ open htmlcov/index.html  # View detailed coverage report
 
 ## Troubleshooting
 
-### Local Issues
+### Docker Compose Issues
+- **Services won't start**: Run `docker-compose logs` to check errors
+- **Model not found**: Run `./scripts/setup-ollama.sh` to download models
+- **Port conflicts**: Change ports in `docker-compose.yml` if needed
+- **Storage issues**: Run `docker-compose down -v` to reset volumes
+
+### Local Python Issues  
 - **API won't start**: Make sure `ollama serve` is running first
 - **Upload failures**: Check file types (PDF, TXT, DOCX only)
 - **Query returns empty**: Upload documents first via `/upload-document`

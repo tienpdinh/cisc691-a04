@@ -122,3 +122,27 @@ resource "google_artifact_registry_repository" "rag_pipeline" {
   
   depends_on = [google_project_service.apis]
 }
+
+# Static IP for the Load Balancer
+resource "google_compute_global_address" "rag_api_ip" {
+  name        = "rag-api-ip"
+  description = "Static IP for RAG API load balancer"
+}
+
+# DNS Zone (optional - if you want to manage DNS in GCP)
+resource "google_dns_managed_zone" "rag_api_zone" {
+  count       = var.create_dns_zone ? 1 : 0
+  name        = "rag-api-zone"
+  dns_name    = "${var.domain_name}."
+  description = "DNS zone for RAG API"
+}
+
+# DNS Record for the API
+resource "google_dns_record_set" "rag_api_record" {
+  count        = var.create_dns_zone ? 1 : 0
+  name         = "rag-api.${var.domain_name}."
+  type         = "A"
+  ttl          = 300
+  managed_zone = google_dns_managed_zone.rag_api_zone[0].name
+  rrdatas      = [google_compute_global_address.rag_api_ip.address]
+}

@@ -1,7 +1,6 @@
 import requests
 import json
 import logging
-import os
 from typing import Optional
 
 try:

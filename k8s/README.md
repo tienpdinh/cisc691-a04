@@ -61,7 +61,7 @@ image: gcr.io/cisc691-a04/rag-api:latest
 
 **ingress.yaml**:
 ```yaml
-host: rag-api.your-domain.com
+host: rag-api.tienpdinh.com
 ```
 
 ### 5. Deploy to Kubernetes
@@ -78,7 +78,7 @@ kubectl get ingress -n rag-pipeline
 ## API Endpoints
 
 Once deployed, the API will be available at:
-- **With custom domain**: `https://rag-api.your-domain.com`
+- **Production URL**: `https://rag-api.tienpdinh.com`
 - **With IP**: `https://LOAD_BALANCER_IP`
 
 Available endpoints:

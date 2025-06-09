@@ -37,7 +37,7 @@ variable "environment" {
 variable "domain_name" {
   description = "Domain name for the API (e.g., example.com)"
   type        = string
-  default     = "example.com"
+  default     = "tienpdinh.com"
 }
 
 variable "create_dns_zone" {

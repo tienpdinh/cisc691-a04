@@ -10,7 +10,7 @@ metadata:
     kubernetes.io/ingress.allow-http: "false"
 spec:
   rules:
-  - host: rag-api.your-domain.com
+  - host: rag-api.tienpdinh.com
     http:
       paths:
       - path: /*
@@ -28,4 +28,4 @@ metadata:
   namespace: rag-pipeline
 spec:
   domains:
-    - rag-api.your-domain.com
+    - rag-api.tienpdinh.com

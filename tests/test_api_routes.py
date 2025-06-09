@@ -12,13 +12,14 @@ def mock_config():
     """Create a mock config for testing."""
     config = Mock(spec=ConfigManager)
     config.get.side_effect = lambda key, default=None: {
-        "vectordb_directory": "/tmp/test_vectordb",
         "embedding_model_name": "test-model",
         "collection_name": "test_collection",
         "retriever_min_score_threshold": "0.5",
         "raw_input_directory": "/tmp/raw_input",
         "cleaned_text_directory": "/tmp/cleaned_text",
         "embeddings_directory": "/tmp/embeddings",
+        "chromadb_host": "localhost",
+        "chromadb_port": 8000,
         "llm_api_url": "http://test-llm",
         "llm_model_name": "test-llm-model",
         "llm_provider": "ollama",

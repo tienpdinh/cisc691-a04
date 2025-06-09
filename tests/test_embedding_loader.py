@@ -12,38 +12,55 @@ class TestEmbeddingLoader:
     def test_init(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
             cleaned_text_dir = Path(temp_dir) / "cleaned"
             embeddings_dir = Path(temp_dir) / "embeddings"
-            vectordb_dir = Path(temp_dir) / "vectordb"
             
             loader = EmbeddingLoader(
                 cleaned_text_file_list=["test.txt"],
                 cleaned_text_dir=str(cleaned_text_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(vectordb_dir),
                 collection_name="test_collection",
+                chromadb_host="localhost",
+                chromadb_port=8000,
                 batch_size=32
             )
             
             assert loader.cleaned_text_file_list == ["test.txt"]
             assert loader.cleaned_text_path == cleaned_text_dir
             assert loader.embeddings_path == embeddings_dir
-            assert loader.vectordb_path == vectordb_dir
             assert loader.collection_name == "test_collection"
             assert loader.batch_size == 32
             
-            mock_chromadb.PersistentClient.assert_called_once_with(path=str(vectordb_dir))
+            mock_chromadb.HttpClient.assert_called_once_with(host="localhost", port=8000)
             mock_client.get_or_create_collection.assert_called_once_with("test_collection")
+    
+    @patch('src.embedding_loader.chromadb')
+    def test_init_default_port(self, mock_chromadb):
+        mock_client = Mock()
+        mock_collection = Mock()
+        mock_chromadb.HttpClient.return_value = mock_client
+        mock_client.get_or_create_collection.return_value = mock_collection
+        
+        with tempfile.TemporaryDirectory() as temp_dir:
+            loader = EmbeddingLoader(
+                cleaned_text_file_list=["test.txt"],
+                cleaned_text_dir=str(temp_dir),
+                embeddings_dir=str(temp_dir),
+                collection_name="test_collection",
+                chromadb_host="chromadb-service"
+            )
+            
+            mock_chromadb.HttpClient.assert_called_once_with(host="chromadb-service", port=8000)
     
     @patch('src.embedding_loader.chromadb')
     def test_load_cleaned_text_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -58,8 +75,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=[],
                 cleaned_text_dir=str(cleaned_text_dir),
                 embeddings_dir=str(temp_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             result = loader._load_cleaned_text(test_file)
@@ -69,7 +86,7 @@ class TestEmbeddingLoader:
     def test_load_cleaned_text_file_error(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -77,8 +94,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=[],
                 cleaned_text_dir=str(temp_dir),
                 embeddings_dir=str(temp_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             result = loader._load_cleaned_text(Path("nonexistent.txt"))
@@ -88,7 +105,7 @@ class TestEmbeddingLoader:
     def test_load_embeddings_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -104,8 +121,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=[],
                 cleaned_text_dir=str(temp_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             result = loader._load_embeddings(test_file)
@@ -115,7 +132,7 @@ class TestEmbeddingLoader:
     def test_load_embeddings_invalid_format(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -132,8 +149,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=[],
                 cleaned_text_dir=str(temp_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             result = loader._load_embeddings(test_file)
@@ -143,7 +160,7 @@ class TestEmbeddingLoader:
     def test_load_embeddings_file_not_found(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -151,8 +168,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=[],
                 cleaned_text_dir=str(temp_dir),
                 embeddings_dir=str(temp_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             result = loader._load_embeddings(Path("nonexistent.json"))
@@ -162,7 +179,7 @@ class TestEmbeddingLoader:
     def test_process_files_success(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -184,8 +201,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=["test.txt"],
                 cleaned_text_dir=str(cleaned_text_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             loader.process_files()
@@ -201,7 +218,7 @@ class TestEmbeddingLoader:
     def test_process_files_missing_text_file(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -214,8 +231,8 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=["nonexistent.txt"],
                 cleaned_text_dir=str(cleaned_text_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             loader.process_files()
@@ -227,7 +244,7 @@ class TestEmbeddingLoader:
     def test_process_files_missing_embedding_file(self, mock_chromadb):
         mock_client = Mock()
         mock_collection = Mock()
-        mock_chromadb.PersistentClient.return_value = mock_client
+        mock_chromadb.HttpClient.return_value = mock_client
         mock_client.get_or_create_collection.return_value = mock_collection
         
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -244,11 +261,32 @@ class TestEmbeddingLoader:
                 cleaned_text_file_list=["test.txt"],
                 cleaned_text_dir=str(cleaned_text_dir),
                 embeddings_dir=str(embeddings_dir),
-                vectordb_dir=str(temp_dir),
-                collection_name="test"
+                collection_name="test",
+                chromadb_host="localhost"
             )
             
             loader.process_files()
             
             # Should not call add if embedding file is missing
             mock_collection.add.assert_not_called()
+    
+    @patch('src.embedding_loader.chromadb')
+    def test_required_chromadb_host_parameter(self, mock_chromadb):
+        """Test that chromadb_host is required and no longer optional."""
+        mock_client = Mock()
+        mock_collection = Mock()
+        mock_chromadb.HttpClient.return_value = mock_client
+        mock_client.get_or_create_collection.return_value = mock_collection
+        
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # This should work with chromadb_host provided
+            loader = EmbeddingLoader(
+                cleaned_text_file_list=["test.txt"],
+                cleaned_text_dir=str(temp_dir),
+                embeddings_dir=str(temp_dir),
+                collection_name="test_collection",
+                chromadb_host="chromadb-service"
+            )
+            
+            assert loader.client is not None
+            mock_chromadb.HttpClient.assert_called_once_with(host="chromadb-service", port=8000)

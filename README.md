@@ -62,13 +62,18 @@ ollama pull llama3.1:8b
 
 # 3. Configure for local use
 cp config.local.json config.json
-# Edit config.json: remove chromadb_host/port for local mode
+# Edit config.json: set chromadb_host to "localhost" for local mode
 
-# 4. Start the API server
+# 4. Start ChromaDB server
+docker run -p 8000:8000 chromadb/chroma:latest
+
+# 5. Start the API server
 python main.py
 ```
 
 The API will be available at `http://localhost:8000` with interactive docs at `http://localhost:8000/docs`
+
+**Note:** Option 2 requires manually running ChromaDB. Option 1 (Docker Compose) is recommended as it automatically manages all services.
 
 ## Using the API
 
@@ -135,19 +140,35 @@ kubectl apply -f k8s/
 
 For detailed deployment instructions, see [`k8s/README.md`](k8s/README.md).
 
+## Architecture
+
+This RAG API uses a **microservices architecture** with separate containers for different components:
+
+### Local Development (Docker Compose)
+- **RAG API**: FastAPI server handling document processing and queries
+- **ChromaDB**: Vector database service for embeddings storage
+- **Ollama**: Local LLM service with `llama3.1:8b`
+- **Communication**: All services communicate via HTTP APIs
+
+### Production (GKE)
+- **RAG API**: Load-balanced FastAPI pods with auto-scaling
+- **ChromaDB**: Dedicated service with persistent storage
+- **Vertex AI**: Google's managed LLM service (`gemini-1.5-flash`)
+- **Communication**: Kubernetes service mesh with internal networking
+
 ## Configuration
 
 ### Local Configuration (`config.local.json`)
-- **LLM**: Ollama with `llama3.1:8b`
-- **Storage**: Local directories
-- **Privacy**: Complete data privacy
-- **API**: FastAPI server on port 8000
+- **LLM**: Containerized Ollama service
+- **Vector DB**: HTTP connection to ChromaDB service
+- **Storage**: Docker volumes for persistence
+- **Networking**: Docker Compose internal networking
 
-### GKE Configuration (`config.gke.json`)
-- **LLM**: Vertex AI with `gemini-1.5-flash`
-- **Storage**: Persistent volumes
-- **Scalability**: Kubernetes auto-scaling
-- **API**: Load-balanced FastAPI service
+### Production Configuration (Kubernetes ConfigMap)
+- **LLM**: Vertex AI with Workload Identity
+- **Vector DB**: HTTP connection to ChromaDB service
+- **Storage**: Kubernetes persistent volumes
+- **Networking**: Service mesh with load balancing
 
 ## Testing & Development
 
@@ -164,21 +185,27 @@ open htmlcov/index.html  # View detailed coverage report
 ## Project Structure
 
 ```
-├── src/                 # Source code
-│   ├── api_app.py      # FastAPI application setup
-│   ├── api_routes.py   # API route definitions
-│   ├── api_endpoints.py # Endpoint business logic
-│   ├── api_models.py   # Pydantic request/response models
-│   └── ...             # Core RAG modules
-├── tests/              # Unit tests
-│   ├── test_api_*.py   # API tests
-│   └── ...             # Core module tests
-├── k8s/                # Kubernetes manifests
-├── data/               # Data directories
-├── config.local.json   # Local development config
-├── config.gke.json     # GKE production config
-├── main.py             # API server entry point
-└── Dockerfile          # Container image
+├── src/                        # Source code
+│   ├── api_app.py             # FastAPI application setup
+│   ├── api_routes.py          # API route definitions
+│   ├── api_endpoints.py       # Endpoint business logic
+│   ├── api_models.py          # Pydantic request/response models
+│   ├── chromadb_retriever.py  # ChromaDB HTTP client
+│   ├── embedding_loader.py    # ChromaDB HTTP client for storage
+│   └── ...                    # Core RAG modules
+├── tests/                     # Unit tests
+│   ├── test_api_*.py          # API endpoint tests
+│   ├── test_chromadb_*.py     # ChromaDB HTTP client tests
+│   └── ...                    # Core module tests
+├── k8s/                       # Kubernetes manifests
+│   ├── chromadb-*.yaml        # ChromaDB service manifests
+│   ├── deployment.yaml        # RAG API deployment
+│   └── ...                    # Other K8s resources
+├── data/                      # Data directories (Docker volumes)
+├── docker-compose.yml         # Local development setup
+├── config.local.json          # Local development config
+├── main.py                    # API server entry point
+└── Dockerfile                 # RAG API container image
 ```
 
 ## Troubleshooting

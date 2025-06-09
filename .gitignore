@@ -27,21 +27,7 @@ venv/
 env/
 ENV/
 .venv/
-.env/
 venv.bak/
-
-# PyCharm
-.idea/
-
-# VSCode
-.vscode/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
 
 # Environment variables
 .env
@@ -49,6 +35,20 @@ ipython_config.py
 .env.development
 .env.staging
 .env.production
+
+# PyCharm & IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.ropeproject
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
 
 # Data directories (contains processed documents and models)
 data/raw_input/*.pdf
@@ -67,16 +67,80 @@ data/vectordb/
 # Logs
 logs/
 *.log
+crash.log
+crash.*.log
 
 # Database files
 *.db
 *.sqlite
 *.sqlite3
 
-# MacOS
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ML/AI specific
+models/
+*.pkl
+*.joblib
+*.h5
+*.pb
+*.onnx
+
+# Config files with secrets
+config/secrets.json
+config/local.json
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Kubernetes
+*.kubeconfig
+secrets/
+
+# Documentation
+/site
+docs/_build/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfplan.*
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# OS generated files
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+.Spotlight-V100
+.Trashes
 
 # Windows
 Thumbs.db
@@ -94,65 +158,9 @@ Desktop.ini
 .Trash-*
 .nfs*
 
-# pytest
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.nox/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# ML/AI specific
-models/
-*.pkl
-*.joblib
-*.h5
-*.pb
-*.onnx
-
-# Temporary files
+# Temporary & backup files
 *.swp
 *.swo
-*~
-
-# Backup files
 *.bak
 *.backup
-
-# Config files with secrets (keep template versions)
-config/secrets.json
-config/local.json
-
-# Docker
-.dockerignore
-docker-compose.override.yml
-
-# Kubernetes
-*.kubeconfig
-secrets/
-
-# IDE files
-*.sublime-project
-*.sublime-workspace
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# Sphinx documentation
-docs/_build/
+*.orig

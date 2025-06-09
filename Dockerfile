@@ -37,8 +37,8 @@ RUN useradd --create-home --shell /bin/bash app && \
     chown -R app:app /app
 USER app
 
-# Expose port for potential web interface
-EXPOSE 8080
+# Expose port for FastAPI server
+EXPOSE 8000
 
-# Default command - can be overridden
-CMD ["python", "main.py", "--help"]
+# Run the FastAPI server
+CMD ["python", "main.py"]

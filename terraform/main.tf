@@ -90,7 +90,7 @@ resource "google_project_iam_member" "rag_pipeline_roles" {
   for_each = toset([
     "roles/aiplatform.user",
     "roles/ml.developer",
-    "roles/storage.objectViewer"
+    "roles/artifactregistry.reader"
   ])
   
   project = var.project_id

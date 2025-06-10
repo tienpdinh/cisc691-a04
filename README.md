@@ -10,7 +10,7 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 
 ### Local Development
 - **LLM**: Ollama (privacy-focused, local processing)
-- **Setup**: Simple pip install + Ollama
+- **Setup**: Simple docker compose command
 - **Use case**: Development, testing, privacy requirements
 
 ### Production (GKE)
@@ -18,13 +18,20 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 - **Setup**: Kubernetes deployment on Google Cloud
 - **Use case**: Production workloads, high availability
 
+## Prerequisites
+
+**Docker is required** for running this application. Install Docker:
+
+- **Windows/Mac**: Download [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- **Linux**: `sudo apt install docker.io docker-compose` (Ubuntu/Debian) or check your distro's package manager
+
 ## Quick Start (Local)
 
 **Full containerized setup with Ollama, ChromaDB, and RAG API:**
 
 ```bash
-# Start all services
-docker-compose up -d
+# Start all services, this will take a while if you're running this the first time, grab a coffee while you wait
+docker compose up -d
 
 # Download the LLM model (first time only)
 ./scripts/setup-ollama.sh
@@ -37,11 +44,6 @@ docker-compose up -d
 - ChromaDB: http://localhost:8000
 - Ollama: http://localhost:11434
 
-**Benefits:**
-- No local installations required (except Docker)
-- Isolated services with persistent storage
-- Matches production microservices architecture
-- Easy cleanup with `docker-compose down`
 
 ### Development Setup
 
@@ -176,7 +178,7 @@ open htmlcov/index.html  # View detailed coverage report
 ## Project Structure
 
 ```
-├── src/                        # Source code
+├── src/                       # Source code
 │   ├── api_app.py             # FastAPI application setup
 │   ├── api_routes.py          # API route definitions
 │   ├── api_endpoints.py       # Endpoint business logic
@@ -205,10 +207,10 @@ open htmlcov/index.html  # View detailed coverage report
 - **Services won't start**: Run `docker-compose logs` to check errors
 - **Model not found**: Run `./scripts/setup-ollama.sh` to download models
 - **Port conflicts**: Change ports in `docker-compose.yml` if needed
-- **Storage issues**: Run `docker-compose down -v` to reset volumes
+- **Storage issues**: Run `docker compose down -v` to reset volumes
 
 ### Local Python Issues  
-- **API won't start**: Make sure `ollama serve` is running first
+- **API won't start**: Make sure `ollama` container is running first
 - **Upload failures**: Check file types (PDF, TXT, DOCX only)
 - **Query returns empty**: Upload documents first via `/upload-document`
 - **CUDA errors**: Install CUDA drivers for GPU support

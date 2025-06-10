@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rag-api
-  namespace: rag-pipeline
+  namespace: rag-api
   labels:
     app: rag-api
 spec:
@@ -15,7 +15,7 @@ spec:
       labels:
         app: rag-api
     spec:
-      serviceAccountName: rag-pipeline-sa
+      serviceAccountName: rag-api-sa
       initContainers:
       - name: wait-for-chromadb
         image: busybox:1.35

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: rag-pipeline
+  name: rag-api
   labels:
-    name: rag-pipeline
+    name: rag-api
     app: rag-api

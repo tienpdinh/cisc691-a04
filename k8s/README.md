@@ -29,7 +29,7 @@ terraform apply
 ### 2. Configure kubectl
 ```bash
 # Get cluster credentials (use output from terraform)
-gcloud container clusters get-credentials rag-pipeline-cluster --region us-central1 --project cisc691-a04
+gcloud container clusters get-credentials rag-api-cluster --region us-central1 --project cisc691-a04
 ```
 
 ### 3. Build and Push Container Image
@@ -51,7 +51,7 @@ Edit the following files with your project details:
 
 **service-account.yaml**:
 ```yaml
-rag-pipeline@cisc691-a04.iam.gserviceaccount.com
+rag-api@cisc691-a04.iam.gserviceaccount.com
 ```
 
 **deployment.yaml**:
@@ -70,9 +70,9 @@ host: rag-api.tienpdinh.com
 kubectl apply -f k8s/
 
 # Check deployment status
-kubectl get pods -n rag-pipeline
-kubectl get services -n rag-pipeline
-kubectl get ingress -n rag-pipeline
+kubectl get pods -n rag-api
+kubectl get services -n rag-api
+kubectl get ingress -n rag-api
 ```
 
 ## API Endpoints
@@ -92,26 +92,26 @@ Available endpoints:
 
 ### Check Pod Status
 ```bash
-kubectl get pods -n rag-pipeline
-kubectl describe pod POD_NAME -n rag-pipeline
-kubectl logs POD_NAME -n rag-pipeline
+kubectl get pods -n rag-api
+kubectl describe pod POD_NAME -n rag-api
+kubectl logs POD_NAME -n rag-api
 ```
 
 ### Check Services
 ```bash
-kubectl get services -n rag-pipeline
-kubectl describe service rag-api-service -n rag-pipeline
+kubectl get services -n rag-api
+kubectl describe service rag-api-service -n rag-api
 ```
 
 ### Check Ingress
 ```bash
-kubectl get ingress -n rag-pipeline
-kubectl describe ingress rag-api-ingress -n rag-pipeline
+kubectl get ingress -n rag-api
+kubectl describe ingress rag-api-ingress -n rag-api
 ```
 
 ### Port Forward for Local Testing
 ```bash
-kubectl port-forward service/rag-api-service 8000:80 -n rag-pipeline
+kubectl port-forward service/rag-api-service 8000:80 -n rag-api
 # API available at http://localhost:8000
 ```
 
@@ -119,12 +119,12 @@ kubectl port-forward service/rag-api-service 8000:80 -n rag-pipeline
 
 ### Manual Scaling
 ```bash
-kubectl scale deployment rag-api --replicas=3 -n rag-pipeline
+kubectl scale deployment rag-api --replicas=3 -n rag-api
 ```
 
 ### Auto-scaling (Optional)
 ```bash
-kubectl autoscale deployment rag-api --cpu-percent=70 --min=2 --max=10 -n rag-pipeline
+kubectl autoscale deployment rag-api --cpu-percent=70 --min=2 --max=10 -n rag-api
 ```
 
 ## SSL Certificate
@@ -133,7 +133,7 @@ The deployment uses Google-managed SSL certificates. It may take 15-60 minutes f
 
 Check certificate status:
 ```bash
-kubectl describe managedcertificate rag-api-ssl-cert -n rag-pipeline
+kubectl describe managedcertificate rag-api-ssl-cert -n rag-api
 ```
 
 ## Storage
@@ -148,7 +148,7 @@ All configuration is managed via ConfigMap. To update:
 
 1. Edit `configmap.yaml`
 2. Apply changes: `kubectl apply -f k8s/configmap.yaml`
-3. Restart pods: `kubectl rollout restart deployment/rag-api -n rag-pipeline`
+3. Restart pods: `kubectl rollout restart deployment/rag-api -n rag-api`
 
 ## Troubleshooting
 
@@ -165,7 +165,7 @@ All configuration is managed via ConfigMap. To update:
 - Wait for SSL certificate provisioning
 
 **API errors**:
-- Check logs: `kubectl logs deployment/rag-api -n rag-pipeline`
+- Check logs: `kubectl logs deployment/rag-api -n rag-api`
 - Verify Vertex AI permissions
 - Check config.json values
 
@@ -173,7 +173,7 @@ All configuration is managed via ConfigMap. To update:
 
 ```bash
 # Delete Kubernetes resources
-kubectl delete namespace rag-pipeline
+kubectl delete namespace rag-api
 
 # Delete Terraform infrastructure
 cd ../terraform

@@ -62,7 +62,7 @@ After applying, configure kubectl to connect to your new cluster:
 terraform output kubectl_config_command
 
 # Or run directly:
-gcloud container clusters get-credentials rag-pipeline-cluster --region us-central1 --project cisc691-a04
+gcloud container clusters get-credentials rag-api-cluster --region us-central1 --project cisc691-a04
 ```
 
 ### 5. Deploy API
@@ -78,8 +78,8 @@ docker push gcr.io/cisc691-a04/rag-api:latest
 kubectl apply -f k8s/
 
 # Check deployment status
-kubectl get pods -n rag-pipeline
-kubectl get ingress -n rag-pipeline
+kubectl get pods -n rag-api
+kubectl get ingress -n rag-api
 ```
 
 ### 6. Set Up DNS (Optional)
@@ -203,13 +203,13 @@ If `terraform destroy` fails, you can manually clean up resources:
 
 ```bash
 # Delete GKE cluster
-gcloud container clusters delete rag-pipeline-cluster --region us-central1
+gcloud container clusters delete rag-api-cluster --region us-central1
 
 # Delete service account
-gcloud iam service-accounts delete rag-pipeline@PROJECT_ID.iam.gserviceaccount.com
+gcloud iam service-accounts delete rag-api@PROJECT_ID.iam.gserviceaccount.com
 
 # Delete Artifact Registry repository
-gcloud artifacts repositories delete rag-pipeline --location us-central1
+gcloud artifacts repositories delete rag-api --location us-central1
 
 # Delete static IP
 gcloud compute addresses delete rag-api-ip --global

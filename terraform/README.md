@@ -1,14 +1,16 @@
-# Terraform Infrastructure for RAG Pipeline
+# Terraform Infrastructure for RAG API
 
-This Terraform configuration provisions the GCP infrastructure needed for the RAG pipeline project.
+This Terraform configuration provisions the GCP infrastructure needed for the RAG API project.
 
 ## Resources Created
 
-- **GKE Cluster**: Kubernetes cluster for running the RAG pipeline
+- **GKE Cluster**: Kubernetes cluster for running the FastAPI-based RAG service
 - **Node Pool**: Auto-scaling node pool with configurable machine types
 - **Service Account**: IAM service account with necessary permissions for Vertex AI and ML services
+- **Load Balancer**: Global static IP address for the API
+- **DNS (Optional)**: Cloud DNS zone and records for custom domain
 - **API Enablement**: Required GCP APIs (Container, AI Platform, ML, Compute)
-- **Artifact Registry**: Container repository for custom images
+- **Artifact Registry**: Container repository for RAG API images
 - **IAM Bindings**: Workload Identity configuration for secure access
 
 ## Prerequisites
@@ -63,14 +65,33 @@ terraform output kubectl_config_command
 gcloud container clusters get-credentials rag-pipeline-cluster --region us-central1 --project cisc691-a04
 ```
 
-### 5. Deploy Application
+### 5. Deploy API
 
-Once the infrastructure is ready, deploy the RAG pipeline:
+Once the infrastructure is ready, deploy the RAG API:
 
 ```bash
-# Switch to gitops branch and apply k8s manifests
-git checkout gitops
+# Build and push container image
+docker build -t gcr.io/cisc691-a04/rag-api:latest .
+docker push gcr.io/cisc691-a04/rag-api:latest
+
+# Deploy to Kubernetes
 kubectl apply -f k8s/
+
+# Check deployment status
+kubectl get pods -n rag-pipeline
+kubectl get ingress -n rag-pipeline
+```
+
+### 6. Set Up DNS (Optional)
+
+If using a custom domain, get the load balancer IP and create DNS records:
+
+```bash
+# Get the static IP
+terraform output load_balancer_ip
+
+# Create DNS A record:
+# rag-api.tienpdinh.com → [LOAD_BALANCER_IP]
 ```
 
 ## Configuration Options
@@ -86,6 +107,12 @@ kubectl apply -f k8s/
 - Set `use_preemptible_nodes = true` to use preemptible instances (60-91% cheaper)
 - Adjust node pool autoscaling in `main.tf`
 - Use smaller machine types if your workload allows
+
+### DNS Configuration
+
+- Set `create_dns_zone = true` to manage DNS in GCP Cloud DNS
+- Set `domain_name = "yourdomain.com"` to use your custom domain
+- Default configuration uses `tienpdinh.com`
 
 ## Spinning Down Resources
 
@@ -106,6 +133,8 @@ When prompted, type `yes` to confirm the destruction.
 - All persistent volumes and data
 - Service accounts and IAM bindings
 - Container images in Artifact Registry
+- Static IP address and DNS records
+- All API data and uploaded documents
 
 **Before destroying, make sure to:**
 1. Backup any important data from persistent volumes
@@ -118,9 +147,12 @@ With default settings (preemptible e2-standard-4 nodes):
 - **GKE Cluster**: ~$73/month (management fee)
 - **Nodes**: ~$50-150/month (depending on usage)
 - **Persistent Disks**: ~$5-20/month
-- **Vertex AI**: Pay per request
+- **Load Balancer**: ~$18/month (global)
+- **Static IP**: ~$3/month (if not in use)
+- **Vertex AI**: Pay per API request
+- **Cloud DNS**: ~$0.50/month (if enabled)
 
-**Total estimated cost**: $130-250/month for development workloads.
+**Total estimated cost**: $150-270/month for development workloads.
 
 ## Troubleshooting
 
@@ -178,6 +210,12 @@ gcloud iam service-accounts delete rag-pipeline@PROJECT_ID.iam.gserviceaccount.c
 
 # Delete Artifact Registry repository
 gcloud artifacts repositories delete rag-pipeline --location us-central1
+
+# Delete static IP
+gcloud compute addresses delete rag-api-ip --global
+
+# Delete DNS zone (if created)
+gcloud dns managed-zones delete rag-api-zone
 ```
 
 ## Security Notes

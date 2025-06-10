@@ -33,3 +33,15 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "domain_name" {
+  description = "Domain name for the API (e.g., example.com)"
+  type        = string
+  default     = "tienpdinh.com"
+}
+
+variable "create_dns_zone" {
+  description = "Whether to create and manage DNS zone in GCP"
+  type        = bool
+  default     = false
+}

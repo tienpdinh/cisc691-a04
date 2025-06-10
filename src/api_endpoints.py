@@ -27,9 +27,10 @@ async def query_rag(request: QueryRequest, app_request: Request) -> QueryRespons
 
         # Initialize retriever
         retriever = ChromaDBRetriever(
-            vectordb_dir=config.get("vectordb_directory"),
             embedding_model_name=config.get("embedding_model_name"),
-            collection_name=config.get("collection_name")
+            collection_name=config.get("collection_name"),
+            chromadb_host=config.get("chromadb_host"),
+            chromadb_port=config.get("chromadb_port", 8000)
         )
 
         # Initialize RAG processor
@@ -105,8 +106,9 @@ async def upload_document(file: UploadFile, app_request: Request) -> UploadRespo
             cleaned_text_file_list=[cleaned_filename],
             cleaned_text_dir=config.get("cleaned_text_directory"),
             embeddings_dir=config.get("embeddings_directory"),
-            vectordb_dir=config.get("vectordb_directory"),
-            collection_name=config.get("collection_name")
+            collection_name=config.get("collection_name"),
+            chromadb_host=config.get("chromadb_host"),
+            chromadb_port=config.get("chromadb_port", 8000)
         )
         loader.process_files()
         logging.info("[API] Step 3 completed")
@@ -130,9 +132,10 @@ async def retrieve_chunks(request: RetrieveRequest, app_request: Request) -> Ret
         logging.info(f"Retrieving chunks for query: {request.query}")
         
         retriever = ChromaDBRetriever(
-            vectordb_dir=config.get("vectordb_directory"),
             embedding_model_name=config.get("embedding_model_name"),
             collection_name=config.get("collection_name"),
+            chromadb_host=config.get("chromadb_host"),
+            chromadb_port=config.get("chromadb_port", 8000),
             score_threshold=float(config.get("retriever_min_score_threshold"))
         )
         

@@ -33,6 +33,12 @@ def setup_logging(log_level):
 
 def ensure_directories_exist(config):
     """Ensures necessary directories exist, creating them if needed."""
+    import os
+    # Skip directory creation in Kubernetes - they should be mounted from PVC
+    if os.getenv('KUBERNETES_SERVICE_HOST'):
+        logging.info("Running in Kubernetes - skipping directory creation (using PVC)")
+        return
+        
     for key in config.get_directory_names():
         dir_path = Path(config.get(key, key))  # Use key name as default
         dir_path.mkdir(parents=True, exist_ok=True)

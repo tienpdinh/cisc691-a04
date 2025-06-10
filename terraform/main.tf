@@ -30,7 +30,7 @@ resource "google_project_service" "apis" {
 
 # GKE Cluster
 resource "google_container_cluster" "rag_cluster" {
-  name     = "rag-pipeline-cluster"
+  name     = "rag-api-cluster"
   location = var.region
   
   # We can't create a cluster with no node pool defined, but we want to only use
@@ -80,9 +80,9 @@ resource "google_container_node_pool" "rag_nodes" {
 
 # Service Account for RAG Pipeline
 resource "google_service_account" "rag_pipeline" {
-  account_id   = "rag-pipeline"
-  display_name = "RAG Pipeline Service Account"
-  description  = "Service account for RAG pipeline workloads"
+  account_id   = "rag-api"
+  display_name = "RAG API Service Account"
+  description  = "Service account for RAG API workloads"
 }
 
 # IAM bindings for the service account
@@ -104,7 +104,7 @@ resource "google_service_account_iam_binding" "workload_identity" {
   role               = "roles/iam.workloadIdentityUser"
   
   members = [
-    "serviceAccount:${var.project_id}.svc.id.goog[rag-pipeline/rag-pipeline-sa]"
+    "serviceAccount:${var.project_id}.svc.id.goog[rag-api/rag-api-sa]"
   ]
   
   depends_on = [
@@ -116,8 +116,8 @@ resource "google_service_account_iam_binding" "workload_identity" {
 # Container Registry (optional - for storing custom images)
 resource "google_artifact_registry_repository" "rag_pipeline" {
   location      = var.region
-  repository_id = "rag-pipeline"
-  description   = "Docker repository for RAG pipeline images"
+  repository_id = "rag-api"
+  description   = "Docker repository for RAG API images"
   format        = "DOCKER"
   
   depends_on = [google_project_service.apis]

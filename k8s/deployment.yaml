@@ -16,6 +16,10 @@ spec:
         app: rag-api
     spec:
       serviceAccountName: rag-api-sa
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsGroup: 1000
       initContainers:
       - name: wait-for-chromadb
         image: busybox:1.35
@@ -27,8 +31,6 @@ spec:
         - containerPort: 8000
           name: http
         env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/key.json
         - name: PYTHONPATH
           value: /app
         - name: PYTHONUNBUFFERED

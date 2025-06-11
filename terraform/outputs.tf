@@ -44,3 +44,12 @@ output "dns_zone_name_servers" {
   description = "Name servers for the DNS zone (if created)"
   value       = var.create_dns_zone ? google_dns_managed_zone.rag_api_zone[0].name_servers : []
 }
+
+output "storage_buckets" {
+  description = "GCS bucket names for RAG data storage"
+  value = {
+    raw_input    = google_storage_bucket.rag_buckets["rag-raw-input"].name
+    cleaned_text = google_storage_bucket.rag_buckets["rag-cleaned-text"].name
+    embeddings   = google_storage_bucket.rag_buckets["rag-embeddings"].name
+  }
+}

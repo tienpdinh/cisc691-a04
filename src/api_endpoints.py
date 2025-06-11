@@ -10,6 +10,7 @@ from .rag_query_processor import RAGQueryProcessor
 from .document_ingestor import DocumentIngestor
 from .embedding_preparer import EmbeddingPreparer
 from .embedding_loader import EmbeddingLoader
+from .gcs_storage import GCSStorage
 
 async def query_rag(request: QueryRequest, app_request: Request) -> QueryResponse:
     """Query the RAG system with a given question."""
@@ -67,23 +68,27 @@ async def upload_document(file: UploadFile, app_request: Request) -> UploadRespo
         )
     
     try:
-        # Save uploaded file to raw_input directory
-        raw_input_dir = Path(config.get("raw_input_directory"))
-        raw_input_dir.mkdir(parents=True, exist_ok=True)
+        # Initialize GCS storage
+        gcs_storage = GCSStorage(project_id=config.get("project_id"))
+        raw_input_bucket = config.get("raw_input_bucket")
         
-        file_path = raw_input_dir / file.filename
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
+        # Upload file to GCS bucket
+        gcs_path = gcs_storage.upload_file(
+            bucket_name=raw_input_bucket,
+            file_path=file.filename,
+            file_obj=file.file
+        )
         
-        logging.info(f"Uploaded file saved: {file_path}")
+        logging.info(f"Uploaded file to GCS: {gcs_path}")
         
         # Step 1: Document ingestion
         logging.info("[API] Starting Step 1: Document ingestion")
         ingestor = DocumentIngestor(
             file_list=[file.filename],
-            input_dir=config.get("raw_input_directory"),
-            output_dir=config.get("cleaned_text_directory"),
-            embedding_model_name=config.get("embedding_model_name")
+            input_bucket=raw_input_bucket,
+            output_bucket=config.get("cleaned_text_bucket"),
+            embedding_model_name=config.get("embedding_model_name"),
+            project_id=config.get("project_id")
         )
         ingestor.process_files()
         logging.info("[API] Step 1 completed")

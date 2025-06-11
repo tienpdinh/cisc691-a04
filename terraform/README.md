@@ -1,17 +1,33 @@
-# Terraform Infrastructure for RAG API
+# Infrastructure Deployment
 
-This Terraform configuration provisions the GCP infrastructure needed for the RAG API project.
+This directory contains Terraform configurations for deploying the RAG API infrastructure on Google Cloud Platform.
 
-## Resources Created
+## What Gets Deployed
 
-- **GKE Cluster**: Kubernetes cluster for running the FastAPI-based RAG service
-- **Node Pool**: Auto-scaling node pool with configurable machine types
-- **Service Account**: IAM service account with necessary permissions for Vertex AI and ML services
-- **Load Balancer**: Global static IP address for the API
-- **DNS (Optional)**: Cloud DNS zone and records for custom domain
-- **API Enablement**: Required GCP APIs (Container, AI Platform, ML, Compute)
-- **Artifact Registry**: Container repository for RAG API images
-- **IAM Bindings**: Workload Identity configuration for secure access
+### Core Infrastructure
+- **GKE Cluster**: Kubernetes cluster with Workload Identity enabled
+- **Node Pool**: Auto-scaling nodes with preemptible instances
+- **VPC Network**: Default networking with proper firewall rules
+
+### Storage & Data
+- **GCS Buckets**: 
+  - `cisc691-a04-rag-raw-input` - Uploaded documents
+  - `cisc691-a04-rag-cleaned-text` - Processed text files
+  - `cisc691-a04-rag-embeddings` - Vector embeddings
+- **Bucket Features**: Versioning enabled, force-destroy for easy cleanup
+
+### IAM & Security
+- **Service Account**: `rag-api@cisc691-a04.iam.gserviceaccount.com`
+- **IAM Roles**: 
+  - `roles/aiplatform.user` - Vertex AI access
+  - `roles/storage.admin` - GCS bucket management
+  - `roles/artifactregistry.reader` - Container image access
+- **Workload Identity**: Secure pod-to-GCP authentication
+
+### Optional Resources
+- **Artifact Registry**: Docker image repository
+- **Static IP**: Load balancer IP address
+- **DNS Zone**: Domain management (if enabled)
 
 ## Prerequisites
 
@@ -128,31 +144,18 @@ terraform destroy
 
 When prompted, type `yes` to confirm the destruction.
 
-**⚠️ WARNING**: This will permanently delete:
-- The entire GKE cluster and all workloads
-- All persistent volumes and data
-- Service accounts and IAM bindings
-- Container images in Artifact Registry
-- Static IP address and DNS records
-- All API data and uploaded documents
-
-**Before destroying, make sure to:**
-1. Backup any important data from persistent volumes
-2. Export any container images you want to keep
-3. Save any configuration or secrets you need
-
 ## Estimated Costs
 
 With default settings (preemptible e2-standard-4 nodes):
 - **GKE Cluster**: ~$73/month (management fee)
 - **Nodes**: ~$50-150/month (depending on usage)
-- **Persistent Disks**: ~$5-20/month
+- **GCS Storage**: ~$0.02/GB/month (standard storage)
 - **Load Balancer**: ~$18/month (global)
 - **Static IP**: ~$3/month (if not in use)
 - **Vertex AI**: Pay per API request
 - **Cloud DNS**: ~$0.50/month (if enabled)
 
-**Total estimated cost**: $150-270/month for development workloads.
+**Total estimated cost**: $145-245/month for development workloads.
 
 ## Troubleshooting
 
@@ -197,25 +200,43 @@ terraform validate
 terraform fmt
 ```
 
+## Cleanup
+
+### Complete Destruction
+```bash
+# Destroy all resources including GCS buckets and data
+terraform destroy
+
+# Auto-approve destruction
+terraform destroy -auto-approve
+```
+
+**⚠️ Warning**: This will permanently delete:
+- All GCS buckets and their contents
+- The entire GKE cluster and workloads
+- All persistent data
+
 ### Emergency Cleanup
 
 If `terraform destroy` fails, you can manually clean up resources:
 
 ```bash
+# Delete GCS buckets first
+gsutil rm -r gs://cisc691-a04-rag-raw-input
+gsutil rm -r gs://cisc691-a04-rag-cleaned-text
+gsutil rm -r gs://cisc691-a04-rag-embeddings
+
 # Delete GKE cluster
 gcloud container clusters delete rag-api-cluster --region us-central1
 
 # Delete service account
-gcloud iam service-accounts delete rag-api@PROJECT_ID.iam.gserviceaccount.com
+gcloud iam service-accounts delete rag-api@cisc691-a04.iam.gserviceaccount.com
 
 # Delete Artifact Registry repository
 gcloud artifacts repositories delete rag-api --location us-central1
 
 # Delete static IP
 gcloud compute addresses delete rag-api-ip --global
-
-# Delete DNS zone (if created)
-gcloud dns managed-zones delete rag-api-zone
 ```
 
 ## Security Notes

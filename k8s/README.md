@@ -6,15 +6,18 @@ This directory contains Kubernetes manifests for deploying the RAG API to Google
 
 The deployment consists of:
 - **FastAPI Application**: Containerized REST API server
+- **ChromaDB**: Vector database service with persistent storage
 - **Load Balancer**: Google Cloud Load Balancer with SSL termination
-- **Persistent Storage**: For vector database and uploaded documents
+- **GCS Storage**: Google Cloud Storage buckets for document storage
+- **Workload Identity**: Secure authentication without service account keys
 - **Auto-scaling**: Horizontal Pod Autoscaler based on CPU/memory
 
 ## Prerequisites
 
 1. **GKE Cluster**: Created via Terraform in `../terraform/`
-2. **Container Image**: Built and pushed to Artifact Registry
-3. **Domain Name**: (Optional) For custom domain with SSL
+2. **GCS Buckets**: Created via Terraform with proper IAM permissions
+3. **Container Image**: Built and pushed to Artifact Registry
+4. **Domain Name**: (Optional) For custom domain with SSL
 
 ## Quick Deployment
 
@@ -41,31 +44,37 @@ docker build -t gcr.io/cisc691-a04/rag-api:latest .
 docker push gcr.io/cisc691-a04/rag-api:latest
 ```
 
-### 4. Update Configuration
-Edit the following files with your project details:
+### 4. Verify Configuration
+Check that the following files have correct project details:
 
-**configmap.yaml**:
+**configmap.yaml** - Application configuration:
 ```yaml
 "project_id": "cisc691-a04"
+"raw_input_bucket": "cisc691-a04-rag-raw-input"
+"cleaned_text_bucket": "cisc691-a04-rag-cleaned-text"
+"embeddings_bucket": "cisc691-a04-rag-embeddings"
 ```
 
-**service-account.yaml**:
+**service-account.yaml** - Workload Identity binding:
 ```yaml
-rag-api@cisc691-a04.iam.gserviceaccount.com
+iam.gke.io/gcp-service-account: rag-api@cisc691-a04.iam.gserviceaccount.com
 ```
 
-**deployment.yaml**:
+**deployment.yaml** - Container image:
 ```yaml
 image: gcr.io/cisc691-a04/rag-api:latest
 ```
 
-**ingress.yaml**:
+**ingress.yaml** - Domain configuration:
 ```yaml
 host: rag-api.tienpdinh.com
 ```
 
 ### 5. Deploy to Kubernetes
 ```bash
+# Create namespace
+kubectl create namespace rag-api
+
 # Apply all manifests
 kubectl apply -f k8s/
 
@@ -73,6 +82,9 @@ kubectl apply -f k8s/
 kubectl get pods -n rag-api
 kubectl get services -n rag-api
 kubectl get ingress -n rag-api
+
+# Verify GCS access (optional)
+kubectl logs deployment/rag-api -n rag-api | grep -i "gcs\|bucket"
 ```
 
 ## API Endpoints
@@ -138,9 +150,17 @@ kubectl describe managedcertificate rag-api-ssl-cert -n rag-api
 
 ## Storage
 
-- **Persistent Volume**: 10GB storage for vector database and documents
+### ChromaDB Storage
+- **Persistent Volume**: 5GB storage for vector database
 - **Storage Class**: `standard-rwo` (Regional persistent disk)
-- **Mount Path**: `/app/data` inside containers
+- **Mount Path**: `/chroma/chroma` inside ChromaDB container
+
+### Document Storage
+- **GCS Buckets**: Separate buckets for different data types
+  - `cisc691-a04-rag-raw-input`: Original uploaded documents
+  - `cisc691-a04-rag-cleaned-text`: Processed text files
+  - `cisc691-a04-rag-embeddings`: Vector embeddings
+- **Authentication**: Via Workload Identity (no service account keys)
 
 ## Configuration
 
@@ -167,7 +187,13 @@ All configuration is managed via ConfigMap. To update:
 **API errors**:
 - Check logs: `kubectl logs deployment/rag-api -n rag-api`
 - Verify Vertex AI permissions
+- Check GCS bucket permissions and Workload Identity
 - Check config.json values
+
+**Storage errors**:
+- Verify GCS buckets exist: `gsutil ls gs://cisc691-a04-rag-*`
+- Check Workload Identity binding: `kubectl describe serviceaccount rag-api-sa -n rag-api`
+- Test GCS access from pod: `kubectl exec -it POD_NAME -n rag-api -- gsutil ls`
 
 ### Cleanup
 
@@ -182,7 +208,23 @@ terraform destroy
 
 ## Security
 
-- **Service Account**: Uses Workload Identity for secure GCP access
-- **Network Policies**: Restrict pod-to-pod communication
+- **Workload Identity**: Secure GCP authentication without service account keys
+- **IAM Roles**: Minimal permissions (Vertex AI, GCS, Artifact Registry)
 - **SSL/TLS**: HTTPS enforced with Google-managed certificates
-- **RBAC**: Minimal permissions for service accounts
+- **RBAC**: Minimal Kubernetes permissions for service accounts
+- **Network Policies**: Restrict pod-to-pod communication
+- **Bucket Security**: Uniform bucket-level access with versioning
+
+## Manifest Files
+
+| File | Purpose |
+|------|---------|
+| `namespace.yaml` | Creates rag-api namespace |
+| `service-account.yaml` | Kubernetes SA with Workload Identity |
+| `configmap.yaml` | Application configuration with GCS buckets |
+| `deployment.yaml` | RAG API pods (no PVC mounts) |
+| `service.yaml` | Internal service for load balancing |
+| `chromadb-deployment.yaml` | ChromaDB with persistent storage |
+| `chromadb-service.yaml` | ChromaDB internal service |
+| `chromadb-pvc.yaml` | Persistent volume for ChromaDB |
+| `ingress.yaml` | External load balancer with SSL |

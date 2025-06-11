@@ -30,24 +30,37 @@ services:
       retries: 3
       start_period: 30s
 
+  fake-gcs:
+    image: fsouza/fake-gcs-server
+    ports:
+      - "4443:4443"
+    command: ["-scheme", "http", "-host", "0.0.0.0", "-port", "4443"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4443/storage/v1/b"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
   rag-api:
     build: .
     ports:
       - "8001:8000"
     volumes:
       - ./config.local.json:/app/config.json:ro
-      - rag_data:/app/data
     environment:
       - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1
+      - STORAGE_EMULATOR_HOST=http://fake-gcs:4443
     depends_on:
       chromadb:
         condition: service_healthy
       ollama:
+        condition: service_healthy
+      fake-gcs:
         condition: service_healthy
     restart: unless-stopped
 
 volumes:
   chromadb_data:
   ollama_data:
-  rag_data:

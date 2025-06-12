@@ -15,25 +15,25 @@ services:
       retries: 3
       start_period: 10s
   
-  # ollama:
-  #   image: ollama/ollama:latest
-  #   ports:
-  #     - "11434:11434"
-  #   volumes:
-  #     - ollama_data:/root/.ollama
-  #   environment:
-  #     - OLLAMA_HOST=0.0.0.0
-  #   healthcheck:
-  #     test: ["CMD", "ollama", "list"]
-  #     interval: 30s
-  #     timeout: 10s
-  #     retries: 3
-  #     start_period: 30s
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   rag-api:
     build: .
     ports:
-      - "8001:8000"
+      - "8000:8000"
     volumes:
       - ./config.local.json:/app/config.json:ro
       - rag_data:/app/data
@@ -52,5 +52,5 @@ services:
 
 volumes:
   chromadb_data:
-  # ollama_data:
+  ollama_data:
   rag_data:

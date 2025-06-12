@@ -38,7 +38,7 @@ RUN useradd --create-home --shell /bin/bash app && \
 USER app
 
 # Expose port for FastAPI server
-EXPOSE 8001
+EXPOSE 8000
 
 # Run the FastAPI server
 CMD ["python", "main.py"]

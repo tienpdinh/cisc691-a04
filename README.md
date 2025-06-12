@@ -50,7 +50,7 @@ The system implements modern RAG techniques:
 # Start all services, this will take a while if you're running this the first time, grab a coffee while you wait
 docker compose up -d
 
-# Download the LLM model (first time only)
+# Download the LLM model (first time only) in an interactive mode (uses default model: llama3.1:8b)
 ./scripts/setup-ollama.sh
 
 # API will be available at http://localhost:8001

@@ -9,7 +9,5 @@
   "raw_input_directory": "data/raw_input",
   "cleaned_text_directory": "data/cleaned_text",
   "embeddings_directory": "data/embeddings",
-  "vectordb_directory": "data/vectordb",
-  "chromadb_host": "localhost",
-  "chromadb_port": 8002
+  "vectordb_directory": "data/vectordb"
 }

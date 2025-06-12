@@ -4,10 +4,12 @@
   "collection_name": "documents",
   "retriever_min_score_threshold": "0.5",
   "llm_api_url": "http://localhost:11434/api/generate",
-  "llm_model_name": "llama3.1:8b",
+  "llm_model_name": "llama3.2",
   "llm_provider": "ollama",
   "raw_input_directory": "data/raw_input",
   "cleaned_text_directory": "data/cleaned_text",
   "embeddings_directory": "data/embeddings",
-  "vectordb_directory": "data/vectordb"
+  "vectordb_directory": "data/vectordb",
+  "chromadb_host": "localhost",
+  "chromadb_port": 8002
 }

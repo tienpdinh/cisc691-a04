@@ -18,6 +18,23 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 - **Setup**: Kubernetes deployment on Google Cloud
 - **Use case**: Production workloads, high availability
 
+## Document Processing
+
+The API supports various document types and processing features:
+- **Supported Formats**: PDF, TXT, DOCX
+- **Processing**: Automatic text extraction and chunking
+- **Storage**: Vector embeddings in ChromaDB
+- **Retrieval**: Semantic search with relevance ranking
+
+## RAG Capabilities
+
+The system implements modern RAG techniques:
+- **Contextual Retrieval**: Finds relevant document chunks for queries
+- **Knowledge Integration**: Combines retrieved context with LLM responses
+- **Flexible Models**: Support for both local (Ollama) and cloud (Vertex AI) LLMs
+- **Citation Support**: Links responses to source documents
+
+
 ## Prerequisites
 
 **Docker is required** for running this application. Install Docker:
@@ -178,6 +195,7 @@ open htmlcov/index.html  # View detailed coverage report
 ## Project Structure
 
 ```
+├── files/                     # Sample documents
 ├── src/                       # Source code
 │   ├── api_app.py             # FastAPI application setup
 │   ├── api_routes.py          # API route definitions

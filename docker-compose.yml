@@ -14,7 +14,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
-
+  
   ollama:
     image: ollama/ollama:latest
     ports:
@@ -33,18 +33,21 @@ services:
   rag-api:
     build: .
     ports:
-      - "8001:8000"
+      - "8000:8000"
     volumes:
       - ./config.local.json:/app/config.json:ro
       - rag_data:/app/data
+      - ./logs:/app/logs
     environment:
       - PYTHONPATH=/app
       - PYTHONUNBUFFERED=1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       chromadb:
         condition: service_healthy
-      ollama:
-        condition: service_healthy
+      # ollama:
+      #   condition: service_healthy
     restart: unless-stopped
 
 volumes:

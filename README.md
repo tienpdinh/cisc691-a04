@@ -39,9 +39,24 @@ docker compose up -d
 # API will be available at http://localhost:8001
 ```
 
+**Hybrid setup with local Ollama + containerized ChromaDB and RAG API:**
+
+```bash
+# 1. Start Ollama locally (in a separate terminal)
+ollama serve
+
+# 2. Pull the required model (first time only)
+ollama pull llama3.2
+
+# 3. Start ChromaDB and RAG API services
+docker compose up -d
+
+# API will be available at http://localhost:8001
+```
+
 **Service endpoints:**
 - RAG API: http://localhost:8001 (with docs at http://localhost:8001/docs)
-- ChromaDB: http://localhost:8000
+- ChromaDB: http://localhost:8002
 - Ollama: http://localhost:11434
 
 
@@ -143,6 +158,12 @@ This RAG API uses a **microservices architecture** with separate containers for 
 - **Ollama**: Local LLM service with `llama3.1:8b`
 - **Communication**: All services communicate via HTTP APIs
 
+### Local Development (Docker Compose + Local Ollama)
+- **RAG API**: FastAPI server handling document processing and queries
+- **ChromaDB**: Vector database service for embeddings storage
+- **Ollama**: Local LLM service (running on host machine)
+- **Communication**: Services communicate via HTTP APIs, with RAG API accessing local Ollama via host.docker.internal
+
 ### Production (GKE)
 - **RAG API**: Load-balanced FastAPI pods with auto-scaling
 - **ChromaDB**: Dedicated service with persistent storage
@@ -152,10 +173,10 @@ This RAG API uses a **microservices architecture** with separate containers for 
 ## Configuration
 
 ### Local Configuration (`config.local.json`)
-- **LLM**: Containerized Ollama service
+- **LLM**: Local Ollama service (accessed via host.docker.internal)
 - **Vector DB**: HTTP connection to ChromaDB service
 - **Storage**: Docker volumes for persistence
-- **Networking**: Docker Compose internal networking
+- **Networking**: Docker Compose internal networking + host machine access
 
 ### Production Configuration (Kubernetes ConfigMap)
 - **LLM**: Vertex AI with Workload Identity
@@ -205,9 +226,16 @@ open htmlcov/index.html  # View detailed coverage report
 
 ### Docker Compose Issues
 - **Services won't start**: Run `docker-compose logs` to check errors
+- **Ollama connection refused**: Ensure Ollama is running locally (`ollama serve`)
 - **Model not found**: Run `./scripts/setup-ollama.sh` to download models
 - **Port conflicts**: Change ports in `docker-compose.yml` if needed
 - **Storage issues**: Run `docker compose down -v` to reset volumes
+
+### Ollama Issues
+- **Connection timeout**: Verify Ollama is running (`ollama serve`)
+- **Model not found**: Run `ollama pull llama3.2`
+- **Memory issues**: Ensure sufficient RAM for model loading
+- **API errors**: Check Ollama logs in the terminal where it's running
 
 ### Local Python Issues  
 - **API won't start**: Make sure `ollama` container is running first
@@ -226,3 +254,34 @@ open htmlcov/index.html  # View detailed coverage report
 1. Run tests: `pytest`
 2. Check coverage: Coverage reports available in CI
 3. Follow code style: Automated linting in CI
+
+## Development Challenges & Solutions
+
+### Local Development on M2 Mac
+
+#### Initial Approach: Full Containerization
+We initially attempted to run all services (RAG API, ChromaDB, Ollama) in containers using Docker Compose. This approach faced several challenges:
+
+- **Ollama Container Issues:**
+  - Model (~2GB) required redownload after every container restart
+  - Significant memory constraints on M2 Mac Air
+  - Container crashes during model loading
+  - Long startup times affecting development workflow
+
+#### Current Solution: Hybrid Architecture
+We adopted a hybrid approach that provides better stability and performance:
+
+```bash
+# 1. Run Ollama natively on host
+ollama serve
+ollama pull llama3.2
+
+# 2. Run other services in containers
+docker compose up -d
+```
+
+**Benefits:**
+- ✅ Persistent model storage between restarts
+- ✅ Better memory management on M2 Mac
+- ✅ Faster development iterations
+- ✅ Stable performance for LLM operations

@@ -19,7 +19,8 @@ resource "google_project_service" "apis" {
     "container.googleapis.com",
     "aiplatform.googleapis.com",
     "ml.googleapis.com",
-    "compute.googleapis.com"
+    "compute.googleapis.com",
+    "storage.googleapis.com"
   ])
   
   project = var.project_id
@@ -90,7 +91,8 @@ resource "google_project_iam_member" "rag_pipeline_roles" {
   for_each = toset([
     "roles/aiplatform.user",
     "roles/ml.developer",
-    "roles/artifactregistry.reader"
+    "roles/artifactregistry.reader",
+    "roles/storage.admin"
   ])
   
   project = var.project_id
@@ -111,6 +113,31 @@ resource "google_service_account_iam_binding" "workload_identity" {
     google_container_cluster.rag_cluster,
     google_container_node_pool.rag_nodes
   ]
+}
+
+# GCS Buckets for RAG data storage
+resource "google_storage_bucket" "rag_buckets" {
+  for_each = toset([
+    "rag-raw-input",
+    "rag-cleaned-text", 
+    "rag-embeddings"
+  ])
+  
+  name     = "${var.project_id}-${each.value}"
+  location = var.region
+  
+  # Force destroy bucket even with objects
+  force_destroy = true
+  
+  # Enable versioning for data safety
+  versioning {
+    enabled = true
+  }
+  
+  # Uniform bucket-level access
+  uniform_bucket_level_access = true
+  
+  depends_on = [google_project_service.apis]
 }
 
 # Container Registry (optional - for storing custom images)

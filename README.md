@@ -4,18 +4,20 @@
 [![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
-A modern REST API for Retrieval-Augmented Generation that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI). Built with FastAPI for high performance and easy integration.
+A modern REST API for Retrieval-Augmented Generation that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI). Built with FastAPI and designed for cloud-native deployment with Google Cloud Storage and Kubernetes.
 
 ## 🚀 Deployment Options
 
 ### Local Development
 - **LLM**: Ollama (privacy-focused, local processing)
+- **Storage**: Fake GCS Server (containerized S3-compatible storage)
 - **Setup**: Simple docker compose command
 - **Use case**: Development, testing, privacy requirements
 
 ### Production (GKE)
 - **LLM**: Google Vertex AI (managed, scalable)
-- **Setup**: Kubernetes deployment on Google Cloud
+- **Storage**: Google Cloud Storage (managed, durable)
+- **Setup**: Terraform + Kubernetes deployment on Google Cloud
 - **Use case**: Production workloads, high availability
 
 ## Document Processing
@@ -60,6 +62,7 @@ docker compose up -d
 - RAG API: http://localhost:8001 (with docs at http://localhost:8001/docs)
 - ChromaDB: http://localhost:8000
 - Ollama: http://localhost:11434
+- Fake GCS Server: http://localhost:4443
 
 
 ### Development Setup
@@ -67,8 +70,8 @@ docker compose up -d
 For code development while keeping services containerized:
 
 ```bash
-# 1. Start only ChromaDB and Ollama
-docker-compose up -d chromadb ollama
+# 1. Start only ChromaDB, Ollama, and Fake GCS
+docker-compose up -d chromadb ollama fake-gcs
 
 # 2. Install Python dependencies locally
 python -m venv venv
@@ -79,7 +82,10 @@ pip install -r requirements.txt
 cp config.local.json config.json
 # Edit config.json: set chromadb_host to "localhost" for local development
 
-# 4. Run API locally for development
+# 4. Set environment variable for fake GCS
+export STORAGE_EMULATOR_HOST=http://localhost:4443
+
+# 5. Run API locally for development
 python main.py
 ```
 
@@ -134,50 +140,63 @@ curl "http://localhost:8001/health"
 
 ### Prerequisites
 - Google Cloud Project with billing enabled
-- GKE cluster
-- kubectl configured
+- Terraform and gcloud CLI configured
 
 ### Deploy
 ```bash
-# Build and push Docker image
-docker build -t gcr.io/cisc691-a04/rag-api:latest .
-docker push gcr.io/cisc691-a04/rag-api:latest
+# 1. Deploy infrastructure (GKE, GCS, IAM)
+cd terraform/
+# See terraform/README.md for detailed instructions
+terraform apply
 
-# Set up GCP authentication (see k8s/setup-gcp.md)
-# Then deploy
+# 2. Deploy application
 kubectl apply -f k8s/
 ```
 
-For detailed deployment instructions, see [`k8s/README.md`](k8s/README.md).
+For detailed deployment instructions:
+- **Infrastructure**: [`terraform/README.md`](terraform/README.md)
+- **Kubernetes**: [`k8s/README.md`](k8s/README.md)
 
 ## Architecture
 
-This RAG API uses a **microservices architecture** with separate containers for different components:
+This RAG API uses a **cloud-native microservices architecture** with unified storage abstraction:
 
 ### Local Development (Docker Compose)
 - **RAG API**: FastAPI server handling document processing and queries
 - **ChromaDB**: Vector database service for embeddings storage
 - **Ollama**: Local LLM service with `llama3.1:8b`
+- **Fake GCS Server**: S3-compatible storage emulator
+- **Storage**: GCS abstraction layer with fake-gcs-server backend
 - **Communication**: All services communicate via HTTP APIs
 
 ### Production (GKE)
 - **RAG API**: Load-balanced FastAPI pods with auto-scaling
 - **ChromaDB**: Dedicated service with persistent storage
-- **Vertex AI**: Google's managed LLM service (`gemini-1.5-flash`)
-- **Communication**: Kubernetes service mesh with internal networking
+- **Vertex AI**: Google's managed LLM service (`gemini-2.5-flash-preview`)
+- **Google Cloud Storage**: Managed object storage for documents
+- **Storage**: GCS abstraction layer with native GCS backend
+- **Communication**: Kubernetes service mesh with Workload Identity
+
+### Storage Architecture
+- **Unified Interface**: Same GCS client code works in both environments
+- **Local**: `fake-gcs-server` provides S3-compatible API
+- **Production**: Native Google Cloud Storage with bucket lifecycle management
+- **Buckets**: Separate buckets for raw input, cleaned text, and embeddings
 
 ## Configuration
 
 ### Local Configuration (`config.local.json`)
 - **LLM**: Containerized Ollama service
 - **Vector DB**: HTTP connection to ChromaDB service
-- **Storage**: Docker volumes for persistence
+- **Storage**: GCS buckets via fake-gcs-server
+- **Environment**: `STORAGE_EMULATOR_HOST=http://fake-gcs:4443`
 - **Networking**: Docker Compose internal networking
 
 ### Production Configuration (Kubernetes ConfigMap)
-- **LLM**: Vertex AI with Workload Identity
+- **LLM**: Vertex AI with Workload Identity authentication
 - **Vector DB**: HTTP connection to ChromaDB service
-- **Storage**: Kubernetes persistent volumes
+- **Storage**: Native Google Cloud Storage buckets
+- **Authentication**: Workload Identity (no service account keys)
 - **Networking**: Service mesh with load balancing
 
 ## Testing & Development
@@ -203,16 +222,23 @@ open htmlcov/index.html  # View detailed coverage report
 │   ├── api_models.py          # Pydantic request/response models
 │   ├── chromadb_retriever.py  # ChromaDB HTTP client
 │   ├── embedding_loader.py    # ChromaDB HTTP client for storage
+│   ├── gcs_storage.py         # GCS storage abstraction layer
 │   └── ...                    # Core RAG modules
 ├── tests/                     # Unit tests
 │   ├── test_api_*.py          # API endpoint tests
 │   ├── test_chromadb_*.py     # ChromaDB HTTP client tests
+│   ├── test_gcs_storage.py    # GCS storage layer tests
 │   └── ...                    # Core module tests
+├── terraform/                 # Infrastructure as Code
+│   ├── main.tf                # GKE cluster, GCS buckets, IAM
+│   ├── variables.tf           # Terraform variables
+│   └── outputs.tf             # Infrastructure outputs
 ├── k8s/                       # Kubernetes manifests
 │   ├── chromadb-*.yaml        # ChromaDB service manifests
 │   ├── deployment.yaml        # RAG API deployment
+│   ├── configmap.yaml         # Application configuration
 │   └── ...                    # Other K8s resources
-├── data/                      # Data directories (Docker volumes)
+├── data/                      # Data directories (legacy)
 ├── docker-compose.yml         # Local development setup
 ├── config.local.json          # Local development config
 ├── main.py                    # API server entry point
@@ -225,19 +251,21 @@ open htmlcov/index.html  # View detailed coverage report
 - **Services won't start**: Run `docker-compose logs` to check errors
 - **Model not found**: Run `./scripts/setup-ollama.sh` to download models
 - **Port conflicts**: Change ports in `docker-compose.yml` if needed
-- **Storage issues**: Run `docker compose down -v` to reset volumes
+- **Storage issues**: Check fake-gcs-server logs with `docker-compose logs fake-gcs`
 
 ### Local Python Issues  
-- **API won't start**: Make sure `ollama` container is running first
-- **Upload failures**: Check file types (PDF, TXT, DOCX only)
+- **API won't start**: Make sure `ollama` and `fake-gcs` containers are running
+- **Upload failures**: Check file types (PDF, TXT, DOCX only) and GCS connectivity
 - **Query returns empty**: Upload documents first via `/upload-document`
-- **CUDA errors**: Install CUDA drivers for GPU support
+- **GCS errors**: Ensure `STORAGE_EMULATOR_HOST=http://localhost:4443` is set
 
 ### GKE Issues
-- **Authentication**: Verify service account setup
-- **Pod failures**: Check `kubectl logs` and resource limits
+- **Pod scheduling**: Check zone affinity and node availability
+- **Storage errors**: Verify GCS bucket permissions and Workload Identity
+- **Authentication**: Ensure Workload Identity binding is correct
 - **Vertex AI errors**: Ensure APIs are enabled and billing is active
 - **API timeout**: Check load balancer and service configuration
+
 
 ## Contributing
 

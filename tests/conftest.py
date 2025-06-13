@@ -17,6 +17,10 @@ def sample_config_data():
     return {
         "data_directory": "/path/to/data",
         "output_directory": "/path/to/output",
+        "raw_input_bucket": "test-raw-input",
+        "cleaned_text_bucket": "test-cleaned-text",
+        "embeddings_bucket": "test-embeddings",
+        "project_id": "test-project",
         "embedding_model_name": "sentence-transformers/all-MiniLM-L6-v2",
         "llm_model_name": "llama2",
         "llm_api_url": "http://localhost:11434/api/generate",

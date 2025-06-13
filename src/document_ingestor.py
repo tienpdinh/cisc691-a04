@@ -1,31 +1,36 @@
 import logging
+import tempfile
 from pathlib import Path
 import pdfplumber
 from transformers import AutoTokenizer
+from .gcs_storage import GCSStorage
 
 
 class DocumentIngestor:
     def __init__(self,
                  file_list,
-                 input_dir,
-                 output_dir,
-                 embedding_model_name):
+                 input_bucket,
+                 output_bucket,
+                 embedding_model_name,
+                 project_id=None):
         """
         Initializes the document ingestor.
 
-        :param file_list: List of file paths to process.
-        :param output_dir: Directory to save cleaned text files.
-        :param model_name: Hugging Face tokenizer model for preprocessing.
+        :param file_list: List of file names to process.
+        :param input_bucket: GCS bucket name for input files.
+        :param output_bucket: GCS bucket name for cleaned text files.
+        :param embedding_model_name: Hugging Face tokenizer model for preprocessing.
+        :param project_id: GCP project ID (optional).
         """
         self.file_list = file_list
-        self.input_dir = Path(input_dir)
-        self.output_dir = Path(output_dir)
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.input_bucket = input_bucket
+        self.output_bucket = output_bucket
+        self.gcs_storage = GCSStorage(project_id=project_id)
         self.tokenizer = AutoTokenizer.from_pretrained(embedding_model_name)
 
         self.logger = logging.getLogger(__name__)
-        self.logger.info(f"Initialized DocumentIngestor: input_dir: {self.input_dir}, "
-                         f"output_dir: {self.output_dir}, embedding_model_name: {embedding_model_name}")
+        self.logger.info(f"Initialized DocumentIngestor: input_bucket: {self.input_bucket}, "
+                         f"output_bucket: {self.output_bucket}, embedding_model_name: {embedding_model_name}")
 
     def _extract_text_from_pdf(self, file_path):
         """Extracts text from a PDF file using pdfplumber."""
@@ -59,28 +64,46 @@ class DocumentIngestor:
         return self.tokenizer.convert_tokens_to_string(tokens)
 
     def process_files(self):
-        """Processes the list of files, extracts, cleans, and saves them."""
-        for file_path in self.file_list:
-            file_path = Path(self.input_dir/file_path)
-            if not file_path.exists():
-                self.logger.warning(f"File not found: {file_path}")
+        """Processes the list of files from GCS and saves the cleaned text."""
+        for file_name in self.file_list:
+            self.logger.info(f"Processing file: {file_name}")
+
+            try:
+                # Download file from GCS to temporary location
+                with tempfile.NamedTemporaryFile(suffix=Path(file_name).suffix, delete=False) as temp_file:
+                    self.gcs_storage.download_to_file(
+                        bucket_name=self.input_bucket,
+                        file_path=file_name,
+                        local_path=temp_file.name
+                    )
+                    temp_path = Path(temp_file.name)
+
+                # Extract text based on file type
+                if temp_path.suffix.lower() == ".pdf":
+                    text = self._extract_text_from_pdf(temp_path)
+                elif temp_path.suffix.lower() == ".txt":
+                    text = self._extract_text_from_txt(temp_path)
+                else:
+                    self.logger.warning(f"Unsupported file type: {temp_path.suffix}")
+                    temp_path.unlink()  # Clean up temp file
+                    continue
+
+                # Clean up temp file
+                temp_path.unlink()
+
+                # Clean and save text
+                cleaned_text = self._clean_text(text)
+                if cleaned_text:
+                    output_file_name = f"{Path(file_name).stem}_cleaned.txt"
+                    gcs_path = self.gcs_storage.upload_from_string(
+                        bucket_name=self.output_bucket,
+                        file_path=output_file_name,
+                        content=cleaned_text
+                    )
+                    self.logger.info(f"Saved cleaned text to {gcs_path}")
+                else:
+                    self.logger.warning(f"Skipping {file_name} due to extraction failure.")
+
+            except Exception as e:
+                self.logger.error(f"Error processing file {file_name}: {e}")
                 continue
-
-            self.logger.info(f"Processing file: {file_path}")
-
-            if file_path.suffix.lower() == ".pdf":
-                text = self._extract_text_from_pdf(file_path)
-            elif file_path.suffix.lower() == ".txt":
-                text = self._extract_text_from_txt(file_path)
-            else:
-                self.logger.warning(f"Unsupported file type: {file_path.suffix}")
-                continue
-
-            cleaned_text = self._clean_text(text)
-            if cleaned_text:
-                output_file = self.output_dir / f"{file_path.stem}_cleaned.txt"
-                with open(output_file, "w", encoding="utf-8") as f:
-                    f.write(cleaned_text)
-                self.logger.info(f"Saved cleaned text to {output_file}")
-            else:
-                self.logger.warning(f"Skipping {file_path} due to extraction failure.")

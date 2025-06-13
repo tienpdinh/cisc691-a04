@@ -16,10 +16,6 @@ spec:
         app: rag-api
     spec:
       serviceAccountName: rag-api-sa
-      securityContext:
-        fsGroup: 1000
-        runAsUser: 1000
-        runAsGroup: 1000
       initContainers:
       - name: wait-for-chromadb
         image: busybox:1.35
@@ -39,8 +35,6 @@ spec:
         - name: config-volume
           mountPath: /app/config.json
           subPath: config.json
-        - name: data-volume
-          mountPath: /app/data
         resources:
           requests:
             memory: "1Gi"
@@ -64,6 +58,3 @@ spec:
       - name: config-volume
         configMap:
           name: rag-api-config
-      - name: data-volume
-        persistentVolumeClaim:
-          claimName: rag-data-pvc

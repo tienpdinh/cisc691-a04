@@ -6,7 +6,7 @@ def create_app(config: ConfigManager) -> FastAPI:
     app = FastAPI(
         title="RAG API", 
         description="API for querying the RAG system", 
-        version="1.1.0"
+        version="1.2.0"
     )
     
     # Store config in app state for access in endpoints

@@ -125,11 +125,15 @@ class TestUploadEndpoint:
     @patch('src.api_endpoints.EmbeddingLoader')
     @patch('src.api_endpoints.EmbeddingPreparer')
     @patch('src.api_endpoints.DocumentIngestor')
-    @patch('src.api_endpoints.shutil.copyfileobj')
-    @patch('builtins.open', new_callable=MagicMock)
-    def test_upload_success(self, mock_open, mock_copyfile, mock_ingestor_class, 
+    @patch('src.api_endpoints.GCSStorage')
+    def test_upload_success(self, mock_gcs_storage_class, mock_ingestor_class, 
                            mock_preparer_class, mock_loader_class, client):
         """Test successful file upload."""
+        # Mock GCS storage
+        mock_gcs_storage = Mock()
+        mock_gcs_storage.upload_file.return_value = "gs://test-bucket/test.pdf"
+        mock_gcs_storage_class.return_value = mock_gcs_storage
+        
         # Mock processors
         mock_ingestor = Mock()
         mock_ingestor.process_files = Mock()

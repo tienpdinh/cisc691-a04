@@ -26,7 +26,7 @@ spec:
         command: ['sh', '-c', 'until nc -z chromadb-service 8000; do echo waiting for chromadb; sleep 2; done']
       containers:
       - name: rag-api
-        image: gcr.io/cisc691-a04/rag-api:latest
+        image: gcr.io/cisc691-a04/rag-api:1.1.2
         ports:
         - containerPort: 8000
           name: http

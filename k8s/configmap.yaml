@@ -19,5 +19,6 @@ data:
       "chromadb_port": 8000,
       "collection_name": "rag_documents",
       "retriever_min_score_threshold": "0.5",
-      "log_level": "INFO"
+      "log_level": "INFO",
+      "cors_allowed_origins": ["https://rag.tienpdinh.com"]
     }

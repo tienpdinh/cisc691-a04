@@ -30,7 +30,9 @@ class UploadResponse(BaseModel):
     filename: str
     steps_completed: List[str]
     status: str
+    document_chunks: Optional[int] = None
 
 class HealthResponse(BaseModel):
     status: str
     message: str
+    components: Optional[dict] = None

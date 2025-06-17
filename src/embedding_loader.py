@@ -12,14 +12,25 @@ class EmbeddingLoader:
                  collection_name: str,
                  chromadb_host: str,
                  chromadb_port: int = 8000,
-                 batch_size: int = 16):
+                 batch_size: int = 16,
+                 vectordb_dir: str = None,
+                 store_vectors_locally: bool = False):
 
         self.cleaned_text_file_list = cleaned_text_file_list
         self.cleaned_text_path = Path(cleaned_text_dir)
         self.embeddings_path = Path(embeddings_dir)
         self.collection_name = collection_name
         self.batch_size = batch_size
+        self.store_vectors_locally = store_vectors_locally
         self.logger = logging.getLogger(__name__)
+        
+        # Setup local vector storage if enabled
+        if self.store_vectors_locally and vectordb_dir:
+            self.vectordb_path = Path(vectordb_dir)
+            self.vectordb_path.mkdir(parents=True, exist_ok=True)
+            self.logger.info(f"Local vector storage enabled: {self.vectordb_path}")
+        else:
+            self.vectordb_path = None
 
         # Always use HTTP client for containerized setup
         self.client = chromadb.HttpClient(host=chromadb_host, port=chromadb_port)
@@ -52,6 +63,26 @@ class EmbeddingLoader:
 
         return []
 
+    def _store_vector_locally(self, filename: str, embeddings: List[float], text: str):
+        """Store vector data locally in JSON format."""
+        try:
+            vector_data = {
+                "id": filename,
+                "embeddings": embeddings,
+                "metadata": {
+                    "text": text,
+                    "source": filename,
+                    "collection": self.collection_name
+                }
+            }
+            
+            output_file = self.vectordb_path / f"{Path(filename).stem}_vector.json"
+            with open(output_file, "w", encoding="utf-8") as f:
+                json.dump(vector_data, f, indent=2, ensure_ascii=False)
+                
+        except Exception as e:
+            self.logger.error(f"Error storing vector locally for {filename}: {e}")
+
     def process_files(self):
         """Processes and stores cleaned text and embeddings into ChromaDB."""
         for cleaned_text_file in self.cleaned_text_file_list:
@@ -80,4 +111,9 @@ class EmbeddingLoader:
                 metadatas=[{"text": text, "source": cleaned_text_file}]
             )
 
-            self.logger.info(f"Stored {cleaned_text_file} successfully.")
+            self.logger.info(f"Stored {cleaned_text_file} in ChromaDB successfully.")
+            
+            # Also store locally if enabled
+            if self.store_vectors_locally and self.vectordb_path:
+                self._store_vector_locally(cleaned_text_file, embeddings, text)
+                self.logger.info(f"Stored {cleaned_text_file} locally successfully.")

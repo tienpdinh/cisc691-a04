@@ -7,10 +7,7 @@ from src.document_ingestor import DocumentIngestor
 
 class TestDocumentIngestor:
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_init(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    def test_init(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -27,12 +24,9 @@ class TestDocumentIngestor:
             assert ingestor.input_dir == input_dir
             assert ingestor.output_dir == output_dir
             assert output_dir.exists()
-            mock_tokenizer_class.from_pretrained.assert_called_once_with("test-model")
+            # AutoTokenizer no longer used for performance
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_extract_text_from_txt_success(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    def test_extract_text_from_txt_success(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -53,10 +47,8 @@ class TestDocumentIngestor:
             result = ingestor._extract_text_from_txt(test_file)
             assert result == test_content
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_extract_text_from_txt_file_not_found(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_extract_text_from_txt_file_not_found(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -73,10 +65,8 @@ class TestDocumentIngestor:
             assert result is None
     
     @patch('src.document_ingestor.pdfplumber')
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_extract_text_from_pdf_success(self, mock_tokenizer_class, mock_pdfplumber):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_extract_text_from_pdf_success(self, mock_pdfplumber):
         
         mock_page = Mock()
         mock_page.extract_text.return_value = "PDF content"
@@ -98,12 +88,8 @@ class TestDocumentIngestor:
             result = ingestor._extract_text_from_pdf("test.pdf")
             assert result == "PDF content"
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_clean_text(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer.tokenize.return_value = ["token1", "token2"]
-        mock_tokenizer.convert_tokens_to_string.return_value = "cleaned text"
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_clean_text(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -117,13 +103,10 @@ class TestDocumentIngestor:
             )
             
             result = ingestor._clean_text("text\nwith\nnewlines  ")
-            assert result == "cleaned text"
-            mock_tokenizer.tokenize.assert_called_once_with("text with newlines")
+            assert result == "text with newlines"
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_clean_text_empty_input(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_clean_text_empty_input(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -139,12 +122,8 @@ class TestDocumentIngestor:
             assert ingestor._clean_text("") is None
             assert ingestor._clean_text(None) is None
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_process_files_txt_success(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer.tokenize.return_value = ["test", "tokens"]
-        mock_tokenizer.convert_tokens_to_string.return_value = "cleaned content"
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_process_files_txt_success(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"
@@ -165,12 +144,11 @@ class TestDocumentIngestor:
             
             output_file = output_dir / "test_cleaned.txt"
             assert output_file.exists()
-            assert output_file.read_text(encoding="utf-8") == "cleaned content"
+            content = output_file.read_text(encoding="utf-8")
+            assert "Original content" in content
     
-    @patch('src.document_ingestor.AutoTokenizer')
-    def test_process_files_unsupported_format(self, mock_tokenizer_class):
-        mock_tokenizer = Mock()
-        mock_tokenizer_class.from_pretrained.return_value = mock_tokenizer
+    
+    def test_process_files_unsupported_format(self):
         
         with tempfile.TemporaryDirectory() as temp_dir:
             input_dir = Path(temp_dir) / "input"

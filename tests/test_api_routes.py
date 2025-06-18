@@ -48,18 +48,16 @@ class TestHealthEndpoint:
         assert response.status_code == 200
         data = response.json()
         assert data["status"] == "healthy"
-        assert data["message"] == "RAG API is running"
+        assert data["message"] == "LangChain RAG API is running"
 
 class TestQueryEndpoint:
-    @patch('src.api_endpoints.LLMClient')
-    @patch('src.api_endpoints.ChromaDBRetriever')
-    @patch('src.api_endpoints.RAGQueryProcessor')
-    def test_query_success(self, mock_processor_class, mock_retriever_class, mock_llm_class, client):
+    @patch('src.api_endpoints._get_or_create_rag_processor')
+    def test_query_success(self, mock_get_processor, client):
         """Test successful query."""
-        # Mock the processor
+        # Mock the RAG processor
         mock_processor = Mock()
-        mock_processor.query.return_value = "Test response"
-        mock_processor_class.return_value = mock_processor
+        mock_processor.query.return_value = {"response": "Test response"}
+        mock_get_processor.return_value = mock_processor
         
         response = client.post("/query", json={
             "query": "What is AI?",
@@ -78,20 +76,19 @@ class TestQueryEndpoint:
         assert response.status_code == 422  # Validation error
 
 class TestRetrieveEndpoint:
-    @patch('src.api_endpoints.ChromaDBRetriever')
-    def test_retrieve_success(self, mock_retriever_class, client):
+    @patch('src.api_endpoints._get_or_create_rag_processor')
+    def test_retrieve_success(self, mock_get_processor, client):
         """Test successful retrieve."""
-        # Mock the retriever
-        mock_retriever = Mock()
-        mock_retriever.query.return_value = [
+        # Mock the RAG processor
+        mock_processor = Mock()
+        mock_processor.retrieve_documents.return_value = [
             {
-                "id": "doc_1",
-                "score": 0.85,
-                "text": "Sample text",
-                "context": "Sample context"
+                "content": "Sample text",
+                "metadata": {"source": "doc_1"},
+                "score": 0.85
             }
         ]
-        mock_retriever_class.return_value = mock_retriever
+        mock_get_processor.return_value = mock_processor
         
         response = client.post("/retrieve", json={
             "query": "test query",
@@ -105,12 +102,12 @@ class TestRetrieveEndpoint:
         assert len(data["results"]) == 1
         assert data["results"][0]["id"] == "doc_1"
 
-    @patch('src.api_endpoints.ChromaDBRetriever')
-    def test_retrieve_no_results(self, mock_retriever_class, client):
+    @patch('src.api_endpoints._get_or_create_rag_processor')
+    def test_retrieve_no_results(self, mock_get_processor, client):
         """Test retrieve with no results."""
-        mock_retriever = Mock()
-        mock_retriever.query.return_value = []
-        mock_retriever_class.return_value = mock_retriever
+        mock_processor = Mock()
+        mock_processor.retrieve_documents.return_value = []
+        mock_get_processor.return_value = mock_processor
         
         response = client.post("/retrieve", json={
             "query": "nonexistent query"
@@ -122,26 +119,22 @@ class TestRetrieveEndpoint:
         assert len(data["results"]) == 0
 
 class TestUploadEndpoint:
-    @patch('src.api_endpoints.EmbeddingLoader')
-    @patch('src.api_endpoints.EmbeddingPreparer')
-    @patch('src.api_endpoints.DocumentIngestor')
+    @patch('src.api_endpoints.LangChainDocumentProcessor')
+    @patch('src.api_endpoints._get_or_create_vector_store')
     @patch('src.api_endpoints.shutil.copyfileobj')
     @patch('builtins.open', new_callable=MagicMock)
-    def test_upload_success(self, mock_open, mock_copyfile, mock_ingestor_class, 
-                           mock_preparer_class, mock_loader_class, client):
+    def test_upload_success(self, mock_open, mock_copyfile, mock_get_store, mock_processor_class, client):
         """Test successful file upload."""
-        # Mock processors
-        mock_ingestor = Mock()
-        mock_ingestor.process_files = Mock()
-        mock_ingestor_class.return_value = mock_ingestor
+        # Mock document processor
+        mock_processor = Mock()
+        mock_documents = [Mock(), Mock(), Mock()]  # 3 mock documents
+        mock_processor.process_files.return_value = mock_documents
+        mock_processor_class.return_value = mock_processor
         
-        mock_preparer = Mock()
-        mock_preparer.process_files = Mock()
-        mock_preparer_class.return_value = mock_preparer
-        
-        mock_loader = Mock()
-        mock_loader.process_files = Mock()
-        mock_loader_class.return_value = mock_loader
+        # Mock vector store
+        mock_store = Mock()
+        mock_store.add_documents.return_value = ["id1", "id2", "id3"]
+        mock_get_store.return_value = mock_store
         
         # Create test file
         test_file_content = b"Test PDF content"
@@ -154,10 +147,11 @@ class TestUploadEndpoint:
         
         assert response.status_code == 200
         data = response.json()
-        assert data["message"] == "Document processed successfully"
+        assert data["message"] == "Document processed successfully with LangChain"
         assert data["filename"] == "test.pdf"
-        assert data["steps_completed"] == ["ingest", "embed", "store"]
+        assert data["steps_completed"] == ["langchain_document_processing", "langchain_vector_storage"]
         assert data["status"] == "success"
+        assert data["document_chunks"] == 3
 
     def test_upload_invalid_file_type(self, client):
         """Test upload with invalid file type."""

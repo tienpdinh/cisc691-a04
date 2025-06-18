@@ -35,6 +35,42 @@ The system implements modern RAG techniques using LangChain:
 - **Flexible Models**: Support for both local (Ollama) and cloud (Vertex AI) LLMs via LangChain
 - **Citation Support**: Links responses to source documents with metadata
 
+## Architecture
+
+### Local Deployment (Docker)
+<div style="background-color: white; padding: 20px;">
+    <img src="images/local_architecture.png" alt="Local Deployment Architecture" width="100%">
+</div>
+<br/>
+
+The local deployment architecture consists of:
+- RAG API service container with FastAPI
+- ChromaDB container for vector storage
+- Ollama container for LLM inference
+- Mounted volumes for persistent storage
+- Docker network for container communication
+
+### GCP Deployment
+<div style="background-color: white; padding: 20px;">
+    <img src="images/gcp_architecture.png" alt="GCP Deployment Architecture" width="100%">
+</div>
+<br/>
+
+The GCP deployment architecture includes:
+- GKE (Google Kubernetes Engine) for container orchestration
+- Multiple service instances for scalability
+- ChromaDB for vector storage
+- Integration with external services and APIs
+- Managed persistence and logging
+
+## Features
+
+- **Document Upload**: Supports PDF, DOCX, and TXT formats
+- **Semantic Search**: Find documents by content, not just keywords
+- **Chunked Retrieval**: Get relevant sections of documents
+- **Multi-Language Support**: Query and retrieve documents in various languages
+- **API Key Security**: Protect your API with key-based access
+- **Health Check Endpoint**: Monitor API status and uptime
 
 ## Prerequisites
 

@@ -113,3 +113,37 @@ class TestConfigManager:
             assert result == config_data
         finally:
             Path(config_file).unlink()
+
+    def test_cors_allowed_origins_config(self):
+        """Test that cors_allowed_origins can be configured and retrieved."""
+        cors_origins = ["http://localhost:3000", "http://localhost:8080"]
+        config_data = {
+            "cors_allowed_origins": cors_origins,
+            "other_setting": "value"
+        }
+        
+        with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as f:
+            json.dump(config_data, f)
+            config_file = f.name
+        
+        try:
+            config_manager = ConfigManager(config_file)
+            result = config_manager.get("cors_allowed_origins")
+            assert result == cors_origins
+        finally:
+            Path(config_file).unlink()
+
+    def test_cors_allowed_origins_default(self):
+        """Test that cors_allowed_origins returns default when not configured."""
+        config_data = {"other_setting": "value"}
+        
+        with tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.json') as f:
+            json.dump(config_data, f)
+            config_file = f.name
+        
+        try:
+            config_manager = ConfigManager(config_file)
+            result = config_manager.get("cors_allowed_origins", ["*"])
+            assert result == ["*"]
+        finally:
+            Path(config_file).unlink()

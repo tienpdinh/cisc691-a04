@@ -10,6 +10,7 @@
   "cleaned_text_directory": "data/cleaned_text",
   "embeddings_directory": "data/embeddings",
   "vectordb_directory": "data/vectordb",
+  "cors_allowed_origins": ["http://localhost:3000", "http://localhost:8080"],
   "chromadb_host": "localhost",
   "chromadb_port": 8000,
   "store_vectors_locally": true,

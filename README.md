@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/tienpdinh/cisc691-a04/graph/badge.svg?token=Oot2JmamNl)](https://codecov.io/gh/tienpdinh/cisc691-a04)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
-A modern REST API for Retrieval-Augmented Generation that processes documents and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI). Built with FastAPI for high performance and easy integration.
+A modern REST API for Retrieval-Augmented Generation powered by LangChain that processes various document types and answers questions using either local LLMs (Ollama) or cloud AI services (Vertex AI). Built with FastAPI for high performance and easy integration.
 
 ## 🚀 Deployment Options
 
@@ -20,19 +20,20 @@ A modern REST API for Retrieval-Augmented Generation that processes documents an
 
 ## Document Processing
 
-The API supports various document types and processing features:
-- **Supported Formats**: PDF, TXT, DOCX
-- **Processing**: Automatic text extraction and chunking
-- **Storage**: Vector embeddings in ChromaDB
-- **Retrieval**: Semantic search with relevance ranking
+The API leverages LangChain for robust document processing:
+- **Supported Formats**: PDF, TXT, DOCX (via LangChain document loaders)
+- **Processing**: LangChain text splitters with configurable chunking
+- **Storage**: Vector embeddings in ChromaDB via LangChain vector stores
+- **Retrieval**: Semantic search with LangChain similarity algorithms
 
 ## RAG Capabilities
 
-The system implements modern RAG techniques:
-- **Contextual Retrieval**: Finds relevant document chunks for queries
-- **Knowledge Integration**: Combines retrieved context with LLM responses
-- **Flexible Models**: Support for both local (Ollama) and cloud (Vertex AI) LLMs
-- **Citation Support**: Links responses to source documents
+The system implements modern RAG techniques using LangChain:
+- **LangChain Integration**: Full RAG pipeline built with LangChain components
+- **Contextual Retrieval**: LangChain vector stores find relevant document chunks
+- **Knowledge Integration**: LangChain chains combine retrieved context with LLM responses
+- **Flexible Models**: Support for both local (Ollama) and cloud (Vertex AI) LLMs via LangChain
+- **Citation Support**: Links responses to source documents with metadata
 
 
 ## Prerequisites

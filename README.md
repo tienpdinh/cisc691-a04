@@ -245,3 +245,44 @@ open htmlcov/index.html  # View detailed coverage report
 1. Run tests: `pytest`
 2. Check coverage: Coverage reports available in CI
 3. Follow code style: Automated linting in CI
+
+# RAG API Service
+
+A Retrieval-Augmented Generation (RAG) API service built with FastAPI, LangChain, and ChromaDB.
+
+## Architecture
+
+### Local Deployment (Docker)
+<div style="background-color: white; padding: 20px;">
+    <img src="images/local_architecture.png" alt="Local Deployment Architecture" width="100%">
+</div>
+<br/>
+
+The local deployment architecture consists of:
+- RAG API service container with FastAPI
+- ChromaDB container for vector storage
+- Ollama container for LLM inference
+- Mounted volumes for persistent storage
+- Docker network for container communication
+
+### GCP Deployment
+<div style="background-color: white; padding: 20px;">
+    <img src="images/gcp_architecture.png" alt="GCP Deployment Architecture" width="100%">
+</div>
+<br/>
+
+The GCP deployment architecture includes:
+- GKE (Google Kubernetes Engine) for container orchestration
+- Multiple service instances for scalability
+- ChromaDB for vector storage
+- Integration with external services and APIs
+- Managed persistence and logging
+
+## Features
+
+- **Document Upload**: Supports PDF, DOCX, and TXT formats
+- **Semantic Search**: Find documents by content, not just keywords
+- **Chunked Retrieval**: Get relevant sections of documents
+- **Multi-Language Support**: Query and retrieve documents in various languages
+- **API Key Security**: Protect your API with key-based access
+- **Health Check Endpoint**: Monitor API status and uptime

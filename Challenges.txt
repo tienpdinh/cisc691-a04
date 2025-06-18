@@ -1,9 +1,0 @@
-Challenges faced:
-Local:
-- Ollama container - Ollama model had to be downloaded after every docker compose. 
-- Tried various versions of ollama on mac m2 air using docker, but always had memory constraints.
-Cloud:
-
-
-Workaround:
-Executed llama3.2 by ollama on my local, implemented the API locally, implemented chromadb on container.

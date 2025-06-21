@@ -46,6 +46,7 @@ The system implements modern RAG techniques using LangChain:
 The local deployment architecture consists of:
 - RAG API service container with FastAPI
 - ChromaDB container for vector storage
+- Redis container for high-performance caching
 - Ollama container for LLM inference
 - Mounted volumes for persistent storage
 - Docker network for container communication
@@ -69,6 +70,7 @@ The GCP deployment architecture includes:
 - **Semantic Search**: Find documents by content, not just keywords
 - **Chunked Retrieval**: Get relevant sections of documents
 - **Multi-Language Support**: Query and retrieve documents in various languages
+- **Redis Caching**: High-performance caching for faster response times
 - **API Key Security**: Protect your API with key-based access
 - **Health Check Endpoint**: Monitor API status and uptime
 
@@ -96,6 +98,7 @@ docker compose up -d
 **Service endpoints:**
 - RAG API: http://localhost:8001 (with docs at http://localhost:8001/docs)
 - ChromaDB: http://localhost:8000
+- Redis: http://localhost:6380
 - Ollama: http://localhost:11434
 
 
@@ -136,11 +139,24 @@ curl -X POST "http://localhost:8000/upload-document" \
 ```
 
 ### Query Documents
+
+The system comes with pre-loaded retail e-commerce sales data covering Q1-Q4 for years 2023-2025. You can ask questions about:
+
 ```bash
-# Ask questions about your documents
+# Compare quarterly performance
 curl -X POST "http://localhost:8001/query" \
   -H "Content-Type: application/json" \
-  -d '{"query": "What is this document about?", "use_rag": true}'
+  -d '{"query": "Compare Q4 2023 and Q4 2024 e-commerce performance", "use_rag": true}'
+
+# Ask about specific quarters
+curl -X POST "http://localhost:8001/query" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What were the key trends in Q3 2024 retail sales?", "use_rag": true}'
+
+# Year-over-year analysis
+curl -X POST "http://localhost:8001/query" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "How did 2024 annual sales compare to 2023?", "use_rag": true}'
 ```
 
 ### Retrieve Relevant Chunks
@@ -148,13 +164,68 @@ curl -X POST "http://localhost:8001/query" \
 # Get relevant document chunks for a query
 curl -X POST "http://localhost:8001/retrieve" \
   -H "Content-Type: application/json" \
-  -d '{"query": "artificial intelligence", "top_k": 3}'
+  -d '{"query": "retail sales performance Q2 2024", "top_k": 3}'
 ```
 
 ### Health Check
 ```bash
-# Check API status
+# Check API status (includes cache statistics)
 curl "http://localhost:8001/health"
+```
+
+## Redis Caching
+
+The API implements intelligent Redis caching to dramatically improve response times for repeated queries. The caching system operates at multiple levels:
+
+- **Query Response Caching**: Complete RAG pipeline responses (15 min TTL)
+- **LLM Response Caching**: Expensive LLM API calls (1 hour TTL)
+- **Document Retrieval Caching**: Vector search results (30 min TTL)
+- **Embedding Caching**: Document embeddings (2 hours TTL)
+
+### Cache Performance Demo
+
+Test the caching system with these commands to see the performance improvement:
+
+```bash
+# 1. Clear Redis cache to start fresh
+redis-cli -h localhost -p 6380 FLUSHALL
+
+# 2. First query - will be slow (no cache)
+time curl -X POST "http://localhost:8001/query" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What were the Q1 2024 retail sales trends?", "use_rag": false}'
+
+# 3. Check that cache keys were created
+redis-cli -h localhost -p 6380 KEYS "rag:*"
+
+# 4. Same query again - will be much faster (cached)
+time curl -X POST "http://localhost:8001/query" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What were the Q1 2024 retail sales trends?", "use_rag": false}'
+
+# 5. View cache statistics
+curl "http://localhost:8001/health" | jq '.components.cache.stats'
+```
+
+**Expected Results:**
+- First query: ~2-5 seconds (depending on LLM response time)
+- Cached query: ~50-200ms (90%+ faster!)
+- Cache hit rate increases with repeated queries
+
+### Cache Monitoring
+
+```bash
+# Monitor cache performance
+curl "http://localhost:8001/health" | jq '.components.cache'
+
+# View all cached keys
+redis-cli -h localhost -p 6380 KEYS "rag:*"
+
+# Check Redis memory usage
+redis-cli -h localhost -p 6380 INFO memory | grep used_memory_human
+
+# View cache statistics
+redis-cli -h localhost -p 6380 INFO stats | grep keyspace
 ```
 
 ## API Endpoints
@@ -194,12 +265,14 @@ This RAG API uses a **microservices architecture** with separate containers for 
 ### Local Development (Docker Compose)
 - **RAG API**: FastAPI server handling document processing and queries
 - **ChromaDB**: Vector database service for embeddings storage
+- **Redis**: High-performance caching layer for query responses
 - **Ollama**: Local LLM service with `llama3.1:8b`
 - **Communication**: All services communicate via HTTP APIs
 
 ### Production (GKE)
 - **RAG API**: Load-balanced FastAPI pods with auto-scaling
 - **ChromaDB**: Dedicated service with persistent storage
+- **Redis**: Distributed caching layer for improved performance
 - **Vertex AI**: Google's managed LLM service (`gemini-1.5-flash`)
 - **Communication**: Kubernetes service mesh with internal networking
 
@@ -232,7 +305,7 @@ open htmlcov/index.html  # View detailed coverage report
 ## Project Structure
 
 ```
-├── files/                     # Sample documents
+├── files/                     # Retail e-commerce sales data (2023-2025, Q1-Q4)
 ├── src/                       # Source code
 │   ├── api_app.py             # FastAPI application setup
 │   ├── api_routes.py          # API route definitions

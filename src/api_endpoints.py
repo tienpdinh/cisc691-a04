@@ -7,6 +7,7 @@ from .api_models import QueryRequest, QueryResponse, UploadResponse, HealthRespo
 from .langchain_document_processor import LangChainDocumentProcessor
 from .langchain_vector_store import LangChainVectorStore
 from .langchain_rag_processor import LangChainRAGProcessor
+from .cache_manager import get_cache_manager
 
 # Global variables to store LangChain components
 _vector_store = None
@@ -18,12 +19,16 @@ def _get_or_create_vector_store(config) -> LangChainVectorStore:
     global _vector_store
     
     if _vector_store is None:
+        # Initialize cache manager
+        cache_manager = get_cache_manager(config)
+        
         _vector_store = LangChainVectorStore(
             collection_name=config.get("collection_name"),
             embedding_model_name=config.get("embedding_model_name"),
             chromadb_host=config.get("chromadb_host"),
             chromadb_port=config.get("chromadb_port", 8000),
-            persist_directory=config.get("vectordb_directory")
+            persist_directory=config.get("vectordb_directory"),
+            config=config
         )
     
     return _vector_store
@@ -41,7 +46,8 @@ def _get_or_create_rag_processor(config) -> LangChainRAGProcessor:
             llm_provider=config.get("llm_provider", "ollama"),
             llm_model_name=config.get("llm_model_name"),
             llm_api_url=config.get("llm_api_url"),
-            openai_api_key=config.get("openai_api_key")
+            openai_api_key=config.get("openai_api_key"),
+            config=config
         )
     
     return _rag_processor
@@ -57,8 +63,8 @@ async def query_rag(request: QueryRequest, app_request: Request) -> QueryRespons
         # Get RAG processor
         rag_processor = _get_or_create_rag_processor(config)
         
-        # Process query
-        result = rag_processor.query(
+        # Process query (now async)
+        result = await rag_processor.query(
             question=request.query,
             use_rag=request.use_rag
         )
@@ -153,8 +159,8 @@ async def retrieve_chunks(request: RetrieveRequest, app_request: Request) -> Ret
         # Get RAG processor
         rag_processor = _get_or_create_rag_processor(config)
         
-        # Retrieve documents
-        results = rag_processor.retrieve_documents(
+        # Retrieve documents (now async)
+        results = await rag_processor.retrieve_documents(
             query=request.query,
             k=request.top_k,
             score_threshold=float(config.get("retriever_min_score_threshold", 0.5))
@@ -198,8 +204,18 @@ async def health_check() -> HealthResponse:
         if _vector_store is not None:
             try:
                 collection_info = _vector_store.get_collection_info()
-            except:
+            except Exception:
                 collection_info = {"error": "Failed to get collection info"}
+        
+        # Get cache health status
+        cache_status = {}
+        if _rag_processor and _rag_processor.cache_manager:
+            try:
+                cache_status = await _rag_processor.cache_manager.health_check()
+            except Exception:
+                cache_status = {"status": "error", "message": "Cache health check failed"}
+        else:
+            cache_status = {"status": "disabled", "message": "Cache not configured"}
         
         return HealthResponse(
             status="healthy",
@@ -207,7 +223,8 @@ async def health_check() -> HealthResponse:
             components={
                 "vector_store": vector_store_status,
                 "rag_processor": rag_processor_status,
-                "collection_info": collection_info
+                "collection_info": collection_info,
+                "cache": cache_status
             }
         )
         

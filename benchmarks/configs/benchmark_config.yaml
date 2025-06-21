@@ -1,0 +1,32 @@
+# Benchmark Configuration File
+# Customize these settings for your specific benchmarking needs
+
+latency:
+  concurrent_users: [1]
+  requests_per_user: 1
+  test_queries:
+    - "What were the retail e-commerce sales trends in Q1 2024?"
+    - "How did Q4 2023 retail sales compare to Q4 2024?"
+
+accuracy:
+  top_k_values: [1, 3, 5, 10]
+  ground_truth_file: "benchmarks/data/ground_truth.json"
+  semantic_similarity_threshold: 0.7
+
+quality:
+  test_cases_file: "benchmarks/data/quality_test_cases.json"
+  evaluation_metrics:
+    - "rouge"
+    - "bert_score" 
+    - "semantic_similarity"
+    - "coherence"
+    - "relevance"
+    - "factual_accuracy"
+  use_llm_judge: true
+
+comparison:
+  test_queries_file: "benchmarks/data/comparison_queries.json"
+  include_latency_comparison: true
+  quality_weight: 0.6
+  relevance_weight: 0.3
+  factual_accuracy_weight: 0.1

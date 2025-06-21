@@ -1,0 +1,39 @@
+[
+  {
+    "query": "What were the retail e-commerce sales trends in Q1 2024?",
+    "relevant_doc_ids": [
+      "doc_0",
+      "doc_1"
+    ],
+    "relevant_content": [
+      "Q1 2024 retail e-commerce sales showed significant growth compared to previous quarters.",
+      "Key metrics include total revenue, conversion rates, and customer acquisition costs."
+    ],
+    "query_intent": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "query": "How did Q4 2023 retail sales compare to Q4 2024?",
+    "relevant_doc_ids": [
+      "doc_2",
+      "doc_3"
+    ],
+    "relevant_content": [
+      "Q4 2024 retail sales showed a 15% increase compared to Q4 2023.",
+      "Holiday season performance was particularly strong with enhanced customer engagement."
+    ],
+    "query_intent": "analytical",
+    "difficulty": "medium"
+  },
+  {
+    "query": "What are the key metrics from the Q2 2024 e-commerce report?",
+    "relevant_doc_ids": [
+      "doc_4"
+    ],
+    "relevant_content": [
+      "Q2 2024 e-commerce report highlights strong conversion rates and customer retention metrics."
+    ],
+    "query_intent": "technical",
+    "difficulty": "hard"
+  }
+]

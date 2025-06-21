@@ -1,0 +1,15 @@
+{
+  "endpoint": "/query",
+  "request_count": 15,
+  "mean_latency": 59.08237646399987,
+  "median_latency": 60.32642979200318,
+  "p95_latency": 60.431231571199895,
+  "p99_latency": 60.45026338064025,
+  "min_latency": 41.37271658299869,
+  "max_latency": 60.45502133300033,
+  "throughput_rps": 0.016529754862445466,
+  "total_time": 60.496964917001605,
+  "success_rate": 6.666666666666667,
+  "error_count": 14,
+  "timestamp": "2025-06-19T22:43:43.387798"
+}

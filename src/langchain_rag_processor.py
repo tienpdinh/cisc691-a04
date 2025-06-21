@@ -1,5 +1,7 @@
 import logging
 import os
+import hashlib
+import json
 from typing import Optional, Dict, Any, List, Tuple
 from langchain.schema import Document
 from langchain_core.prompts import ChatPromptTemplate
@@ -8,6 +10,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_ollama import OllamaLLM
 from langchain_openai import ChatOpenAI
 from .langchain_vector_store import LangChainVectorStore
+from .cache_manager import get_cache_manager
 
 
 class LangChainRAGProcessor:
@@ -22,7 +25,8 @@ class LangChainRAGProcessor:
                  llm_model_name: str = "llama3.2",
                  llm_api_url: Optional[str] = None,
                  openai_api_key: Optional[str] = None,
-                 max_context_length: int = 4000):
+                 max_context_length: int = 4000,
+                 config: Optional[Dict[str, Any]] = None):
         """
         Initialize the LangChain RAG processor.
         
@@ -32,13 +36,18 @@ class LangChainRAGProcessor:
         :param llm_api_url: API URL for Ollama
         :param openai_api_key: OpenAI API key
         :param max_context_length: Maximum context length for LLM
+        :param config: Configuration dictionary for caching
         """
         self.vector_store = vector_store
         self.llm_provider = llm_provider
         self.llm_model_name = llm_model_name
         self.max_context_length = max_context_length
+        self.config = config or {}
         
         self.logger = logging.getLogger(__name__)
+        
+        # Initialize cache manager
+        self.cache_manager = get_cache_manager(self.config) if self.config else None
         
         # Initialize LLM
         self._initialize_llm(llm_api_url, openai_api_key)
@@ -133,19 +142,34 @@ Answer:""")
         
         self.logger.info("Created LangChain RAG processing chain")
     
-    def query(self, question: str, use_rag: bool = True) -> dict:
+    async def query(self, question: str, use_rag: bool = True) -> dict:
         """
-        Process a query using RAG or direct LLM.
+        Process a query using RAG or direct LLM with caching.
         
         :param question: User question
         :param use_rag: Whether to use RAG (retrieve context) or direct LLM
         :return: Dictionary with response and metadata
         """
+        # Check cache first
+        cache_key = self._generate_query_cache_key(question, use_rag)
+        if self.cache_manager:
+            cached_response = await self.cache_manager.get(cache_key, 'query_responses')
+            if cached_response:
+                self.logger.debug(f"Cache hit for query: {question[:50]}...")
+                return cached_response
+
         try:
             if use_rag:
-                return self._query_with_rag(question)
+                response = await self._query_with_rag(question)
             else:
-                return self._query_without_rag(question)
+                response = await self._query_without_rag(question)
+
+            # Cache the response if successful
+            if self.cache_manager and not response.get('error'):
+                await self.cache_manager.set(cache_key, response, 'query_responses')
+                self.logger.debug(f"Cached query response for: {question[:50]}...")
+
+            return response
                 
         except Exception as e:
             self.logger.error(f"Error processing query: {e}")
@@ -155,13 +179,23 @@ Answer:""")
                 "retrieved_docs": [],
                 "error": str(e)
             }
+
+    def _generate_query_cache_key(self, question: str, use_rag: bool) -> str:
+        """Generate cache key for query responses."""
+        key_data = {
+            'question': question,
+            'use_rag': use_rag,
+            'model': self.llm_model_name,
+            'provider': self.llm_provider
+        }
+        return f"query:{hashlib.sha256(json.dumps(key_data, sort_keys=True).encode()).hexdigest()[:16]}"
     
-    def _query_with_rag(self, question: str) -> dict:
+    async def _query_with_rag(self, question: str) -> dict:
         """Process query with RAG (retrieval + generation)."""
         self.logger.info("Processing query with RAG")
         
-        # Retrieve relevant documents
-        retrieved_docs = self.vector_store.similarity_search_with_scores(question, k=4)
+        # Retrieve relevant documents (now async)
+        retrieved_docs = await self.vector_store.similarity_search_with_scores(question, k=4)
         
         if not retrieved_docs:
             self.logger.warning("No relevant documents found")
@@ -198,7 +232,7 @@ Answer:""")
             "context_length": len(context)
         }
     
-    def _query_without_rag(self, question: str) -> dict:
+    async def _query_without_rag(self, question: str) -> dict:
         """Process query without RAG (direct LLM)."""
         self.logger.info("Processing query without RAG")
         
@@ -239,7 +273,7 @@ Answer:""")
             "scores": []
         }
     
-    def retrieve_documents(self, query: str, k: int = 4, score_threshold: Optional[float] = None) -> List[dict]:
+    async def retrieve_documents(self, query: str, k: int = 4, score_threshold: Optional[float] = None) -> List[dict]:
         """
         Retrieve relevant documents for a query.
         
@@ -249,7 +283,7 @@ Answer:""")
         :return: List of document dictionaries with content and metadata
         """
         try:
-            docs_and_scores = self.vector_store.similarity_search_with_scores(query, k=k)
+            docs_and_scores = await self.vector_store.similarity_search_with_scores(query, k=k)
             
             # Filter by score threshold if provided
             if score_threshold is not None:

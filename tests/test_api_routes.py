@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch, MagicMock, AsyncMock
 from fastapi.testclient import TestClient
 from fastapi import FastAPI
 import io
@@ -56,7 +56,7 @@ class TestQueryEndpoint:
         """Test successful query."""
         # Mock the RAG processor
         mock_processor = Mock()
-        mock_processor.query.return_value = {"response": "Test response"}
+        mock_processor.query = AsyncMock(return_value={"response": "Test response"})
         mock_get_processor.return_value = mock_processor
         
         response = client.post("/query", json={
@@ -81,13 +81,13 @@ class TestRetrieveEndpoint:
         """Test successful retrieve."""
         # Mock the RAG processor
         mock_processor = Mock()
-        mock_processor.retrieve_documents.return_value = [
+        mock_processor.retrieve_documents = AsyncMock(return_value=[
             {
                 "content": "Sample text",
                 "metadata": {"source": "doc_1"},
                 "score": 0.85
             }
-        ]
+        ])
         mock_get_processor.return_value = mock_processor
         
         response = client.post("/retrieve", json={
@@ -106,7 +106,7 @@ class TestRetrieveEndpoint:
     def test_retrieve_no_results(self, mock_get_processor, client):
         """Test retrieve with no results."""
         mock_processor = Mock()
-        mock_processor.retrieve_documents.return_value = []
+        mock_processor.retrieve_documents = AsyncMock(return_value=[])
         mock_get_processor.return_value = mock_processor
         
         response = client.post("/retrieve", json={

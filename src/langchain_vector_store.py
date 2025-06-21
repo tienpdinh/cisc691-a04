@@ -1,9 +1,12 @@
 import logging
+import hashlib
+import json
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from langchain.schema import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
+from .cache_manager import get_cache_manager
 
 
 class LangChainVectorStore:
@@ -17,7 +20,8 @@ class LangChainVectorStore:
                  embedding_model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
                  chromadb_host: str = "localhost",
                  chromadb_port: int = 8000,
-                 persist_directory: Optional[str] = None):
+                 persist_directory: Optional[str] = None,
+                 config: Optional[Dict[str, Any]] = None):
         """
         Initialize the LangChain vector store.
         
@@ -26,13 +30,18 @@ class LangChainVectorStore:
         :param chromadb_host: ChromaDB server host
         :param chromadb_port: ChromaDB server port
         :param persist_directory: Directory for local persistence
+        :param config: Configuration dictionary for caching
         """
         self.collection_name = collection_name
         self.chromadb_host = chromadb_host
         self.chromadb_port = chromadb_port
         self.persist_directory = persist_directory
+        self.config = config or {}
         
         self.logger = logging.getLogger(__name__)
+        
+        # Initialize cache manager
+        self.cache_manager = get_cache_manager(self.config) if self.config else None
         
         # Initialize LangChain embeddings
         self.embeddings = HuggingFaceEmbeddings(
@@ -96,18 +105,28 @@ class LangChainVectorStore:
             self.logger.error(f"Error adding documents to vector store: {e}")
             return []
     
-    def similarity_search(self, 
-                         query: str, 
-                         k: int = 4,
-                         score_threshold: Optional[float] = None) -> List[Document]:
+    async def similarity_search(self, 
+                               query: str, 
+                               k: int = 4,
+                               score_threshold: Optional[float] = None) -> List[Document]:
         """
-        Perform similarity search for relevant documents.
+        Perform similarity search for relevant documents with caching.
         
         :param query: Search query
         :param k: Number of documents to return
         :param score_threshold: Minimum similarity score threshold
         :return: List of relevant documents
         """
+        # Check cache first
+        cache_key = self._generate_search_cache_key(query, k, score_threshold)
+        if self.cache_manager:
+            cached_docs = await self.cache_manager.get(cache_key, 'document_retrieval')
+            if cached_docs:
+                self.logger.debug(f"Cache hit for similarity search: {query[:50]}...")
+                # Convert cached dict back to Document objects
+                return [Document(page_content=doc['page_content'], metadata=doc['metadata']) 
+                       for doc in cached_docs]
+
         try:
             self.logger.info(f"Searching for '{query}' with k={k}")
             
@@ -124,30 +143,77 @@ class LangChainVectorStore:
                 ]
                 
                 self.logger.info(f"Found {len(filtered_docs)} documents above threshold {score_threshold}")
-                return filtered_docs
+                result_docs = filtered_docs
             else:
                 # Regular similarity search
                 docs = self.vector_store.similarity_search(query, k=k)
                 self.logger.info(f"Found {len(docs)} similar documents")
-                return docs
+                result_docs = docs
+
+            # Cache the results
+            if self.cache_manager and result_docs:
+                # Convert Documents to dict for caching
+                cacheable_docs = [
+                    {'page_content': doc.page_content, 'metadata': doc.metadata}
+                    for doc in result_docs
+                ]
+                await self.cache_manager.set(cache_key, cacheable_docs, 'document_retrieval')
+                self.logger.debug(f"Cached similarity search results for: {query[:50]}...")
+
+            return result_docs
                 
         except Exception as e:
             self.logger.error(f"Error during similarity search: {e}")
             return []
+
+    def _generate_search_cache_key(self, query: str, k: int, score_threshold: Optional[float]) -> str:
+        """Generate cache key for similarity search."""
+        key_data = {
+            'query': query,
+            'k': k,
+            'score_threshold': score_threshold,
+            'collection': self.collection_name
+        }
+        return f"search:{hashlib.sha256(json.dumps(key_data, sort_keys=True).encode()).hexdigest()[:16]}"
     
-    def similarity_search_with_scores(self, 
-                                    query: str, 
-                                    k: int = 4) -> List[tuple]:
+    async def similarity_search_with_scores(self, 
+                                          query: str, 
+                                          k: int = 4) -> List[tuple]:
         """
-        Perform similarity search with scores.
+        Perform similarity search with scores and caching.
         
         :param query: Search query
         :param k: Number of documents to return
         :return: List of (document, score) tuples
         """
+        # Check cache first
+        cache_key = self._generate_search_cache_key(query, k, None)
+        if self.cache_manager:
+            cached_results = await self.cache_manager.get(cache_key, 'document_retrieval')
+            if cached_results:
+                self.logger.debug(f"Cache hit for similarity search with scores: {query[:50]}...")
+                # Convert cached dict back to (Document, score) tuples
+                return [(Document(page_content=item['doc']['page_content'], 
+                                metadata=item['doc']['metadata']), 
+                        item['score']) for item in cached_results]
+
         try:
             docs_and_scores = self.vector_store.similarity_search_with_score(query, k=k)
             self.logger.info(f"Found {len(docs_and_scores)} documents with scores")
+            
+            # Cache the results
+            if self.cache_manager and docs_and_scores:
+                # Convert to cacheable format
+                cacheable_results = [
+                    {
+                        'doc': {'page_content': doc.page_content, 'metadata': doc.metadata},
+                        'score': score
+                    }
+                    for doc, score in docs_and_scores
+                ]
+                await self.cache_manager.set(cache_key, cacheable_results, 'document_retrieval')
+                self.logger.debug(f"Cached similarity search with scores for: {query[:50]}...")
+            
             return docs_and_scores
             
         except Exception as e:

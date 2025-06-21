@@ -6,6 +6,7 @@ pdfplumber>=0.9.0
 requests>=2.31.0
 numpy
 pytest>=7.0.0
+pytest-asyncio>=0.21.0
 coverage>=7.0.0
 pytest-cov>=4.0.0
 google-cloud-aiplatform>=1.38.0

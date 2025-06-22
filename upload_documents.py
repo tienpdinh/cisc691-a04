@@ -6,6 +6,8 @@ Uploads all documents from the files/ directory to the RAG API
 to populate ChromaDB with vector embeddings.
 """
 
+from __future__ import annotations
+
 import requests
 import sys
 from pathlib import Path

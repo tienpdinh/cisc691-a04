@@ -5,6 +5,8 @@ Central coordinator for all error analysis components in the RAG system.
 Provides unified interface for error tracking, failure detection, and system health monitoring.
 """
 
+from __future__ import annotations
+
 import logging
 from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta

@@ -6,6 +6,8 @@ Checks if documents are properly ingested into ChromaDB and provides
 detailed information about the current state of the vector database.
 """
 
+from __future__ import annotations
+
 import sys
 from pathlib import Path
 import chromadb

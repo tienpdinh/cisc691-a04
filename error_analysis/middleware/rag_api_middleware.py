@@ -5,6 +5,8 @@ Middleware to integrate error analysis monitoring with the RAG API endpoints.
 Automatically captures errors, tracks performance, and monitors component health.
 """
 
+from __future__ import annotations
+
 import time
 import json
 import traceback

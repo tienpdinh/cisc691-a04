@@ -59,7 +59,7 @@ def generate_test_errors(manager, count=10):
     print(f"\n✅ Successfully generated {min(count, len(test_errors))} test errors")
 
 
-def test_monitoring_components(manager):
+def check_monitoring_components(manager):
     """Test component monitoring functionality."""
     print("\n🔍 TESTING COMPONENT MONITORING")
     print("=" * 50)
@@ -99,7 +99,7 @@ def test_monitoring_components(manager):
         print()
 
 
-def test_error_recovery(manager):
+def check_error_recovery(manager):
     """Test error recovery mechanisms."""
     print("\n🔄 TESTING ERROR RECOVERY")
     print("=" * 50)
@@ -148,7 +148,7 @@ def test_error_recovery(manager):
     print()
 
 
-def test_comprehensive_analysis(manager):
+def check_comprehensive_analysis(manager):
     """Test comprehensive analysis generation."""
     print("\n📊 TESTING COMPREHENSIVE ANALYSIS")
     print("=" * 50)
@@ -214,13 +214,13 @@ def run_full_test(config_path=None):
     generate_test_errors(manager, count=8)
     
     # Test 2: Test monitoring
-    test_monitoring_components(manager)
+    check_monitoring_components(manager)
     
     # Test 3: Test recovery
-    test_error_recovery(manager)
+    check_error_recovery(manager)
     
     # Test 4: Test analysis
-    test_comprehensive_analysis(manager)
+    check_comprehensive_analysis(manager)
     
     # Test 5: Get system health
     print("\n🏥 FINAL SYSTEM HEALTH CHECK")

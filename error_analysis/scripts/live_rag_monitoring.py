@@ -6,6 +6,8 @@ Monitors live RAG API endpoints, captures real errors, and tracks performance
 when rag-api, chromadb, redis containers and ollama are running.
 """
 
+from __future__ import annotations
+
 import asyncio
 import aiohttp
 import json

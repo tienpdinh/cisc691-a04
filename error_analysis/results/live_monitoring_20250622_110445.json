@@ -1,0 +1,720 @@
+{
+  "api_calls": [
+    {
+      "query": "What is project management?",
+      "status": "timeout",
+      "response_time": 30.518499851226807,
+      "error": "Request timeout",
+      "timestamp": "2025-06-22T11:03:16.117111"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 27.653536796569824,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:44.773535"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.0799722671508789,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:45.854634"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.051177978515625,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:46.907050"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.029313087463378906,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:47.937678"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.034700870513916016,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:48.973892"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.03305482864379883,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:50.008461"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.0333099365234375,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:51.043263"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.023435115814208984,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:52.068134"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.038607120513916016,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:53.108226"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.008783102035522461,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:54.118681"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 0.0052947998046875,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:55.125398"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.017332077026367188,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:56.145535"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.007390022277832031,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:57.154425"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.010158061981201172,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:58.166198"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.006802082061767578,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:03:59.173423"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.01271200180053711,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:00.187770"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.008540868759155273,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:01.197105"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.006177186965942383,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:02.204568"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.009274005889892578,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:03.215194"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.0068547725677490234,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:04.223537"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 0.01107931137084961,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:05.236246"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.011275053024291992,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:06.249261"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.009906291961669922,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:07.260857"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.012434959411621094,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:08.274961"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.009206771850585938,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:09.285855"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.010570049285888672,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:10.298150"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.01086282730102539,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:11.310778"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.009397029876708984,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:12.321906"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.009679079055786133,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:13.333249"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.01055002212524414,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:14.344853"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 0.008571863174438477,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:15.354851"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.015420913696289062,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:16.371974"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.00710606575012207,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:17.380685"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.013597965240478516,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:18.396166"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.00954890251159668,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:19.407338"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.005945920944213867,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:20.414586"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.009925127029418945,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:21.426343"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.005880832672119141,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:22.433354"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.006669044494628906,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:23.441245"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.010316133499145508,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:24.453126"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 0.012086153030395508,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:25.466891"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.009086847305297852,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:26.477577"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.013195037841796875,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:27.492799"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.012109994888305664,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:28.506124"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.010378122329711914,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:29.518213"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.007525920867919922,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:30.526386"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.006672859191894531,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:31.534469"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.009752988815307617,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:32.545879"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.006000041961669922,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:33.553217"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.009313106536865234,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:34.563228"
+    },
+    {
+      "query": "How to improve software quality?",
+      "status": "success",
+      "response_time": 0.010286092758178711,
+      "response_data": {
+        "query": "How to improve software quality?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:35.575117"
+    },
+    {
+      "query": "What are the best practices for team collaboration?",
+      "status": "success",
+      "response_time": 0.0064699649810791016,
+      "response_data": {
+        "query": "What are the best practices for team collaboration?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:36.582994"
+    },
+    {
+      "query": "Explain the importance of documentation in projects.",
+      "status": "success",
+      "response_time": 0.010104179382324219,
+      "response_data": {
+        "query": "Explain the importance of documentation in projects.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:37.594661"
+    },
+    {
+      "query": "What are common project failure points?",
+      "status": "success",
+      "response_time": 0.0053560733795166016,
+      "response_data": {
+        "query": "What are common project failure points?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:38.601403"
+    },
+    {
+      "query": "How to handle project risks effectively?",
+      "status": "success",
+      "response_time": 0.009123802185058594,
+      "response_data": {
+        "query": "How to handle project risks effectively?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:39.612106"
+    },
+    {
+      "query": "What is the role of leadership in project success?",
+      "status": "success",
+      "response_time": 0.011076927185058594,
+      "response_data": {
+        "query": "What is the role of leadership in project success?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:40.624560"
+    },
+    {
+      "query": "How to measure project performance?",
+      "status": "success",
+      "response_time": 0.017383337020874023,
+      "response_data": {
+        "query": "How to measure project performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:41.643983"
+    },
+    {
+      "query": "What are agile methodologies?",
+      "status": "success",
+      "response_time": 0.01386713981628418,
+      "response_data": {
+        "query": "What are agile methodologies?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:42.659200"
+    },
+    {
+      "query": "How to manage project stakeholders?",
+      "status": "success",
+      "response_time": 0.03771400451660156,
+      "response_data": {
+        "query": "How to manage project stakeholders?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:43.700795"
+    },
+    {
+      "query": "What is project management?",
+      "status": "success",
+      "response_time": 0.009338140487670898,
+      "response_data": {
+        "query": "What is project management?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:04:44.711829"
+    }
+  ],
+  "errors": [
+    {
+      "query": "What is project management?",
+      "status": "timeout",
+      "response_time": 30.518499851226807,
+      "error": "Request timeout",
+      "timestamp": "2025-06-22T11:03:16.117111"
+    }
+  ],
+  "performance_metrics": [],
+  "component_health": {
+    "redis": {
+      "redis_operations": [
+        {
+          "operation": "set",
+          "success": true,
+          "time": 0.004172801971435547,
+          "key": "monitor_test_1750604565"
+        },
+        {
+          "operation": "get",
+          "success": true,
+          "time": 0.0008950233459472656,
+          "hit": true,
+          "value_match": true
+        },
+        {
+          "operation": "delete",
+          "success": true,
+          "time": 0.0005300045013427734
+        }
+      ],
+      "overall_status": "success"
+    },
+    "ollama": {
+      "ollama_status": "success",
+      "available_models": 1,
+      "model_check_time": 0.003142118453979492,
+      "models": [
+        "llama3.2:latest"
+      ]
+    },
+    "document_ingestion": {
+      "ingestion_status": "available",
+      "error": null
+    }
+  },
+  "start_time": "2025-06-22T11:02:45.445551",
+  "end_time": "2025-06-22T11:04:45.715706"
+}

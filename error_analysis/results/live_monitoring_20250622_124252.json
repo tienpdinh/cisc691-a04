@@ -1,0 +1,94 @@
+{
+  "api_calls": [
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 34.61286234855652,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:41:21.805289"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 19.522729873657227,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:41:42.334504"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 32.025529861450195,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:42:15.377584"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 35.037105083465576,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:42:51.421640"
+    }
+  ],
+  "errors": [],
+  "performance_metrics": [],
+  "component_health": {
+    "redis": {
+      "redis_operations": [
+        {
+          "operation": "set",
+          "success": true,
+          "time": 0.004895925521850586,
+          "key": "monitor_test_1750610447"
+        },
+        {
+          "operation": "get",
+          "success": true,
+          "time": 0.0012340545654296875,
+          "hit": true,
+          "value_match": true
+        },
+        {
+          "operation": "delete",
+          "success": true,
+          "time": 0.00154876708984375
+        }
+      ],
+      "overall_status": "success"
+    },
+    "chromadb": {
+      "chromadb_status": "connected_but_api_deprecated",
+      "status_code": 404,
+      "note": "ChromaDB v1 API deprecated, using basic connection check"
+    },
+    "ollama": {
+      "ollama_status": "success",
+      "available_models": 1,
+      "model_check_time": 0.002712726593017578,
+      "models": [
+        "llama3.2:latest"
+      ]
+    },
+    "document_ingestion": {
+      "ingestion_status": "available",
+      "error": null
+    }
+  },
+  "start_time": "2025-06-22T12:40:46.972036",
+  "end_time": "2025-06-22T12:42:52.436604"
+}

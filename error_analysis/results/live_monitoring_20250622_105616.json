@@ -1,0 +1,40 @@
+{
+  "api_calls": [],
+  "errors": [],
+  "performance_metrics": [],
+  "component_health": {
+    "redis": {
+      "redis_operations": [
+        {
+          "operation": "set",
+          "success": true,
+          "time": 0.0843808650970459,
+          "key": "monitor_test_1750604176"
+        },
+        {
+          "operation": "get",
+          "success": true,
+          "time": 0.0007269382476806641,
+          "hit": true,
+          "value_match": true
+        },
+        {
+          "operation": "delete",
+          "success": true,
+          "time": 0.0005366802215576172
+        }
+      ],
+      "overall_status": "success"
+    },
+    "ollama": {
+      "ollama_status": "success",
+      "available_models": 1,
+      "model_check_time": 0.0035200119018554688,
+      "models": [
+        "llama3.2:latest"
+      ]
+    }
+  },
+  "start_time": "2025-06-22T10:56:16.611016",
+  "end_time": "2025-06-22T10:56:16.813026"
+}

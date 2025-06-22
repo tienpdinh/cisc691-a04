@@ -1,0 +1,1684 @@
+{
+  "api_calls": [
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.006540775299072266,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:16.019924"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.010111093521118164,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:18.032539"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.01326894760131836,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:20.047426"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.013971805572509766,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:22.063171"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.0193328857421875,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:24.086166"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.011940717697143555,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:26.099844"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.015514135360717773,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:28.117028"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.009713888168334961,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:30.128787"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010844945907592773,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:32.141296"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.009984970092773438,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:34.153071"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.009353876113891602,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:36.164115"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.010367870330810547,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:38.176195"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.01610398292541504,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:40.193799"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.011955022811889648,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:42.206528"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.021393299102783203,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:44.231190"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.0073812007904052734,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:46.239998"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.005096912384033203,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:48.246366"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.009240865707397461,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:50.257060"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.0050811767578125,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:52.263675"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.00528407096862793,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:54.270614"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.031206130981445312,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:56.302894"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.010200023651123047,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:10:58.314771"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.009039878845214844,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:00.325279"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.011368751525878906,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:02.338285"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.009868144989013672,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:04.349913"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.010475873947143555,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:06.362597"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.00966787338256836,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:08.374061"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.008989095687866211,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:10.384664"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.009948253631591797,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:12.396244"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.009497642517089844,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:14.407156"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.00824594497680664,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:16.416714"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.0076940059661865234,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:18.425610"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.03301692008972168,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:20.460707"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.010766983032226562,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:22.473274"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.007390022277832031,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:24.482375"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.002566099166870117,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:26.486397"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.007154941558837891,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:28.494756"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.019498825073242188,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:30.515687"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.008797883987426758,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:32.526120"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.003332853317260742,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:34.531146"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.0211179256439209,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:36.553973"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.00793600082397461,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:38.564565"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.040525197982788086,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:40.608130"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.035558223724365234,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:42.647174"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.03937172889709473,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:44.693616"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.05182290077209473,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:46.748242"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.009872913360595703,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:48.760300"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.025315046310424805,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:50.788843"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.008977890014648438,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:52.799175"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.010580062866210938,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:54.811119"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.02165675163269043,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:56.837796"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.0329890251159668,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:11:58.873255"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.011977910995483398,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:00.886229"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.003770112991333008,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:02.891514"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.04222893714904785,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:04.935409"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.04149794578552246,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:06.978545"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.01302194595336914,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:08.993108"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.007133007049560547,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:11.001649"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.0066606998443603516,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:13.009549"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.009692907333374023,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:15.019901"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.03189897537231445,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:17.054532"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.005189180374145508,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:19.061013"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.010868072509765625,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:21.072623"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.015036821365356445,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:23.089265"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.008136987686157227,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:25.099210"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.006876945495605469,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:27.107679"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.014313936233520508,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:29.124068"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.004930019378662109,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:31.130449"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.009067058563232422,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:33.141150"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.009421110153198242,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:35.152281"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.008539199829101562,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:37.162453"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.015836715698242188,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:39.180044"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.00751185417175293,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:41.188981"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.005520820617675781,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:43.197407"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.025493860244750977,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:45.225062"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.010444879531860352,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:47.237232"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.010364055633544922,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:49.248360"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.009096145629882812,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:51.258908"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.011432170867919922,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:53.271966"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.011378049850463867,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:55.285334"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010509967803955078,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:57.297460"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.008504629135131836,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:12:59.307643"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.012451887130737305,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:01.321793"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.009434938430786133,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:03.334111"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.010178804397583008,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:05.346026"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.038655996322631836,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:07.388782"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.01164698600769043,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:09.402162"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.010812997817993164,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:11.414679"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.009787321090698242,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:13.426222"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.012957096099853516,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:15.440805"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.007143974304199219,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:17.449362"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.009024858474731445,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:19.459793"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.03372693061828613,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:21.495288"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.010978937149047852,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:23.507943"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.022090435028076172,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:25.531891"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.014672994613647461,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:27.548217"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.007956981658935547,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:29.557891"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.010319709777832031,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:31.569903"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.009799003601074219,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:33.581581"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.009634017944335938,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:35.592962"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.012122154235839844,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:37.606798"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.014630794525146484,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:39.623542"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.010697126388549805,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:41.635953"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.011243104934692383,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:43.649015"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010728836059570312,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:45.661329"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.010181188583374023,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:47.673212"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.011425971984863281,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:49.686354"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.010295867919921875,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:51.698275"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.010034322738647461,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:53.710048"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.01154780387878418,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:55.722943"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.013245820999145508,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:57.738339"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.00932002067565918,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:13:59.749387"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.039138078689575195,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:01.790818"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.004642963409423828,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:03.796854"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.009918928146362305,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:05.808421"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.010936975479125977,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:07.821173"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.007752895355224609,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:09.830598"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.008577108383178711,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:11.840808"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.012945890426635742,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:13.855408"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.008516073226928711,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:15.865663"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.014628171920776367,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:17.882305"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.007765054702758789,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:19.892595"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.012007951736450195,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:21.906189"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.006482839584350586,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:23.913619"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.0060541629791259766,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:25.920929"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.01955580711364746,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:27.941872"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.009411096572875977,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:29.952949"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.012610673904418945,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:31.967553"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010586738586425781,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:33.979826"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.010795116424560547,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:35.992306"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.009841203689575195,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:38.003968"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.009421110153198242,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:40.015000"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.009267807006835938,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:42.025832"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.011522769927978516,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:44.039447"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.01607680320739746,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:46.056499"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.008301258087158203,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:48.066513"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.012336969375610352,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:50.079571"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.006020069122314453,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:52.087999"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.04210495948791504,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:54.131725"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.005552053451538086,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:56.138638"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010133028030395508,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:14:58.150867"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.009588003158569336,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:00.162147"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.010978937149047852,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:02.175380"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.015315055847167969,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:04.192485"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.008054018020629883,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:06.201725"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.012258052825927734,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:08.215724"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.009902238845825195,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:10.226575"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.01567697525024414,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:12.245136"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.012634038925170898,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T11:15:14.259389"
+    }
+  ],
+  "errors": [],
+  "performance_metrics": [],
+  "component_health": {
+    "redis": {
+      "redis_operations": [
+        {
+          "operation": "set",
+          "success": true,
+          "time": 0.0044231414794921875,
+          "key": "monitor_test_1750605015"
+        },
+        {
+          "operation": "get",
+          "success": true,
+          "time": 0.0006010532379150391,
+          "hit": true,
+          "value_match": true
+        },
+        {
+          "operation": "delete",
+          "success": true,
+          "time": 0.001094818115234375
+        }
+      ],
+      "overall_status": "success"
+    },
+    "ollama": {
+      "ollama_status": "success",
+      "available_models": 1,
+      "model_check_time": 0.002279996871948242,
+      "models": [
+        "llama3.2:latest"
+      ]
+    },
+    "document_ingestion": {
+      "ingestion_status": "available",
+      "error": null
+    }
+  },
+  "start_time": "2025-06-22T11:10:15.873575",
+  "end_time": "2025-06-22T11:15:16.272245"
+}

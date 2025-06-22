@@ -46,7 +46,11 @@ error_analysis/
 │   ├── run_error_analysis.py   # Main analysis runner
 │   ├── view_results.py         # Results viewer
 │   ├── test_error_analysis.py  # Test runner
-│   └── integration_example.py  # Integration examples
+│   ├── integration_example.py  # Integration examples
+│   └── live_rag_monitoring.py  # Live RAG system monitoring
+├── middleware/                  # RAG API integration
+│   ├── __init__.py
+│   └── rag_api_middleware.py   # FastAPI middleware integration
 ├── config/                      # Configuration files
 │   └── error_analysis_config.json # Main configuration
 ├── data/                        # Sample data and patterns
@@ -147,6 +151,193 @@ python error_analysis/scripts/test_error_analysis.py --quick
 - `test_error_analysis.py`: System testing
   - `--quick`: Quick functionality test
   - `--errors N`: Generate N test errors
+
+- `live_rag_monitoring.py`: Live RAG system monitoring
+  - `--duration N`: Monitor for N minutes
+  - `--interval N`: Query interval in seconds
+
+## 🚀 Live RAG System Monitoring
+
+### Quick Integration Steps
+
+#### Step 1: Add Middleware to Your RAG API
+
+Add this to your `main.py` or wherever you initialize your FastAPI app:
+
+```python
+from error_analysis.middleware import integrate_error_analysis_with_rag_api
+
+# Initialize your FastAPI app
+app = FastAPI(title="RAG API")
+
+# Add error analysis integration
+integrate_error_analysis_with_rag_api(app)
+```
+
+#### Step 2: Monitor Individual Components (Optional)
+
+In your route handlers, use the monitoring decorators:
+
+```python
+@app.post("/query")
+async def rag_query(request: QueryRequest):
+    # Get monitoring decorators
+    decorators = request.app.state.error_analysis['decorators']
+    
+    try:
+        # Monitor LLM calls
+        @decorators['llm']
+        def call_ollama(prompt):
+            return ollama_client.generate(prompt)
+        
+        # Monitor vector searches
+        @decorators['vector']
+        def search_chroma(embedding):
+            return chroma_client.query(query_embeddings=[embedding])
+        
+        # Monitor cache operations
+        @decorators['cache']
+        def get_from_redis(key):
+            return redis_client.get(key)
+        
+        # Use monitored functions
+        response = call_ollama(prompt)
+        # ... rest of your logic
+        
+        return {"response": response}
+        
+    except Exception as e:
+        # Errors are automatically tracked by middleware
+        raise
+```
+
+### Run Live System Monitoring
+
+Once your containers are running:
+
+```bash
+# Start your RAG system
+docker-compose up -d
+ollama serve
+
+# Run live monitoring (monitors real API calls)
+python error_analysis/scripts/live_rag_monitoring.py --duration 5 --interval 2
+
+# Extended monitoring (10 minutes, every 1 second)
+python error_analysis/scripts/live_rag_monitoring.py --duration 10 --interval 1
+```
+
+### What Live Monitoring Does
+
+1. **Checks Service Availability**
+   - ✅ RAG API (port 8000)
+   - ✅ Redis (port 6379) 
+   - ✅ ChromaDB (port 8001)
+   - ✅ Ollama (port 11434)
+
+2. **Tests Real Components**
+   - 🔍 Makes actual API calls to your RAG endpoints
+   - 🗄️ Tests Redis cache operations
+   - 📊 Tests ChromaDB vector operations
+   - 🤖 Tests Ollama model availability
+
+3. **Captures Real Errors**
+   - API timeout errors
+   - HTTP error responses
+   - Component failures
+   - Performance issues
+
+4. **Generates Performance Metrics**
+   - Response times
+   - Success rates
+   - Error rates
+   - Component health scores
+
+### Manual Testing Workflow
+
+#### 1. Start Your RAG System
+```bash
+docker-compose up -d
+ollama serve
+```
+
+#### 2. Verify Services
+```bash
+# Check RAG API
+curl http://localhost:8000/health
+
+# Check ChromaDB  
+curl http://localhost:8001/api/v1/heartbeat
+
+# Check Ollama
+curl http://localhost:11434/api/tags
+```
+
+#### 3. Run Live Monitoring
+```bash
+# Quick test (2 minutes)
+python error_analysis/scripts/live_rag_monitoring.py --duration 2
+
+# Full test (10 minutes)  
+python error_analysis/scripts/live_rag_monitoring.py --duration 10
+```
+
+#### 4. Test Manual API Calls
+```bash
+# Test your RAG API manually while monitoring is running
+curl -X POST http://localhost:8000/query \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What is project management?"}'
+```
+
+#### 5. View Results
+```bash
+# View monitoring results
+python error_analysis/scripts/view_results.py --latest
+
+# Check error analysis health
+curl http://localhost:8000/health/error-analysis
+```
+
+### Generated Files
+
+Live monitoring creates:
+
+```
+error_analysis/
+├── results/
+│   ├── live_monitoring_20250622_143052.json  # Live monitoring results
+│   └── error_analysis_20250622_143100.json   # Error analysis report
+└── logs/
+    └── errors/
+        └── errors_20250622.log                # Error logs
+```
+
+### For Assignment Submission
+
+This live monitoring provides:
+
+1. **Real Error Analysis** ✅
+   - Actual errors from your RAG system
+   - Performance bottlenecks
+   - Component failures
+
+2. **Performance Metrics** ✅
+   - Response times under load
+   - Success/failure rates
+   - Component health scores
+
+3. **Production Readiness** ✅
+   - Error recovery mechanisms
+   - Circuit breakers in action
+   - System monitoring capabilities
+
+4. **Documentation** ✅
+   - Real system behavior analysis
+   - Error categorization
+   - Performance optimization recommendations
+
+**This gives you comprehensive error analysis data for your assignment submission!**
 
 ## 🔧 Integration with RAG Components
 
@@ -495,3 +686,20 @@ When adding new error types or monitors:
 This error analysis system is designed to work alongside the existing benchmarking system in the `benchmarks/` folder. While benchmarks provide performance measurement, error analysis provides real-time monitoring and failure detection.
 
 Both systems can be used together for comprehensive system observability.
+
+## 📋 Dependencies
+
+### Base Requirements
+```bash
+pip install -r error_analysis/requirements_error_analysis.txt
+```
+
+### Live Monitoring Additional Requirements
+```bash
+pip install -r error_analysis/requirements_live_monitoring.txt
+```
+
+Required packages for live monitoring:
+- `aiohttp>=3.8.0` - Async HTTP client for API monitoring
+- `requests>=2.28.0` - HTTP requests for service checks
+- `redis>=4.5.0` - Redis client for cache monitoring

@@ -1,0 +1,786 @@
+{
+  "api_calls": [
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 52.57575702667236,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:21.247028"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.02974414825439453,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:22.278871"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.004650115966796875,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:23.284909"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.0157320499420166,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:24.302866"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.14382505416870117,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:25.448251"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.07111692428588867,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:26.520090"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.04340791702270508,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:27.565022"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.04387497901916504,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:28.610153"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.04374289512634277,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:29.655340"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.043116092681884766,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:30.699334"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.04691505432128906,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:31.747766"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.02583622932434082,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:32.774871"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.011201143264770508,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:33.788419"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.006810903549194336,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:34.796686"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.01070404052734375,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:35.809066"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.009414196014404297,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:36.819728"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.011867046356201172,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:37.833240"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.01166677474975586,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:38.846599"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.012244939804077148,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:39.860530"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.00878000259399414,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:40.870948"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.010493278503417969,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:41.883090"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.0040128231048583984,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:42.888515"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.011090993881225586,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:43.901178"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.009285926818847656,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:44.912093"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.010549068450927734,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:45.924456"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.00975799560546875,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:46.935905"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.011092901229858398,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:47.948726"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.009513139724731445,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:48.959934"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.011992931365966797,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:49.974010"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.00978708267211914,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:50.985493"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.010544061660766602,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:51.997701"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.0034580230712890625,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:53.002297"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.011751890182495117,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:54.015708"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.01028299331665039,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:55.027677"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.006515979766845703,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:56.035743"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.004585981369018555,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:57.041835"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.00784611701965332,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:58.051163"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.012575149536132812,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:49:59.065891"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.010555028915405273,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:00.078098"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.010436058044433594,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:01.090045"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.0035037994384765625,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:02.094872"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.003695249557495117,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:03.100084"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.008725881576538086,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:04.110384"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.009640932083129883,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:05.121678"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.018864870071411133,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:06.142129"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.0029082298278808594,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:07.146390"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.004313230514526367,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:08.151525"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.011504888534545898,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:09.164107"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.010792016983032227,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:10.176281"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.009614229202270508,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:11.187797"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.0029048919677734375,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:12.192427"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.009713888168334961,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:13.203816"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.01046299934387207,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:14.215980"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.009493112564086914,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:15.227146"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.00882411003112793,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:16.237584"
+    },
+    {
+      "query": "How did sales perform across all quarters in 2023?",
+      "status": "success",
+      "response_time": 0.003568887710571289,
+      "response_data": {
+        "query": "How did sales perform across all quarters in 2023?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:17.242563"
+    },
+    {
+      "query": "What factors influenced Q3 2024 sales performance?",
+      "status": "success",
+      "response_time": 0.003088235855102539,
+      "response_data": {
+        "query": "What factors influenced Q3 2024 sales performance?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:18.246406"
+    },
+    {
+      "query": "Compare the year-over-year growth for Q1 periods.",
+      "status": "success",
+      "response_time": 0.011343002319335938,
+      "response_data": {
+        "query": "Compare the year-over-year growth for Q1 periods.",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:19.259394"
+    },
+    {
+      "query": "What seasonal patterns exist in the e-commerce data?",
+      "status": "success",
+      "response_time": 0.002485036849975586,
+      "response_data": {
+        "query": "What seasonal patterns exist in the e-commerce data?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:20.263459"
+    },
+    {
+      "query": "Which quarters showed the strongest sales growth?",
+      "status": "success",
+      "response_time": 0.013077974319458008,
+      "response_data": {
+        "query": "Which quarters showed the strongest sales growth?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:21.278250"
+    },
+    {
+      "query": "What were the retail e-commerce sales trends in Q1 2024?",
+      "status": "success",
+      "response_time": 0.007308006286621094,
+      "response_data": {
+        "query": "What were the retail e-commerce sales trends in Q1 2024?",
+        "response": "The Census Bureau of the Department of Commerce announced today that the estimate of U.S. retail e-commerce sales for the first quarter of 2024, adjusted for seasonal variation, but not for price changes, was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023. On a not-adjusted basis, the estimate of U.S. retail e-commerce sales for the first quarter of 2024 totaled $253.1 billion.\n\nTotal retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, an increase of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023. E-commerce sales in the first quarter of 2024 accounted for 15.8 percent of total sales.\n\nIn comparison to the same period last year, the e-commerce estimate increased 8.6 percent (\u00b11.1%) from the first quarter of 2023, while total retail sales increased 3.4 percent (\u00b10.4%). The not-adjusted estimate for the first quarter of 2024 showed a decrease of 16.5 percent (\u00b10.7%) compared to the fourth quarter of 2022.\n\nI don't have enough information to answer this question based on the provided context.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:22.286496"
+    },
+    {
+      "query": "How did Q4 2023 sales compare to Q4 2024?",
+      "status": "success",
+      "response_time": 0.00436091423034668,
+      "response_data": {
+        "query": "How did Q4 2023 sales compare to Q4 2024?",
+        "response": "Based on the provided context, it appears that the comparison between Q4 2023 and Q4 2024 sales is not a direct numerical comparison, but rather an explanation of changes in e-commerce sales.\n\nAccording to the text, the estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $324.8 billion, while the estimate for the fourth quarter of 2024 was $308.9 billion. This represents a decrease of $15.9 billion (or -5%) from Q4 2023 to Q4 2024.\n\nHowever, it's worth noting that these numbers are adjusted for seasonal variation but not for price changes.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:23.292110"
+    },
+    {
+      "query": "What are the key retail sales metrics for 2023?",
+      "status": "success",
+      "response_time": 0.009596109390258789,
+      "response_data": {
+        "query": "What are the key retail sales metrics for 2023?",
+        "response": "Based on the provided context, here is the answer to the question:\n\nThe Census Bureau of the Department of Commerce reported the following key retail sales metrics for 2023:\n\n1. Estimated U.S. retail e-commerce sales for the fourth quarter of 2023 were $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023 and 7.5 percent (\u00b11.2%) from the fourth quarter of 2022.\n2. Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023 and 2.8 percent (\u00b10.4%) from the fourth quarter of 2022.\n3. The fourth quarter 2023 e-commerce estimate accounted for 16.1 percent of total sales, while e-commerce sales in 2023 accounted for 15.3 percent of total sales.\n\nNote that these metrics are based on estimates released by the Census Bureau and may be subject to revision or update as more data becomes available.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:24.303381"
+    },
+    {
+      "query": "Show me the quarterly sales performance for 2024.",
+      "status": "success",
+      "response_time": 0.012010812759399414,
+      "response_data": {
+        "query": "Show me the quarterly sales performance for 2024.",
+        "response": "Based on the provided context, here is the information about the quarterly sales performance for 2024:\n\n* The estimate of U.S. retail e-commerce sales for the fourth quarter of 2023 was $285.2 billion, an increase of 0.8 percent (\u00b11.1%) from the third quarter of 2023.\n* Total retail sales for the fourth quarter of 2023 were estimated at $1,831.4 billion, an increase of 0.4 percent (\u00b10.4%) from the third quarter of 2023.\n* E-commerce sales in the fourth quarter of 2023 accounted for 7.5 percent (\u00b11.2%) of total retail sales, an increase of 6.8 percent (\u00b11.2%) from the same period in 2022.\n* The first quarter 2024 e-commerce estimate was $289.2 billion, an increase of 2.1 percent (\u00b10.7%) from the fourth quarter of 2023.\n* Total retail sales for the first quarter of 2024 were estimated at $1,820.0 billion, a decrease of 0.1 percent (\u00b10.4%) from the fourth quarter of 2023.\n\nNote that the question asks for the quarterly sales performance for 2024, but the context only provides information about the fourth quarter and the first quarter of 2024.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:25.317118"
+    },
+    {
+      "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+      "status": "success",
+      "response_time": 0.00954890251159668,
+      "response_data": {
+        "query": "What was the growth rate between Q2 2023 and Q2 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:26.328350"
+    },
+    {
+      "query": "Which quarter had the highest e-commerce sales in 2024?",
+      "status": "success",
+      "response_time": 0.0071527957916259766,
+      "response_data": {
+        "query": "Which quarter had the highest e-commerce sales in 2024?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:27.336883"
+    },
+    {
+      "query": "What are the main trends in retail e-commerce sales?",
+      "status": "success",
+      "response_time": 0.0039021968841552734,
+      "response_data": {
+        "query": "What are the main trends in retail e-commerce sales?",
+        "response": "I don't have any relevant information to answer this question.",
+        "use_rag": true
+      },
+      "timestamp": "2025-06-22T12:50:28.341948"
+    }
+  ],
+  "errors": [],
+  "performance_metrics": [],
+  "component_health": {
+    "redis": {
+      "redis_operations": [
+        {
+          "operation": "set",
+          "success": true,
+          "time": 0.0069119930267333984,
+          "key": "monitor_test_1750610908"
+        },
+        {
+          "operation": "get",
+          "success": true,
+          "time": 0.0009899139404296875,
+          "hit": true,
+          "value_match": true
+        },
+        {
+          "operation": "delete",
+          "success": true,
+          "time": 0.0006721019744873047
+        }
+      ],
+      "overall_status": "success"
+    },
+    "chromadb": {
+      "chromadb_status": "error",
+      "error": "'VectorStoreMonitor' object has no attribute 'track_query'"
+    },
+    "ollama": {
+      "ollama_status": "success",
+      "available_models": 1,
+      "model_check_time": 0.0028722286224365234,
+      "models": [
+        "llama3.2:latest"
+      ]
+    },
+    "document_ingestion": {
+      "ingestion_status": "available",
+      "error": null
+    }
+  },
+  "start_time": "2025-06-22T12:48:27.749172",
+  "end_time": "2025-06-22T12:50:29.346798"
+}

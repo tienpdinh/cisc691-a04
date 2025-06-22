@@ -168,3 +168,8 @@ Desktop.ini
 # Benchmark results and logs
 benchmarks/results/
 benchmarks/**/*.log
+
+# Error Analysis results, json and logs
+error_analysis/results/
+error_analysis/**/*.log
+error_analysis/**/*.json

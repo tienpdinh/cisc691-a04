@@ -1,0 +1,24 @@
+# Error Analysis Requirements
+# Dependencies specific to the error analysis system
+
+# Core dependencies (likely already installed)
+pytest>=7.0.0
+pathlib
+typing-extensions>=4.0.0
+
+# Testing dependencies
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0
+
+# Data handling
+sqlite3  # Usually built into Python
+
+# Optional dependencies for enhanced functionality
+tabulate>=0.9.0  # For better formatted output in scripts
+colorama>=0.4.6  # For colored terminal output
+psutil>=5.9.0   # For system resource monitoring (optional)
+
+# Development dependencies
+mypy>=1.0.0      # Type checking
+black>=22.0.0    # Code formatting
+flake8>=5.0.0    # Linting

@@ -1,0 +1,413 @@
+{
+  "timestamp": "2025-06-22T02:09:23.694203",
+  "analysis_period_hours": 1,
+  "system_health": {
+    "overall_status": "healthy",
+    "timestamp": "2025-06-22T02:09:23.694077",
+    "system_health": {
+      "overall_status": "unknown",
+      "total_components": 0,
+      "healthy_components": 0,
+      "degraded_components": 0,
+      "critical_components": 0,
+      "down_components": 0,
+      "system_health_score": 0
+    },
+    "component_health": {
+      "document_processor": {
+        "component": "document_processor",
+        "health_score": 100.0,
+        "status": "excellent",
+        "last_updated": "2025-06-22T02:09:23.694081",
+        "metrics_1h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "metrics_24h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "recent_errors": 0,
+        "total_requests": 0,
+        "alert_thresholds": {
+          "error_rate_per_minute": 5,
+          "avg_response_time_seconds": 5.0,
+          "success_rate_threshold": 0.95
+        }
+      },
+      "vector_store": {
+        "component": "vector_store",
+        "health_score": 100.0,
+        "status": "excellent",
+        "last_updated": "2025-06-22T02:09:23.694097",
+        "metrics_1h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "metrics_24h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "recent_errors": 0,
+        "total_requests": 0,
+        "alert_thresholds": {
+          "error_rate_per_minute": 5,
+          "avg_response_time_seconds": 5.0,
+          "success_rate_threshold": 0.95
+        }
+      },
+      "llm_client": {
+        "component": "llm_client",
+        "health_score": 100.0,
+        "status": "excellent",
+        "last_updated": "2025-06-22T02:09:23.694105",
+        "metrics_1h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "metrics_24h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "recent_errors": 0,
+        "total_requests": 0,
+        "alert_thresholds": {
+          "error_rate_per_minute": 5,
+          "avg_response_time_seconds": 5.0,
+          "success_rate_threshold": 0.95,
+          "model_loading_time_seconds": 30.0,
+          "prompt_processing_time_seconds": 60.0,
+          "empty_response_rate": 0.05,
+          "context_length_exceeded_rate": 0.1,
+          "connection_failure_rate": 0.02
+        }
+      },
+      "api_endpoints": {
+        "component": "api_endpoints",
+        "health_score": 100.0,
+        "status": "excellent",
+        "last_updated": "2025-06-22T02:09:23.694111",
+        "metrics_1h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "metrics_24h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "recent_errors": 0,
+        "total_requests": 0,
+        "alert_thresholds": {
+          "error_rate_per_minute": 5,
+          "avg_response_time_seconds": 5.0,
+          "success_rate_threshold": 0.95,
+          "http_4xx_rate": 0.05,
+          "http_5xx_rate": 0.01,
+          "validation_error_rate": 0.03,
+          "request_timeout_rate": 0.02,
+          "large_payload_threshold_mb": 10,
+          "slow_endpoint_threshold_seconds": 10.0
+        }
+      },
+      "cache_manager": {
+        "component": "cache_manager",
+        "health_score": 100.0,
+        "status": "excellent",
+        "last_updated": "2025-06-22T02:09:23.694120",
+        "metrics_1h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "metrics_24h": {
+          "total_requests": 0,
+          "successful_requests": 0,
+          "failed_requests": 0,
+          "success_rate": 1.0,
+          "error_rate": 0.0,
+          "avg_response_time": 0.0,
+          "max_response_time": 0.0,
+          "min_response_time": 0.0
+        },
+        "recent_errors": 0,
+        "total_requests": 0,
+        "alert_thresholds": {
+          "error_rate_per_minute": 5,
+          "avg_response_time_seconds": 5.0,
+          "success_rate_threshold": 0.95,
+          "cache_hit_rate_threshold": 0.7,
+          "connection_failure_rate": 0.02,
+          "cache_miss_rate_threshold": 0.4,
+          "eviction_rate_threshold": 0.1,
+          "memory_usage_threshold": 0.9
+        }
+      }
+    },
+    "error_summary": {
+      "time_period_hours": 1,
+      "total_errors": 0,
+      "error_rate_per_hour": 0.0,
+      "severity_breakdown": {},
+      "category_breakdown": {},
+      "component_breakdown": {},
+      "most_frequent_component": null,
+      "critical_errors": 0,
+      "memory_buffer_size": 0,
+      "aggregation_stats": {}
+    },
+    "recovery_status": {
+      "active_circuit_breakers": 0,
+      "circuit_breakers": {
+        "llm_client": {
+          "name": "llm_client",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "vector_store": {
+          "name": "vector_store",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "cache_manager": {
+          "name": "cache_manager",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "api_endpoints": {
+          "name": "api_endpoints",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        }
+      },
+      "recent_recovery_attempts": 0,
+      "fallback_handlers_registered": 4,
+      "cache_fallbacks_available": 0
+    },
+    "critical_components": [],
+    "active_alerts": 0,
+    "last_health_check": "2025-06-22T02:09:23.694077"
+  },
+  "comprehensive_analysis": {
+    "analysis_period_hours": 1,
+    "timestamp": "2025-06-22T02:09:23.694157",
+    "error_analysis": {
+      "time_period_hours": 1,
+      "total_errors": 0,
+      "error_rate_per_hour": 0.0,
+      "severity_breakdown": {},
+      "category_breakdown": {},
+      "component_breakdown": {},
+      "most_frequent_component": null,
+      "critical_errors": 0,
+      "memory_buffer_size": 0,
+      "aggregation_stats": {}
+    },
+    "failure_analysis": {
+      "total_failures": 0,
+      "failure_modes": {},
+      "affected_components": {},
+      "cascade_failures": 0,
+      "mean_time_to_failure": null,
+      "most_frequent_failure_mode": null,
+      "most_affected_component": null
+    },
+    "component_analysis": {
+      "document_processor": {
+        "total_errors": 0,
+        "error_types": {},
+        "error_functions": {},
+        "error_rate_per_hour": 0.0
+      },
+      "vector_store": {
+        "total_errors": 0,
+        "error_types": {},
+        "error_functions": {},
+        "error_rate_per_hour": 0.0
+      },
+      "llm_client": {
+        "total_errors": 0,
+        "error_types": {},
+        "error_functions": {},
+        "error_rate_per_hour": 0.0
+      },
+      "api_endpoints": {
+        "total_errors": 0,
+        "error_types": {},
+        "error_functions": {},
+        "error_rate_per_hour": 0.0
+      },
+      "cache_manager": {
+        "total_errors": 0,
+        "error_types": {},
+        "error_functions": {},
+        "error_rate_per_hour": 0.0
+      }
+    },
+    "predictions": {
+      "total_predictions": 0,
+      "high_risk_components": [],
+      "medium_risk_components": [],
+      "all_predictions": []
+    },
+    "recommendations": [
+      "System is operating within normal parameters"
+    ],
+    "recovery_statistics": {
+      "time_period_hours": 1,
+      "total_recovery_attempts": 0,
+      "successful_recoveries": 0,
+      "overall_success_rate": 0,
+      "strategy_breakdown": {},
+      "component_breakdown": {},
+      "circuit_breaker_status": {
+        "llm_client": {
+          "name": "llm_client",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "vector_store": {
+          "name": "vector_store",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "cache_manager": {
+          "name": "cache_manager",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        },
+        "api_endpoints": {
+          "name": "api_endpoints",
+          "state": "closed",
+          "failure_count": 0,
+          "success_count": 0,
+          "request_count": 0,
+          "last_failure_time": null
+        }
+      }
+    }
+  },
+  "recovery_statistics": {
+    "time_period_hours": 1,
+    "total_recovery_attempts": 0,
+    "successful_recoveries": 0,
+    "overall_success_rate": 0,
+    "strategy_breakdown": {},
+    "component_breakdown": {},
+    "circuit_breaker_status": {
+      "llm_client": {
+        "name": "llm_client",
+        "state": "closed",
+        "failure_count": 0,
+        "success_count": 0,
+        "request_count": 0,
+        "last_failure_time": null
+      },
+      "vector_store": {
+        "name": "vector_store",
+        "state": "closed",
+        "failure_count": 0,
+        "success_count": 0,
+        "request_count": 0,
+        "last_failure_time": null
+      },
+      "cache_manager": {
+        "name": "cache_manager",
+        "state": "closed",
+        "failure_count": 0,
+        "success_count": 0,
+        "request_count": 0,
+        "last_failure_time": null
+      },
+      "api_endpoints": {
+        "name": "api_endpoints",
+        "state": "closed",
+        "failure_count": 0,
+        "success_count": 0,
+        "request_count": 0,
+        "last_failure_time": null
+      }
+    }
+  },
+  "summary": {
+    "total_errors": 0,
+    "critical_errors": 0,
+    "overall_status": "healthy",
+    "recovery_success_rate": 0,
+    "components_monitored": 5,
+    "recommendations_count": 1
+  }
+}

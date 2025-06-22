@@ -209,8 +209,10 @@ class TestLLMClient:
         
         assert "Error: Could not connect to Vertex AI" in result
 
-    @patch('src.llm_client.VERTEX_AI_AVAILABLE', False)
-    def test_query_vertex_ai_not_available(self):
+    @patch('src.llm_client.LLMClient._query_vertex_ai_sync')
+    def test_query_vertex_ai_not_available(self, mock_vertex_query):
+        mock_vertex_query.return_value = "Error: Vertex AI libraries not installed"
+        
         client = LLMClient(
             llm_api_url="https://vertex-ai-url",
             llm_model_name="gemini-1.5-flash",

@@ -131,7 +131,7 @@ Answer:""")
         self.rag_chain = (
             {
                 "context": lambda x: format_docs(
-                    self.vector_store.similarity_search(x["question"], k=4)
+                    self.vector_store.similarity_search_sync(x["question"], k=4)
                 ),
                 "question": RunnablePassthrough()
             }

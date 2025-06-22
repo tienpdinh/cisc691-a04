@@ -220,6 +220,45 @@ class LangChainVectorStore:
             self.logger.error(f"Error during similarity search with scores: {e}")
             return []
     
+    def similarity_search_sync(self, 
+                              query: str, 
+                              k: int = 4,
+                              score_threshold: Optional[float] = None) -> List[Document]:
+        """
+        Synchronous version of similarity search for LangChain chains.
+        
+        :param query: Search query
+        :param k: Number of documents to return
+        :param score_threshold: Minimum similarity score threshold
+        :return: List of relevant documents
+        """
+        try:
+            self.logger.info(f"Sync searching for '{query}' with k={k}")
+            
+            if score_threshold is not None:
+                # Use similarity search with score threshold
+                docs_and_scores = self.vector_store.similarity_search_with_score(
+                    query, k=k
+                )
+                
+                # Filter by score threshold
+                filtered_docs = [
+                    doc for doc, score in docs_and_scores 
+                    if score >= score_threshold
+                ]
+                
+                self.logger.info(f"Found {len(filtered_docs)} documents above threshold {score_threshold}")
+                return filtered_docs
+            else:
+                # Regular similarity search
+                docs = self.vector_store.similarity_search(query, k=k)
+                self.logger.info(f"Found {len(docs)} similar documents")
+                return docs
+                
+        except Exception as e:
+            self.logger.error(f"Error during sync similarity search: {e}")
+            return []
+    
     def delete_collection(self):
         """Delete the entire collection."""
         try:

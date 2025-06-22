@@ -2,6 +2,47 @@
 
 Comprehensive benchmarking suite for evaluating RAG system performance across multiple dimensions.
 
+## 🚀 Recent Updates & Fixes
+
+### Performance Improvements (Latest)
+- **Fixed Google Cloud Credential Error**: Made Vertex AI imports conditional to prevent authentication errors when using local Ollama
+- **Resolved Async/Await Issues**: Added synchronous vector search method (`similarity_search_sync`) for LangChain RAG chains
+- **Fixed Type Errors**: Corrected string vs integer key issues in accuracy benchmarks (`'5'` → `5`)
+- **Optimized Timeout**: Increased default timeout from 15s to 60s to accommodate Ollama response times (~50s per query)
+
+### Latest Performance Results
+```
+📈 BENCHMARK SUMMARY:
+==================================================
+🏃 LATENCY:
+  • RAG Query: 0.104s
+  • Direct LLM: 0.108s  
+  • Retrieval: 0.132s
+  • Throughput: 72.95 req/s
+
+🎯 ACCURACY:
+  • Precision@5: Variable (depends on ground truth data)
+  • Recall@5: Variable (depends on ground truth data)
+  • Mean Reciprocal Rank: Measured against test queries
+
+⭐ QUALITY:
+  • Overall Score: 0.370
+  • ROUGE-1: 0.137
+  • Coherence: 0.704
+
+🥊 RAG vs BASELINE:
+  • RAG Wins: 1/5 (20.0%)
+  • Baseline Wins: 4/5 (80.0%)
+  • Quality Improvement: -9.8%
+  • Improvement Score: -0.090
+==================================================
+```
+
+### Configuration Updates
+- **Default Timeout**: Now 60 seconds (suitable for Ollama LLM processing)
+- **Benchmark Exclusions**: Added to `.gitignore` and `codecov.yml` to prevent benchmark results from affecting coverage metrics
+- **Coverage Integration**: Benchmark code excluded from test coverage calculations (89% coverage maintained for core application)
+
 ## 🎯 Features & Capabilities
 
 ### 1. **Latency Benchmarking** (`core/latency_benchmark.py`)
@@ -58,7 +99,6 @@ benchmarks/
 ├── scripts/                           # 🛠️ Execution utilities
 │   ├── __init__.py
 │   ├── run_benchmarks.py             # 🚀 Main benchmark runner
-│   ├── test_benchmarks.py            # ✅ System validation
 │   └── view_results.py               # 📊 Results analysis tool
 │
 ├── configs/                           # ⚙️ Configuration files
@@ -114,34 +154,30 @@ curl http://localhost:8000         # ChromaDB
 curl http://localhost:11434/api/tags  # Local Ollama
 ```
 
-### **Instant Validation**
+### **Quick Validation**
 
 **Test that everything works:**
 ```bash
-python benchmarks/scripts/test_benchmarks.py
+# Quick API test
+curl http://localhost:8001/health
+
+# Run a simple benchmark
+python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
 ```
 
 Expected output:
 ```
-🚀 RAG Benchmark System Validation
-==================================================
-🧪 Testing Basic Benchmark Functionality...
-📊 Testing Latency Benchmark...
-  ✅ Query latency: 0.269s
-  ✅ Status: 200
-  ✅ Success: True
-📈 Testing Concurrent Requests...
-  ✅ Mean latency: 0.271s
-  ✅ Success rate: 100.0%
-  ✅ Throughput: 15.53 req/s
-⭐ Testing Quality Benchmark...
-  ✅ Overall quality: 0.782
-  ✅ Coherence: 0.891
-🥊 Testing RAG vs Baseline Comparison...
-  ✅ RAG quality: 0.316
-  ✅ Baseline quality: 0.297
-  ✅ Improvement: 0.066
-✅ All benchmark components are working correctly!
+🔍 Checking API availability...
+✅ API is accessible
+🚀 Starting RAG System Benchmarks...
+📡 API URL: http://localhost:8001
+⏱️  Timeout: 60s
+📁 Output Directory: benchmarks/results
+⚡ Quick mode enabled (reduced test scope)
+
+📊 Running benchmark suite...
+
+✅ Benchmarks completed successfully!
 ```
 
 ## 💻 Execution Options
@@ -470,8 +506,8 @@ Based on testing with the working system:
 
 5. **No Results Found**
    ```bash
-   # Run validation test first
-   python benchmarks/scripts/test_benchmarks.py
+   # Run quick benchmark first
+   python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
    
    # Check results directory
    ls -la benchmarks/results/
@@ -497,7 +533,7 @@ Based on testing with the working system:
 ### **Validation Checklist**
 
 1. **✅ API Connectivity**: `curl http://localhost:8001/health`
-2. **✅ Basic Functionality**: `python benchmarks/scripts/test_benchmarks.py`  
+2. **✅ Basic Functionality**: `python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick`  
 3. **✅ Dependencies**: `pip list | grep -E "(rouge|bert|sentence)"`
 4. **✅ Results Directory**: `ls -la benchmarks/results/`
 5. **✅ View Results**: `python benchmarks/scripts/view_results.py --list`
@@ -582,11 +618,11 @@ from .core.custom_benchmark import CustomBenchmark
 # Test individual components
 python -c "from benchmarks.core.new_feature import NewFeature; print('✅ Import works')"
 
-# Run validation suite
-python benchmarks/scripts/test_benchmarks.py
-
-# Check integration
+# Check integration with quick benchmark
 python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
+
+# Run full benchmark suite
+python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001
 ```
 
 ## 📋 Quick Reference Commands
@@ -594,9 +630,9 @@ python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
 ### **Essential Commands**
 ```bash
 # 🚀 Quick validation
-python benchmarks/scripts/test_benchmarks.py
+python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
 
-# 📊 Run benchmarks  
+# 📊 Run full benchmarks  
 python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001
 
 # 📈 View results

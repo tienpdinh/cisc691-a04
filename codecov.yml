@@ -17,6 +17,7 @@ coverage:
 ignore:
   - "main.py"
   - "tests/"
+  - "benchmarks/"
   - "**/__pycache__/"
   - "**/*.pyc"
   - "**/.*"

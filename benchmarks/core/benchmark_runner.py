@@ -24,7 +24,7 @@ class BenchmarkRunner:
     Runs all benchmark types and generates consolidated reports.
     """
     
-    def __init__(self, base_url: str = "http://localhost:8001", timeout: int = 15):
+    def __init__(self, base_url: str = "http://localhost:8001", timeout: int = 60):
         """
         Initialize benchmark runner.
         
@@ -423,7 +423,7 @@ def main():
     """Main entry point for benchmark runner."""
     parser = argparse.ArgumentParser(description="RAG System Benchmark Runner")
     parser.add_argument("--url", default="http://localhost:8001", help="Base URL of RAG API")
-    parser.add_argument("--timeout", type=int, default=15, help="Request timeout in seconds")
+    parser.add_argument("--timeout", type=int, default=60, help="Request timeout in seconds")
     parser.add_argument("--config", type=Path, help="Path to benchmark configuration file")
     parser.add_argument("--log-level", default="INFO", help="Logging level")
     

@@ -347,8 +347,8 @@ class AccuracyBenchmark:
         if results:
             summary = {
                 'total_queries': len(results),
-                'average_precision_at_5': statistics.mean([r['precision_at_k']['5'] for r in results]),
-                'average_recall_at_5': statistics.mean([r['recall_at_k']['5'] for r in results]),
+                'average_precision_at_5': statistics.mean([r['precision_at_k'][5] for r in results]),
+                'average_recall_at_5': statistics.mean([r['recall_at_k'][5] for r in results]),
                 'average_mrr': statistics.mean([r['mean_reciprocal_rank'] for r in results]),
                 'average_ndcg': statistics.mean([r['normalized_dcg'] for r in results]),
                 'average_semantic_similarity': statistics.mean([r['semantic_similarity_score'] for r in results])

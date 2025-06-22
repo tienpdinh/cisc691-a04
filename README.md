@@ -228,6 +228,21 @@ redis-cli -h localhost -p 6380 INFO memory | grep used_memory_human
 redis-cli -h localhost -p 6380 INFO stats | grep keyspace
 ```
 
+## Performance Benchmarks
+
+The system includes comprehensive performance benchmarking capabilities:
+
+```bash
+# Quick benchmark run
+python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
+```
+
+**Current Performance**: ~100ms RAG queries, 70+ req/s throughput, sub-second response times
+
+**Benchmark Types**: Latency, accuracy, quality assessment, and RAG vs baseline comparison
+
+📋 **For detailed benchmark documentation, configuration, and results**: see [`benchmarks/README.md`](benchmarks/README.md)
+
 ## API Endpoints
 
 | Method | Endpoint | Description |

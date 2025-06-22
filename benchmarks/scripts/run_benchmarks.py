@@ -27,7 +27,7 @@ except ImportError as e:
 async def main():
     parser = argparse.ArgumentParser(description="Run RAG System Benchmarks")
     parser.add_argument("--url", default="http://localhost:8001", help="RAG API URL")
-    parser.add_argument("--timeout", type=int, default=15, help="Request timeout (seconds)")
+    parser.add_argument("--timeout", type=int, default=60, help="Request timeout (seconds)")
     parser.add_argument("--quick", action="store_true", help="Run quick benchmarks (faster, less comprehensive)")
     parser.add_argument("--output-dir", type=Path, default="benchmarks/results", help="Output directory for results")
     
@@ -72,14 +72,14 @@ async def main():
         runner.benchmark_config = quick_config
     
     try:
-        print("\\n📊 Running benchmark suite...")
+        print("\n📊 Running benchmark suite...")
         report = await runner.run_full_benchmark_suite()
         
-        print("\\n✅ Benchmarks completed successfully!")
+        print("\n✅ Benchmarks completed successfully!")
         print(f"📋 Results saved in: {args.output_dir}/")
         
         # Print summary
-        print("\\n📈 BENCHMARK SUMMARY:")
+        print("\n📈 BENCHMARK SUMMARY:")
         print("=" * 50)
         
         if "summary" in report:
@@ -97,7 +97,7 @@ async def main():
             # Accuracy results
             if "accuracy" in summary:
                 acc = summary["accuracy"]
-                print(f"\\n🎯 ACCURACY:")
+                print(f"\n🎯 ACCURACY:")
                 print(f"  • Precision@5: {acc.get('average_precision_at_5', 0):.3f}")
                 print(f"  • Recall@5: {acc.get('average_recall_at_5', 0):.3f}")
                 print(f"  • Mean Reciprocal Rank: {acc.get('average_mrr', 0):.3f}")
@@ -106,7 +106,7 @@ async def main():
             # Quality results
             if "quality" in summary:
                 qual = summary["quality"]
-                print(f"\\n⭐ QUALITY:")
+                print(f"\n⭐ QUALITY:")
                 print(f"  • Overall Score: {qual.get('average_overall_quality', 0):.3f}")
                 print(f"  • ROUGE-1: {qual.get('average_rouge1', 0):.3f}")
                 print(f"  • Coherence: {qual.get('average_coherence', 0):.3f}")
@@ -119,17 +119,17 @@ async def main():
                 rag_wins = comp.get('rag_wins', 0)
                 baseline_wins = comp.get('baseline_wins', 0)
                 
-                print(f"\\n🥊 RAG vs BASELINE:")
+                print(f"\n🥊 RAG vs BASELINE:")
                 print(f"  • RAG Wins: {rag_wins}/{total} ({rag_wins/total*100:.1f}%)")
                 print(f"  • Baseline Wins: {baseline_wins}/{total} ({baseline_wins/total*100:.1f}%)")
                 print(f"  • Quality Improvement: {comp.get('quality_improvement_percentage', 0):.1f}%")
                 print(f"  • Improvement Score: {comp.get('average_improvement_score', 0):.3f}")
         
-        print("\\n" + "=" * 50)
+        print("\n" + "=" * 50)
         print("🎉 Benchmark suite completed!")
         
         # Provide next steps
-        print("\\n📝 NEXT STEPS:")
+        print("\n📝 NEXT STEPS:")
         print(f"  • View detailed results: {args.output_dir}/consolidated_report_*.json")
         print(f"  • Read summary: {args.output_dir}/consolidated_report_*.txt")
         print(f"  • Check logs: {args.output_dir}/benchmark_*.log")
@@ -137,8 +137,8 @@ async def main():
         return 0
         
     except Exception as e:
-        print(f"\\n❌ Benchmark failed: {e}")
-        print("\\n🔧 TROUBLESHOOTING:")
+        print(f"\n❌ Benchmark failed: {e}")
+        print("\n🔧 TROUBLESHOOTING:")
         print("  • Ensure RAG API is running at the specified URL")
         print("  • Check API endpoint accessibility")
         print("  • Verify all dependencies are installed")
@@ -168,7 +168,7 @@ if __name__ == "__main__":
         print(f"⚠️  Warning: RAG API at {temp_args.url} is not responding")
         print("   Make sure the API is running before starting benchmarks")
         print("   Start with: docker compose up -d  or  python main.py")
-        response = input("\\nContinue anyway? (y/N): ")
+        response = input("\nContinue anyway? (y/N): ")
         if response.lower() != 'y':
             print("Exiting...")
             sys.exit(1)

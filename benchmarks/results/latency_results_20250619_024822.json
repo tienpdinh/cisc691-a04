@@ -1,0 +1,30 @@
+{
+  "benchmark_info": {
+    "timestamp": "2025-06-19T02:48:22.945170",
+    "base_url": "http://localhost:8000",
+    "benchmark_type": "latency_test"
+  },
+  "summary": {
+    "latency": {
+      "query_with_rag_avg_latency": 0.2694764164989465,
+      "p95_latency": 0.3064560517505015,
+      "throughput_rps": 15.529407197092054,
+      "success_rate": 100.0,
+      "total_requests": 6
+    }
+  },
+  "detailed_results": {
+    "endpoint": "/query",
+    "mean_latency": 0.2694764164989465,
+    "median_latency": 0.26797212499877787,
+    "min_latency": 0.2407049579996965,
+    "max_latency": 0.31552854100300465,
+    "p95_latency": 0.3064560517505015,
+    "p99_latency": 0.313714043152504,
+    "throughput_rps": 15.529407197092054,
+    "total_time": 0.3863637500035111,
+    "success_rate": 100.0,
+    "error_count": 0,
+    "timestamp": "2025-06-19T02:48:22.945088"
+  }
+}

@@ -164,3 +164,7 @@ Desktop.ini
 *.bak
 *.backup
 *.orig
+
+# Benchmark results and logs
+benchmarks/results/
+benchmarks/**/*.log

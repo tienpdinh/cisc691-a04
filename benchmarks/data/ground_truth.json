@@ -1,0 +1,39 @@
+[
+  {
+    "query": "What were the retail e-commerce sales trends in Q1 2024?",
+    "relevant_doc_ids": [
+      "/app/data/raw_input/Retail-e-commerce-sales-Q12024.docx",
+      "/app/data/raw_input/Retail-e-commerce-sales-Q12024.pdf"
+    ],
+    "relevant_content": [
+      "The estimate of U.S. retail e-commerce sales for the first quarter of 2024 was $289.2 billion, an increase of 2.1 percent from Q4 2023.",
+      "E-commerce sales in the first quarter of 2024 accounted for 15.9 percent of total sales and increased 8.6 percent from Q1 2023."
+    ],
+    "query_intent": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "query": "How did Q4 2023 retail sales compare to Q4 2024?",
+    "relevant_doc_ids": [
+      "/app/data/raw_input/Retail-e-commerce-sales-Q42023.docx",
+      "/app/data/raw_input/Retail-e-commerce-sales-Q42024.docx"
+    ],
+    "relevant_content": [
+      "Q4 2023 and Q4 2024 retail e-commerce sales comparison data.",
+      "Holiday season performance and year-over-year growth metrics."
+    ],
+    "query_intent": "analytical",
+    "difficulty": "medium"
+  },
+  {
+    "query": "What are the key metrics from the Q2 2024 e-commerce report?",
+    "relevant_doc_ids": [
+      "/app/data/raw_input/Retail-e-commerce-sales-Q22024.docx"
+    ],
+    "relevant_content": [
+      "Q2 2024 e-commerce sales were $291.6 billion, an increase of 1.3 percent from Q1 2024 and 6.7 percent from Q2 2023."
+    ],
+    "query_intent": "technical",
+    "difficulty": "hard"
+  }
+]

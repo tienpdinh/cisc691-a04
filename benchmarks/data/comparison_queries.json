@@ -1,0 +1,47 @@
+[
+  {
+    "query": "What are the key success factors in project management?",
+    "context_documents": [
+      "Successful project management requires clear objectives and scope definition.",
+      "Effective communication and stakeholder management are crucial for project success."
+    ],
+    "category": "factual",
+    "difficulty": "easy"
+  },
+  {
+    "query": "How does artificial intelligence transform business operations?",
+    "context_documents": [
+      "AI automates repetitive tasks and enables data-driven decision making.",
+      "Machine learning algorithms can optimize business processes and reduce costs."
+    ],
+    "category": "analytical",
+    "difficulty": "medium"
+  },
+  {
+    "query": "What are the main challenges in implementing RAG systems in production?",
+    "context_documents": [
+      "RAG systems face challenges in retrieval accuracy and response quality.",
+      "Production deployment requires careful consideration of latency and scalability."
+    ],
+    "category": "technical",
+    "difficulty": "hard"
+  },
+  {
+    "query": "Explain the benefits of using vector databases for similarity search.",
+    "context_documents": [
+      "Vector databases enable efficient similarity search using embeddings.",
+      "They provide fast retrieval for high-dimensional data and semantic search."
+    ],
+    "category": "technical",
+    "difficulty": "medium"
+  },
+  {
+    "query": "What is the difference between supervised and unsupervised learning?",
+    "context_documents": [
+      "Supervised learning uses labeled data to train models for prediction.",
+      "Unsupervised learning finds patterns in data without explicit labels."
+    ],
+    "category": "educational",
+    "difficulty": "easy"
+  }
+]

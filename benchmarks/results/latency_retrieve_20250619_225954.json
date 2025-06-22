@@ -1,0 +1,15 @@
+{
+  "endpoint": "/retrieve",
+  "request_count": 15,
+  "mean_latency": 60.16173470560073,
+  "median_latency": 60.1578252909967,
+  "p95_latency": 60.22961672879973,
+  "p99_latency": 60.237346479363474,
+  "min_latency": 60.10027929199714,
+  "max_latency": 60.23927891700441,
+  "throughput_rps": 0.0,
+  "total_time": 60.27129545900243,
+  "success_rate": 0.0,
+  "error_count": 15,
+  "timestamp": "2025-06-19T22:59:54.288870"
+}

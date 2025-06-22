@@ -1,0 +1,24 @@
+{
+  "benchmark_info": {
+    "timestamp": "2024-12-19T14:30:00",
+    "api_url": "http://localhost:8000",
+    "test_type": "basic_validation"
+  },
+  "summary": {
+    "latency": {
+      "avg_query_latency": 1.245,
+      "success_rate": 100.0,
+      "throughput_rps": 3.21
+    },
+    "quality": {
+      "avg_quality_score": 0.756,
+      "avg_coherence": 0.823
+    },
+    "comparison": {
+      "improvement_score": 0.142,
+      "rag_wins": 3,
+      "baseline_wins": 1
+    }
+  },
+  "status": "validation_complete"
+}

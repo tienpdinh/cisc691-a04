@@ -5,12 +5,7 @@ import hashlib
 from typing import Optional, Dict, Any
 from .cache_manager import get_cache_manager
 
-try:
-    from google.cloud import aiplatform
-    from google.auth import default
-    VERTEX_AI_AVAILABLE = True
-except ImportError:
-    VERTEX_AI_AVAILABLE = False
+VERTEX_AI_AVAILABLE = False
 
 
 class LLMClient:
@@ -40,15 +35,18 @@ class LLMClient:
         self.cache_manager = get_cache_manager(self.config) if self.config else None
 
         # Initialize Vertex AI if needed
-        if self.llm_provider == "vertex_ai" and VERTEX_AI_AVAILABLE:
+        if self.llm_provider == "vertex_ai":
             self._init_vertex_ai()
 
     def _init_vertex_ai(self):
         """Initialize Vertex AI client"""
         try:
+            from google.cloud import aiplatform
             if self.project_id and self.location:
                 aiplatform.init(project=self.project_id, location=self.location)
                 self.logger.info(f"Initialized Vertex AI: {self.project_id}/{self.location}")
+        except ImportError:
+            self.logger.error("Vertex AI libraries not installed")
         except Exception as e:
             self.logger.error(f"Failed to initialize Vertex AI: {e}")
 
@@ -102,10 +100,9 @@ class LLMClient:
 
     def _query_vertex_ai_sync(self, prompt: str):
         """Query Vertex AI Gemini model"""
-        if not VERTEX_AI_AVAILABLE:
-            return "Error: Vertex AI libraries not installed"
-
         try:
+            from google.cloud import aiplatform
+            from google.auth import default
             import vertexai
             from vertexai.generative_models import GenerativeModel
             
@@ -117,6 +114,8 @@ class LLMClient:
             else:
                 return "No response from Vertex AI"
                 
+        except ImportError:
+            return "Error: Vertex AI libraries not installed"
         except Exception as e:
             self.logger.error(f"Error querying Vertex AI: {e}")
             return f"Error: Could not connect to Vertex AI: {str(e)}"

@@ -1,0 +1,47 @@
+[
+  {
+    "query": "What are the main principles of effective project management?",
+    "reference_answer": "Effective project management involves several key principles: clear scope definition, realistic timeline planning, proper resource allocation, stakeholder communication, risk management, and continuous monitoring and control. These principles help ensure projects are completed on time, within budget, and meet their objectives.",
+    "context_documents": [
+      "Project management requires careful planning and execution to achieve success.",
+      "Key elements include scope, time, cost, quality, and stakeholder management."
+    ],
+    "evaluation_criteria": [
+      "accuracy",
+      "completeness",
+      "clarity"
+    ],
+    "difficulty": "medium",
+    "category": "factual"
+  },
+  {
+    "query": "How does artificial intelligence impact modern business operations?",
+    "reference_answer": "Artificial intelligence significantly impacts modern business operations by automating routine tasks, enabling data-driven decision making, improving customer service through chatbots and personalization, optimizing supply chains, and enhancing predictive analytics. AI helps businesses increase efficiency, reduce costs, and gain competitive advantages through better insights and automation.",
+    "context_documents": [
+      "AI technologies are transforming how businesses operate and make decisions.",
+      "Machine learning and automation are key drivers of business efficiency."
+    ],
+    "evaluation_criteria": [
+      "analytical depth",
+      "practical examples",
+      "comprehensiveness"
+    ],
+    "difficulty": "medium",
+    "category": "analytical"
+  },
+  {
+    "query": "What are the potential risks and challenges in implementing RAG systems?",
+    "reference_answer": "Implementing RAG systems presents several challenges: ensuring retrieval accuracy and relevance, managing context length limitations, maintaining response quality and consistency, handling domain-specific knowledge, addressing privacy and security concerns, and managing computational costs. Additionally, there are challenges in evaluation metrics, keeping knowledge bases updated, and ensuring system reliability.",
+    "context_documents": [
+      "RAG systems combine retrieval and generation but face technical challenges.",
+      "Key issues include accuracy, relevance, cost, and system complexity."
+    ],
+    "evaluation_criteria": [
+      "technical accuracy",
+      "comprehensive coverage",
+      "practical insights"
+    ],
+    "difficulty": "hard",
+    "category": "technical"
+  }
+]

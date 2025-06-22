@@ -563,14 +563,25 @@ Provide only a numeric score from 0-10:
             self.logger.error("No test cases available")
             return []
         
-        # Evaluate each test case
-        results = []
+        # Evaluate test cases concurrently
+        evaluation_tasks = []
         for test_case in test_cases:
+            evaluation_tasks.append(self.evaluate_response_quality(test_case))
+        
+        # Execute all evaluations concurrently
+        results = []
+        if evaluation_tasks:
             try:
-                metrics = await self.evaluate_response_quality(test_case)
-                results.append(metrics)
+                task_results = await asyncio.gather(*evaluation_tasks, return_exceptions=True)
+                
+                for i, result in enumerate(task_results):
+                    if isinstance(result, Exception):
+                        self.logger.error(f"Error evaluating test case '{test_cases[i].query}': {result}")
+                    else:
+                        results.append(result)
+                        
             except Exception as e:
-                self.logger.error(f"Error evaluating test case '{test_case.query}': {e}")
+                self.logger.error(f"Error in concurrent evaluation execution: {e}")
         
         # Save results
         self.save_results(results)

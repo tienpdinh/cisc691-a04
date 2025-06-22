@@ -20,11 +20,6 @@ Comprehensive benchmarking suite for evaluating RAG system performance across mu
   • Retrieval: 0.132s
   • Throughput: 72.95 req/s
 
-🎯 ACCURACY:
-  • Precision@5: Variable (depends on ground truth data)
-  • Recall@5: Variable (depends on ground truth data)
-  • Mean Reciprocal Rank: Measured against test queries
-
 ⭐ QUALITY:
   • Overall Score: 0.370
   • ROUGE-1: 0.137
@@ -52,14 +47,7 @@ Comprehensive benchmarking suite for evaluating RAG system performance across mu
 - **Statistical analysis** (P95, P99, mean, median, min, max)
 - **Performance under load** testing with error tracking
 
-### 2. **Retrieval Accuracy Assessment** (`core/accuracy_benchmark.py`)
-- **Precision@K and Recall@K** metrics (K=1,3,5,10)
-- **Mean Reciprocal Rank (MRR)** calculation
-- **Normalized Discounted Cumulative Gain (NDCG)**
-- **Semantic similarity** scoring using sentence transformers
-- **Ground truth evaluation** with customizable test sets
-
-### 3. **Response Quality Evaluation** (`core/quality_benchmark.py`)
+### 2. **Response Quality Evaluation** (`core/quality_benchmark.py`)
 - **ROUGE scores** (ROUGE-1, ROUGE-2, ROUGE-L)
 - **BERTScore** semantic similarity (when internet available)
 - **Coherence and fluency** analysis
@@ -67,14 +55,14 @@ Comprehensive benchmarking suite for evaluating RAG system performance across mu
 - **Factual accuracy** assessment against source documents
 - **Multi-dimensional quality scoring** with weighted averages
 
-### 4. **Baseline Comparison** (`core/baseline_comparison.py`)
+### 3. **Baseline Comparison** (`core/baseline_comparison.py`)
 - **RAG vs Direct LLM** performance comparison
 - **Improvement measurement** across all metrics
 - **Side-by-side response analysis**
 - **Win/loss statistics** and improvement percentages
 - **Latency comparison** between RAG and non-RAG approaches
 
-### 5. **Results Analysis & Visualization** (`scripts/view_results.py`)
+### 4. **Results Analysis & Visualization** (`scripts/view_results.py`)
 - **Comprehensive results viewer** with multiple output formats
 - **Trend analysis** and comparison tools across multiple runs
 - **Export capabilities** (JSON, CSV, text summaries)

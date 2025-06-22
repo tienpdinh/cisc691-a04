@@ -426,19 +426,32 @@ class BaselineComparison:
                 accuracy_improvement_percentage=0.0
             )
         
-        # Run comparisons
-        comparison_results = []
+        # Run comparisons concurrently
+        comparison_tasks = []
+        valid_queries = []
+        
         for query_data in test_queries:
+            query = query_data.get('query', query_data.get('text', ''))
+            context_docs = query_data.get('context_documents', [])
+            
+            if query:
+                valid_queries.append(query_data)
+                comparison_tasks.append(self.compare_responses(query, context_docs))
+        
+        # Execute all comparisons concurrently
+        comparison_results = []
+        if comparison_tasks:
             try:
-                query = query_data.get('query', query_data.get('text', ''))
-                context_docs = query_data.get('context_documents', [])
+                results = await asyncio.gather(*comparison_tasks, return_exceptions=True)
                 
-                if query:
-                    metrics = await self.compare_responses(query, context_docs)
-                    comparison_results.append(metrics)
-                    
+                for i, result in enumerate(results):
+                    if isinstance(result, Exception):
+                        self.logger.error(f"Error comparing responses for query '{valid_queries[i].get('query', '')}': {result}")
+                    else:
+                        comparison_results.append(result)
+                        
             except Exception as e:
-                self.logger.error(f"Error comparing responses for query: {e}")
+                self.logger.error(f"Error in concurrent comparison execution: {e}")
         
         # Calculate summary statistics
         summary = self.calculate_summary_statistics(comparison_results)

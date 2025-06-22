@@ -239,7 +239,7 @@ python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
 
 **Current Performance**: ~100ms RAG queries, 70+ req/s throughput, sub-second response times
 
-**Benchmark Types**: Latency, accuracy, quality assessment, and RAG vs baseline comparison
+**Benchmark Types**: Latency, quality assessment, and RAG vs baseline comparison
 
 📋 **For detailed benchmark documentation, configuration, and results**: see [`benchmarks/README.md`](benchmarks/README.md)
 

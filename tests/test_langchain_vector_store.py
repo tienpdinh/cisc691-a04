@@ -544,3 +544,48 @@ class TestLangChainVectorStoreCaching:
                     # Should return empty list on error
                     assert results == []
                     mock_cache_manager.set.assert_not_called()  # Don't cache errors
+
+    def test_similarity_search_sync_basic(self, mock_chroma_vector_store):
+        """Test synchronous similarity search."""
+        with patch('src.langchain_vector_store.HuggingFaceEmbeddings'):
+            with patch('src.langchain_vector_store.Chroma', return_value=mock_chroma_vector_store):
+                vector_store = LangChainVectorStore(
+                    collection_name="test_collection"
+                )
+                
+                results = vector_store.similarity_search_sync("test query", k=3)
+                
+                assert len(results) == 2
+                assert results[0].page_content == "Test content 1"
+                mock_chroma_vector_store.similarity_search.assert_called_once_with("test query", k=3)
+
+    def test_similarity_search_sync_with_threshold(self, mock_chroma_vector_store):
+        """Test synchronous similarity search with score threshold."""
+        with patch('src.langchain_vector_store.HuggingFaceEmbeddings'):
+            with patch('src.langchain_vector_store.Chroma', return_value=mock_chroma_vector_store):
+                vector_store = LangChainVectorStore(
+                    collection_name="test_collection"
+                )
+                
+                results = vector_store.similarity_search_sync("test query", k=3, score_threshold=0.8)
+                
+                # Should filter by threshold
+                assert len(results) == 1  # Only first doc has score >= 0.8
+                assert results[0].page_content == "Test content 1"
+                mock_chroma_vector_store.similarity_search_with_score.assert_called_once_with("test query", k=3)
+
+    def test_similarity_search_sync_error(self, mock_chroma_vector_store):
+        """Test synchronous similarity search error handling."""
+        with patch('src.langchain_vector_store.HuggingFaceEmbeddings'):
+            with patch('src.langchain_vector_store.Chroma', return_value=mock_chroma_vector_store):
+                # Vector store error
+                mock_chroma_vector_store.similarity_search.side_effect = Exception("Vector store error")
+                
+                vector_store = LangChainVectorStore(
+                    collection_name="test_collection"
+                )
+                
+                results = vector_store.similarity_search_sync("test query", k=3)
+                
+                # Should return empty list on error
+                assert results == []

@@ -1,0 +1,106 @@
+{
+  "error_analysis": {
+    "enabled": true,
+    "log_directory": "logs/errors",
+    "max_memory_entries": 1000,
+    "max_failure_events": 10000,
+    "alert_thresholds": {
+      "error_rate_per_minute": 5,
+      "avg_response_time_seconds": 5.0,
+      "success_rate_threshold": 0.95,
+      "critical_error_threshold": 1
+    },
+    "component_monitoring": {
+      "document_processor": {
+        "enabled": true,
+        "monitor_file_processing": true,
+        "monitor_text_extraction": true,
+        "monitor_chunking": true
+      },
+      "vector_store": {
+        "enabled": true,
+        "monitor_embeddings": true,
+        "monitor_similarity_search": true,
+        "monitor_index_operations": true
+      },
+      "llm_client": {
+        "enabled": true,
+        "monitor_model_loading": true,
+        "monitor_prompt_processing": true,
+        "monitor_response_generation": true,
+        "model_loading_timeout": 30,
+        "prompt_processing_timeout": 60
+      },
+      "api_endpoints": {
+        "enabled": true,
+        "monitor_request_validation": true,
+        "monitor_response_times": true,
+        "monitor_status_codes": true,
+        "http_4xx_rate_threshold": 0.05,
+        "http_5xx_rate_threshold": 0.01
+      },
+      "cache_manager": {
+        "enabled": true,
+        "monitor_hit_rates": true,
+        "monitor_memory_usage": true,
+        "monitor_evictions": true,
+        "cache_hit_rate_threshold": 0.7,
+        "memory_usage_threshold": 0.9
+      }
+    },
+    "failure_tracking": {
+      "detect_cascade_failures": true,
+      "detect_performance_degradation": true,
+      "detect_quality_degradation": true,
+      "failure_prediction_enabled": true,
+      "degradation_thresholds": {
+        "response_time": 0.5,
+        "error_rate": 0.1,
+        "success_rate": 0.95
+      }
+    },
+    "error_recovery": {
+      "enabled": true,
+      "retry": {
+        "max_attempts": 3,
+        "base_delay": 1.0,
+        "max_delay": 60.0,
+        "exponential_base": 2.0,
+        "jitter": true
+      },
+      "circuit_breaker": {
+        "failure_threshold": 5,
+        "recovery_timeout": 60.0,
+        "success_threshold": 3,
+        "request_volume_threshold": 10
+      },
+      "fallback_strategies": {
+        "llm_client": ["retry", "cache_fallback", "fallback"],
+        "vector_store": ["retry", "circuit_breaker"],
+        "cache_manager": ["retry", "graceful_degradation"],
+        "api_endpoints": ["retry", "graceful_degradation"],
+        "document_processor": ["retry", "fallback"]
+      },
+      "cache_fallbacks": {
+        "enabled": true,
+        "max_entries": 100,
+        "default_responses": {
+          "llm_unavailable": "I apologize, but I am experiencing technical difficulties. Please try again later.",
+          "vector_search_unavailable": "Document search is temporarily unavailable."
+        }
+      }
+    },
+    "reporting": {
+      "export_format": "json",
+      "retention_days": 30,
+      "cleanup_interval_hours": 24,
+      "alert_notifications": {
+        "enabled": true,
+        "critical_errors": true,
+        "system_degradation": true,
+        "cascade_failures": true,
+        "recovery_failures": true
+      }
+    }
+  }
+}

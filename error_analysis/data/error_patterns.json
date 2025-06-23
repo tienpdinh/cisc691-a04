@@ -1,0 +1,78 @@
+{
+  "common_error_patterns": {
+    "connection_errors": [
+      "connection timeout",
+      "connection refused", 
+      "connection reset",
+      "network unreachable",
+      "host unreachable"
+    ],
+    "authentication_errors": [
+      "authentication failed",
+      "invalid credentials",
+      "access denied",
+      "unauthorized",
+      "permission denied"
+    ],
+    "validation_errors": [
+      "invalid input",
+      "validation failed",
+      "missing required field",
+      "invalid format",
+      "out of range"
+    ],
+    "timeout_errors": [
+      "request timeout",
+      "operation timeout",
+      "response timeout",
+      "deadline exceeded"
+    ],
+    "resource_errors": [
+      "out of memory",
+      "disk full",
+      "too many requests",
+      "resource exhausted",
+      "quota exceeded"
+    ]
+  },
+  "severity_mapping": {
+    "critical": [
+      "system down",
+      "data corruption", 
+      "security breach",
+      "complete failure"
+    ],
+    "high": [
+      "service unavailable",
+      "component failure",
+      "performance degraded"
+    ],
+    "medium": [
+      "processing error",
+      "quality degraded",
+      "cache miss"
+    ],
+    "low": [
+      "validation warning",
+      "configuration issue",
+      "minor error"
+    ]
+  },
+  "component_keywords": {
+    "llm_client": [
+      "llm", "language model", "gpt", "claude", "gemini", "generation", "prompt"
+    ],
+    "vector_store": [
+      "embedding", "vector", "similarity", "chroma", "index", "search"
+    ],
+    "cache_manager": [
+      "cache", "redis", "memory", "hit", "miss", "eviction"
+    ],
+    "api_endpoints": [
+      "api", "endpoint", "request", "response", "http", "status"
+    ],
+    "document_processor": [
+      "document", "pdf", "text", "parsing", "extraction", "chunk"
+    ]
+  }
+}

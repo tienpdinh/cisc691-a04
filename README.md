@@ -243,6 +243,24 @@ python benchmarks/scripts/run_benchmarks.py --url http://localhost:8001 --quick
 
 📋 **For detailed benchmark documentation, configuration, and results**: see [`benchmarks/README.md`](benchmarks/README.md)
 
+## Error Analysis & System Monitoring
+
+The system includes comprehensive error analysis and failure tracking capabilities:
+
+```bash
+# Get system health status
+curl "http://localhost:8001/health/error-analysis"
+
+# Get detailed error analysis  
+curl "http://localhost:8001/health/error-analysis/comprehensive"
+```
+
+**Error Analysis Features**: Real-time error classification, component health monitoring, failure prediction, and comprehensive analytics
+
+**Monitoring Capabilities**: Automatic error categorization, performance tracking, alert generation, and trend analysis
+
+🔍 **For detailed error analysis documentation and integration**: see [`error_analysis/README.md`](error_analysis/README.md)
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
@@ -329,6 +347,21 @@ open htmlcov/index.html  # View detailed coverage report
 │   ├── chromadb_retriever.py  # ChromaDB HTTP client
 │   ├── embedding_loader.py    # ChromaDB HTTP client for storage
 │   └── ...                    # Core RAG modules
+├── benchmarks/                # Performance benchmarking system
+│   ├── core/                  # Benchmark modules (latency, quality, accuracy)
+│   ├── scripts/               # Benchmark execution scripts
+│   ├── results/               # Benchmark results and reports
+│   └── README.md              # Benchmark documentation
+├── error_analysis/            # Error analysis and monitoring system
+│   ├── core/                  # Core error analysis components
+│   ├── recovery/              # Error recovery mechanisms
+│   ├── monitors/              # Component-specific error monitors
+│   ├── tests/                 # Error analysis tests
+│   ├── scripts/               # Analysis and utility scripts
+│   ├── config/                # Error analysis configuration
+│   ├── data/                  # Sample data and patterns
+│   ├── results/               # Analysis results and logs
+│   └── README.md              # Error analysis documentation
 ├── tests/                     # Unit tests
 │   ├── test_api_*.py          # API endpoint tests
 │   ├── test_chromadb_*.py     # ChromaDB HTTP client tests

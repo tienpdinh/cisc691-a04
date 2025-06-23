@@ -28,3 +28,4 @@ langchain-ollama>=0.3.0
 pypdf>=4.0.0
 docx2txt>=0.8.0
 redis>=5.0.0
+psutil>=5.9.0

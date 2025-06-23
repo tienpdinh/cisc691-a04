@@ -22,4 +22,30 @@ def create_router() -> APIRouter:
     async def health_endpoint():
         return await health_check()
     
+    @router.get("/performance")
+    async def performance_endpoint(app_request: Request):
+        """Get current performance metrics."""
+        optimizer = app_request.app.state.performance_optimizer
+        metrics = await optimizer.get_comprehensive_metrics()
+        return {
+            "performance_score": metrics.performance_score,
+            "memory_usage_mb": metrics.memory_usage_mb,
+            "cpu_usage_percent": metrics.cpu_usage_percent,
+            "cache_hit_rate": metrics.cache_hit_rate,
+            "active_connections": metrics.active_connections,
+            "avg_response_time": metrics.avg_response_time,
+            "optimization_suggestions": metrics.optimization_suggestions,
+            "timestamp": metrics.timestamp
+        }
+    
+    @router.post("/performance/optimize")
+    async def optimize_endpoint(app_request: Request):
+        """Trigger performance optimization."""
+        optimizer = app_request.app.state.performance_optimizer
+        results = await optimizer.optimize_all()
+        return {
+            "message": "Performance optimization completed",
+            "results": results
+        }
+    
     return router

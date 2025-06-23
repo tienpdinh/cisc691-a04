@@ -159,6 +159,52 @@ curl -X POST "http://localhost:8001/query" \
   -d '{"query": "How did 2024 annual sales compare to 2023?", "use_rag": true}'
 ```
 
+## Example Queries and Expected Responses
+
+### Sample Queries by Category
+
+#### 1. Quarterly Performance Analysis
+**Query**: "What were the Q4 2023 e-commerce sales results?"
+**Expected Response**: Detailed breakdown of Q4 2023 performance metrics with citations
+
+**Query**: "Compare Q1 2024 vs Q1 2023 retail performance"
+**Expected Response**: Comparative analysis with percentage changes and trends
+
+#### 2. Trend Analysis
+**Query**: "What are the key retail trends in 2024?"
+**Expected Response**: Summary of emerging trends with supporting data
+
+**Query**: "Show me the quarterly growth rates for 2023-2024"
+**Expected Response**: Growth rate analysis across multiple quarters
+
+#### 3. Performance Metrics
+**Query**: "What was the best performing quarter in the dataset?"
+**Expected Response**: Identification of peak performance period with metrics
+
+**Query**: "How did seasonal patterns affect sales in 2023?"
+**Expected Response**: Seasonal analysis with pattern identification
+
+### Demo Scenarios
+
+#### Scenario 1: Business Analyst Workflow
+1. Upload quarterly reports
+2. Query for performance comparisons
+3. Generate trend analysis
+4. Export insights
+
+#### Scenario 2: Executive Dashboard
+1. High-level performance overview
+2. Key metric summaries
+3. Strategic recommendations
+4. Future projections
+
+### Response Quality Criteria
+- **Accuracy**: Information matches source documents
+- **Completeness**: Comprehensive coverage of query topic
+- **Citations**: Proper source attribution
+- **Coherence**: Well-structured and readable responses
+- **Relevance**: Directly addresses the query intent
+
 ### Retrieve Relevant Chunks
 ```bash
 # Get relevant document chunks for a query

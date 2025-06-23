@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .config_manager import ConfigManager
+from .performance_optimizer import PerformanceOptimizer
 
 def create_app(config: ConfigManager) -> FastAPI:
     """Create and configure FastAPI application."""
@@ -22,5 +23,8 @@ def create_app(config: ConfigManager) -> FastAPI:
     
     # Store config in app state for access in endpoints
     app.state.config = config
+    
+    # Initialize performance optimizer
+    app.state.performance_optimizer = PerformanceOptimizer()
     
     return app
